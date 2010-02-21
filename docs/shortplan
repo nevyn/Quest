@@ -1,0 +1,8 @@
+- En entity som faller neråt, vit fyrkant som placeholder för Sprite.
+
+- En riktig sprite, utan animation men med textur.
+- Tre olika entities som faller, 2 har samma sprite, 1 har en egen.
+- en mark med lite sluttningar som entitiesen kolliderar med och kasar ner för
+- två av entitiesen kolliderar med varandra
+- man kan styra en av entitiesen, och hoppa.
+- ladda in allt från en fil istället
