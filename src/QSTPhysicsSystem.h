@@ -17,8 +17,16 @@
  
 */
 
+@class QSTCmpPhysics;
+
 @interface QSTPhysicsSystem : NSObject {
 
+	NSMutableArray	*components;
+	
 }
+
+-(id)init;
+-(void)addComponent:(QSTCmpPhysics*)aComponent toLayer:(int)theLayer;
+-(void)tick:(float)dt;
 
 @end

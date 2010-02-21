@@ -12,6 +12,13 @@
 @class QSTSceneLayered2D;
 
 
+@protocol QSTCmpGraphics
+
+-(void)render;
+
+@end
+
+
 @protocol QSTScene
 @end
 
@@ -29,6 +36,7 @@
 
 -(id)init;
 -(void)tick;
+-(void)beginFrame;
 
 @property (nonatomic,readonly) QSTSceneLayered2D *scene;
 

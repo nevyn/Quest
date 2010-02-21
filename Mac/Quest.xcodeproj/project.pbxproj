@@ -20,6 +20,9 @@
 		D85E720511303C5B0005CAB5 /* QSTPhysicsSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E720411303C5B0005CAB5 /* QSTPhysicsSystem.m */; };
 		D85E720911303DCD0005CAB5 /* shortplan in Resources */ = {isa = PBXBuildFile; fileRef = D85E720811303DCD0005CAB5 /* shortplan */; };
 		D85E72251130B8970005CAB5 /* QSTCmpSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E72241130B8970005CAB5 /* QSTCmpSprite.m */; };
+		D85E73801130C6CE0005CAB5 /* QSTCmpPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E737F1130C6CE0005CAB5 /* QSTCmpPosition.m */; };
+		D85E73941130C7A60005CAB5 /* Vector2.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E73931130C7A60005CAB5 /* Vector2.m */; };
+		D85E74051130C9540005CAB5 /* QSTCmpPhysics.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E74041130C9540005CAB5 /* QSTCmpPhysics.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +52,12 @@
 		D85E720811303DCD0005CAB5 /* shortplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shortplan; sourceTree = "<group>"; };
 		D85E72231130B8970005CAB5 /* QSTCmpSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTCmpSprite.h; sourceTree = "<group>"; };
 		D85E72241130B8970005CAB5 /* QSTCmpSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTCmpSprite.m; sourceTree = "<group>"; };
+		D85E737E1130C6CE0005CAB5 /* QSTCmpPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTCmpPosition.h; sourceTree = "<group>"; };
+		D85E737F1130C6CE0005CAB5 /* QSTCmpPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTCmpPosition.m; sourceTree = "<group>"; };
+		D85E73921130C7A60005CAB5 /* Vector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2.h; sourceTree = "<group>"; };
+		D85E73931130C7A60005CAB5 /* Vector2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector2.m; sourceTree = "<group>"; };
+		D85E74031130C9540005CAB5 /* QSTCmpPhysics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTCmpPhysics.h; sourceTree = "<group>"; };
+		D85E74041130C9540005CAB5 /* QSTCmpPhysics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTCmpPhysics.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +156,8 @@
 		D85E714C113013E40005CAB5 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D85E73921130C7A60005CAB5 /* Vector2.h */,
+				D85E73931130C7A60005CAB5 /* Vector2.m */,
 				D85E7177113025120005CAB5 /* QSTGraphicsSystem.h */,
 				D85E7178113025120005CAB5 /* QSTGraphicsSystem.m */,
 				D85E7196113027EA0005CAB5 /* QSTSceneLayered2D.h */,
@@ -157,6 +168,10 @@
 				D85E720411303C5B0005CAB5 /* QSTPhysicsSystem.m */,
 				D85E72231130B8970005CAB5 /* QSTCmpSprite.h */,
 				D85E72241130B8970005CAB5 /* QSTCmpSprite.m */,
+				D85E737E1130C6CE0005CAB5 /* QSTCmpPosition.h */,
+				D85E737F1130C6CE0005CAB5 /* QSTCmpPosition.m */,
+				D85E74031130C9540005CAB5 /* QSTCmpPhysics.h */,
+				D85E74041130C9540005CAB5 /* QSTCmpPhysics.m */,
 			);
 			name = src;
 			path = ../src;
@@ -235,6 +250,9 @@
 				D85E71EB113037B60005CAB5 /* QSTCore.m in Sources */,
 				D85E720511303C5B0005CAB5 /* QSTPhysicsSystem.m in Sources */,
 				D85E72251130B8970005CAB5 /* QSTCmpSprite.m in Sources */,
+				D85E73801130C6CE0005CAB5 /* QSTCmpPosition.m in Sources */,
+				D85E73941130C7A60005CAB5 /* Vector2.m in Sources */,
+				D85E74051130C9540005CAB5 /* QSTCmpPhysics.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,7 +18,7 @@
   
 */
 
-@class QSTCmpGraphics;
+@protocol QSTCmpGraphics;
 @class MutableVector2;
 @class Vector2;
 
@@ -41,7 +41,8 @@
 	NSMutableArray	*components;
 }
 
--(void)addComponent:(QSTCmpGraphics*)aComponent;
+-(void)addComponent:(id<QSTCmpGraphics>)aComponent;
+-(void)render;
 
 @end
 
@@ -51,7 +52,7 @@
 }
 
 -(id)init;
--(void)addComponent:(QSTCmpGraphics*)aComponent toLayer:(int)layerIndex;
+-(void)addComponent:(id<QSTCmpGraphics>)aComponent toLayer:(int)layerIndex;
 -(void)render;
 
 @end

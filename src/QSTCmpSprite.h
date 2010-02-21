@@ -8,19 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface QSTCmpGraphics : NSObject {
+#import "QSTGraphicsSystem.h"
+
+
+@class QSTCmpPosition;
+
+
+@interface QSTCmpSprite : NSObject <QSTCmpGraphics> {
+	int				EID;
+	
+	QSTCmpPosition	*position;
 }
-@end
 
-@implementation QSTCmpGraphics
-@end
-
-
-
-@interface QSTCmpSprite : QSTCmpGraphics {
-	int	EID;
-}
-
--(id)initWithEID:(int)theEID;
+-(id)initWithEID:(int)theEID position:(QSTCmpPosition*)thePosition;
+-(void)render;
 
 @end

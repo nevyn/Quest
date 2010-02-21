@@ -8,6 +8,8 @@
 
 #import "QSTSceneLayered2D.h"
 
+#import "QSTGraphicsSystem.h"
+
 @implementation QSTLayer2D
 
 -(id)init {
@@ -17,8 +19,13 @@
 	return self;
 }
 
--(void)addComponent:(QSTCmpGraphics*)aComponent {
+-(void)addComponent:(id<QSTCmpGraphics>)aComponent {
 	[components addObject:aComponent];
+}
+
+-(void)render {
+	for(id<QSTCmpGraphics> gfx in components)
+		[gfx render];
 }
 
 @end
@@ -38,12 +45,16 @@
 	return self;
 }
 
--(void)addComponent:(QSTCmpGraphics*)aComponent toLayer:(int)layerIndex {
+-(void)addComponent:(id<QSTCmpGraphics>)aComponent toLayer:(int)layerIndex {
 	QSTLayer2D *layer = [layers objectAtIndex:layerIndex];
 	[layer addComponent:aComponent];
 }
 
 -(void)render {
+	for(QSTLayer2D *layer in layers)
+		[layer render];
+	
+	
 	//[self initFrame];
 	//QSTBatch *batch;
 	//while(batch = [self getNextBatch]) {
