@@ -22,7 +22,7 @@
 */
 
 @class Vector2;
-//@class QSTBoundingBox;
+@class QSTBoundingBox;
 @class QSTResTexture;
 
 @interface QSTResSprite : NSObject {
@@ -30,8 +30,13 @@
 	
 	NSArray			*animations;
 	Vector2			*center;
-	//QSTBoundingBox	*bbox;
+	Vector2			*size;
+	QSTBoundingBox	*frame;
 }
+
+@property (nonatomic, readonly) Vector2 *size;
+@property (nonatomic, readonly) Vector2 *center;
+@property (nonatomic, readonly) QSTBoundingBox *frame;
 
 -(id)initWithTexture:(NSString*)tex;
 -(void)use;

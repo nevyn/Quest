@@ -33,8 +33,9 @@ static NSMutableDictionary *sprites;
 	unsigned char *data = [img bitmapData];
 	int	width = [img pixelsWide];
 	int height = [img pixelsHigh];
+	BOOL hasAlpha = [img hasAlpha];
 			
-	texture = [[QSTResTexture alloc] initWithData:data width:width height:height];
+	texture = [[QSTResTexture alloc] initWithData:data width:width height:height hasAlpha:hasAlpha];
 	[textures setObject:texture forKey:name];
 	[texture release];
 	return texture;

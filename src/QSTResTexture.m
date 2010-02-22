@@ -12,7 +12,7 @@
 
 @implementation QSTResTexture
 
--(id)initWithData:(unsigned char*)data width:(int)width height:(int)height {
+-(id)initWithData:(unsigned char*)data width:(int)width height:(int)height hasAlpha:(BOOL)hasAlpha {
 	if(self = [super init]) {
 		GLuint texId;
 		glGenTextures(1, &texId);
@@ -20,9 +20,9 @@
 		
 		oglID = texId;
 		
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
+		glTexImage2D(GL_TEXTURE_2D, 0, hasAlpha?GL_RGBA:GL_RGB,
 					 width, height, 0, 
-					 GL_RGBA, GL_UNSIGNED_BYTE,
+					 hasAlpha?GL_RGBA:GL_RGB, GL_UNSIGNED_BYTE,
 					 data);
 		
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);

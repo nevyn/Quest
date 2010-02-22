@@ -50,6 +50,7 @@ typedef struct {
 		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 		
 		glEnable(GL_TEXTURE_2D);
+		glPointSize(5.0f);
 	}
 	return self;
 }

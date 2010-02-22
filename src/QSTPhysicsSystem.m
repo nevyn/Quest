@@ -26,6 +26,7 @@
 }
 
 -(void)tick:(float)dt {
+	return;
 	for(QSTCmpPhysics *ph in components) {
 		ph.velocity.y += 0.1f * dt;
 		ph.position.position.y += ph.velocity.y;

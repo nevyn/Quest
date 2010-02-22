@@ -14,6 +14,7 @@
 #import "QSTCmpPosition.h"
 #import "QSTResSprite.h"
 #import "QSTResourceDB.h"
+#import "QSTBoundingBox.h"
 
 
 @implementation QSTCmpSprite
@@ -23,34 +24,48 @@
 		EID = theEID;
 		position = [thePosition retain];
 		sprite = [[QSTResourceDB getSpriteWithName:spriteName] retain];
+		currentFrame = rand()%360;
 	}
 	return self;
 }
 
 -(void)render {
+	currentFrame += 1;
+	
 	Vector2	*pos = position.position;
+	Vector2 *min = sprite.frame.min;
+	Vector2 *max = sprite.frame.max;
 	
 	[sprite use];
 	
 	glPushMatrix();
-	
+		
 	glTranslatef(pos.x, pos.y, 0.0f);
-	
+	//glRotatef(currentFrame, 0.0f, 0.0f, 1.0f);
+		
 	glBegin(GL_QUADS);
 	glColor3f(1.0f, 1.0f, 1.0f);
-
+	
 	glTexCoord2f(0.0f, 0.0f);
-	glVertex3f(0.0f, 0.0f, 0.0f);
+	glVertex2f(min.x, min.y);
 	
 	glTexCoord2f(1.0f, 0.0f);
-	glVertex3f(1.0f, 0.0f, 0.0f);
+	glVertex2f(max.x, min.y);
 	
 	glTexCoord2f(1.0f, 1.0f);
-	glVertex3f(1.0f, 1.0f, 0.0f);
+	glVertex2f(max.x, max.y);
 	
 	glTexCoord2f(0.0f, 1.0f);
-	glVertex3f(0.0f, 1.0f, 0.0f);
+	glVertex2f(min.x, max.y);
+	
 	glEnd();
+	
+	glDisable(GL_TEXTURE_2D);
+	glBegin(GL_POINTS);
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex2f(0.0f, 0.0f);
+	glEnd();
+	glEnable(GL_TEXTURE_2D);
 	
 	glPopMatrix();
 }

@@ -1,0 +1,12 @@
+{
+	"animations" : {
+		"idle" : {
+			"size" : [3.0, 4.0],
+			"center" : [1.5, 4.0],
+			"fps" : 15.0,
+			"loopstart" : 0,
+			"frames" : 10,
+			"texture" : "run_left"
+		}
+	}
+}

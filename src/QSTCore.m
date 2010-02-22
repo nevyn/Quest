@@ -29,9 +29,9 @@
 		// Entity is composed of a physical aspect and a
 		// graphical one.
 		QSTCmpPosition *pos = [[QSTCmpPosition alloc] initWithEID:0];
-		pos.position.x = 9.0f;
-		pos.position.y = 2.0f;
-		QSTCmpSprite *gfx = [[QSTCmpSprite alloc] initWithEID:0 name:@"testgame/sprites/lasse.png" position:pos];
+		pos.position.x = 4.0f;
+		pos.position.y = 7.0f;
+		QSTCmpSprite *gfx = [[QSTCmpSprite alloc] initWithEID:0 name:@"testgame/sprites/32x32.png" position:pos];
 		QSTCmpPhysics *ph = [[QSTCmpPhysics alloc] initWithEID:0 position:pos];
 		
 		[graphicsSystem.scene addComponent:gfx toLayer:0];
@@ -42,9 +42,9 @@
 		[ph release];
 		
 		pos = [[QSTCmpPosition alloc] initWithEID:1];
-		pos.position.x = 12.0f;
-		pos.position.y = 1.3f;
-		gfx = [[QSTCmpSprite alloc] initWithEID:1 name:@"testgame/sprites/leif.png" position:pos];
+		pos.position.x = 10.0f;
+		pos.position.y = 7.0f;
+		gfx = [[QSTCmpSprite alloc] initWithEID:1 name:@"testgame/sprites/64x64.png" position:pos];
 		ph = [[QSTCmpPhysics alloc] initWithEID:1 position:pos];
 		
 		[graphicsSystem.scene addComponent:gfx toLayer:0];
@@ -55,8 +55,8 @@
 		[ph release];
 		
 		pos = [[QSTCmpPosition alloc] initWithEID:2];
-		pos.position.x = 19.0f;
-		pos.position.y = 10.0f;
+		pos.position.x = 16.0f;
+		pos.position.y = 7.0f;
 		gfx = [[QSTCmpSprite alloc] initWithEID:2 name:@"testgame/sprites/lasse.png" position:pos];
 		ph = [[QSTCmpPhysics alloc] initWithEID:2 position:pos];
 		
@@ -66,9 +66,6 @@
 		[pos release];
 		[gfx release];
 		[ph release];
-		
-		printf("Det var det!\n");
-		
 	}
 	return self;
 }
