@@ -22,30 +22,30 @@ static NSMutableDictionary *sprites;
 }
 
 +(QSTResTexture*)getTextureWithName:(NSString*)name {
-	QSTResTexture *texture = [textures objectForKey:name];
-	if(texture != nil) return texture;
-	
 	printf("ResourceDB: getTextureWithName [%s]\n", [name UTF8String]);
+	
+	QSTResTexture *texture = [textures objectForKey:name];
+	if(texture != nil) { printf("Already loaded.\n"); return texture; }
+	
 	
 	NSBitmapImageRep *img = [NSBitmapImageRep imageRepWithContentsOfFile:name];
 		
 	unsigned char *data = [img bitmapData];
 	int	width = [img pixelsWide];
 	int height = [img pixelsHigh];
-	
-	printf("%d %d\n", width, height);
-		
+			
 	texture = [[QSTResTexture alloc] initWithData:data width:width height:height];
-	[textures setValue:texture forKey:name];
+	[textures setObject:texture forKey:name];
 	[texture release];
 	return texture;
 }
 
 +(QSTResSprite*)getSpriteWithName:(NSString*)name {
-	QSTResSprite *sprite = [sprites objectForKey:name];
-	if(sprite != nil) return sprite;
-	
 	printf("ResourceDB: getSpriteWithName [%s]\n", [name UTF8String]);
+	
+	QSTResSprite *sprite = [sprites objectForKey:name];
+	if(sprite != nil) { printf("Already loaded.\n"); return sprite; }
+	
 	
 	
 	

@@ -1,3 +1,10 @@
+/*
+ *
+ *	Added (Vector2*) cast to get rid of Methods with same name warning
+ *	--Per 100222
+ *
+ */
+
 #import "Vector2.h"
 
 #import <math.h>
@@ -270,7 +277,7 @@ static Vector2 *negativeYAxis;
 
 - (float)distance:(Vector2*)vector;
 {
-	return [[self vectorBySubtractingVector:vector] length];
+	return [(Vector2*)[self vectorBySubtractingVector:vector] length];
 }
 
 - (float)squaredDistance:(Vector2*)vector;

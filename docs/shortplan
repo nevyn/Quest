@@ -1,11 +1,12 @@
 1 En entity som faller neråt, vit fyrkant som placeholder för Sprite.
 2 En riktig sprite, utan animation men med textur.
-
 3 Tre olika entities som faller, 2 har samma sprite, 1 har en egen.
 
-4 en mark med lite sluttningar som entitiesen kolliderar med och kasar ner för
-5 två av entitiesen kolliderar med varandra
-6 man kan styra en av entitiesen, och hoppa.
-7 ladda in allt från en fil istället
-8 grafisk värld med, free-form-karta i ett lager bara
-9 två lager, ett i bakgrunden 
+4 Korrekt storlek och position på spritesen
+
+5 en mark med lite sluttningar som entitiesen kolliderar med och kasar ner för
+6 två av entitiesen kolliderar med varandra
+7 man kan styra en av entitiesen, och hoppa.
+8 ladda in allt från en fil istället
+9 grafisk värld med, free-form-karta i ett lager bara
+10 två lager, ett i bakgrunden 

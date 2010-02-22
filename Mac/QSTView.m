@@ -20,6 +20,8 @@
 	printf("Starting timer...\n");
 	
 	loopTimer = [[NSTimer scheduledTimerWithTimeInterval:0.0166f target:self selector:@selector(generateTick:) userInfo:nil repeats:YES] retain];
+	
+	printf("Started.\n");
 }
 
 -(void)generateTick:(NSTimer*)theTimer {

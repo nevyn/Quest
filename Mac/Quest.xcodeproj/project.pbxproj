@@ -16,6 +16,7 @@
 		D81E8CBE1131FB22006994C7 /* QSTResTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E8CBD1131FB22006994C7 /* QSTResTexture.m */; };
 		D81E8CC711320E63006994C7 /* QSTResTextureAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E8CC611320E63006994C7 /* QSTResTextureAnimation.m */; };
 		D81E8CCA11320E6E006994C7 /* QSTResTextureStrip.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E8CC911320E6E006994C7 /* QSTResTextureStrip.m */; };
+		D81E8DD51132DCD8006994C7 /* Vector2.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E8DD41132DCD8006994C7 /* Vector2.m */; };
 		D85E7179113025120005CAB5 /* QSTGraphicsSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E7178113025120005CAB5 /* QSTGraphicsSystem.m */; };
 		D85E7198113027EA0005CAB5 /* QSTSceneLayered2D.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E7197113027EA0005CAB5 /* QSTSceneLayered2D.m */; };
 		D85E71B3113036130005CAB5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D85E71B2113036130005CAB5 /* OpenGL.framework */; };
@@ -25,7 +26,6 @@
 		D85E720911303DCD0005CAB5 /* shortplan in Resources */ = {isa = PBXBuildFile; fileRef = D85E720811303DCD0005CAB5 /* shortplan */; };
 		D85E72251130B8970005CAB5 /* QSTCmpSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E72241130B8970005CAB5 /* QSTCmpSprite.m */; };
 		D85E73801130C6CE0005CAB5 /* QSTCmpPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E737F1130C6CE0005CAB5 /* QSTCmpPosition.m */; };
-		D85E73941130C7A60005CAB5 /* Vector2.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E73931130C7A60005CAB5 /* Vector2.m */; };
 		D85E74051130C9540005CAB5 /* QSTCmpPhysics.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E74041130C9540005CAB5 /* QSTCmpPhysics.m */; };
 		D85E74AD1131C01B0005CAB5 /* QSTResourceDB.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E74AC1131C01B0005CAB5 /* QSTResourceDB.m */; };
 		D85E74B11131E9C60005CAB5 /* QSTResSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E74B01131E9C60005CAB5 /* QSTResSprite.m */; };
@@ -52,6 +52,8 @@
 		D81E8CC611320E63006994C7 /* QSTResTextureAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTResTextureAnimation.m; sourceTree = "<group>"; };
 		D81E8CC811320E6E006994C7 /* QSTResTextureStrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTResTextureStrip.h; sourceTree = "<group>"; };
 		D81E8CC911320E6E006994C7 /* QSTResTextureStrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTResTextureStrip.m; sourceTree = "<group>"; };
+		D81E8DD31132DCD8006994C7 /* Vector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2.h; sourceTree = "<group>"; };
+		D81E8DD41132DCD8006994C7 /* Vector2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector2.m; sourceTree = "<group>"; };
 		D85E7177113025120005CAB5 /* QSTGraphicsSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTGraphicsSystem.h; sourceTree = "<group>"; };
 		D85E7178113025120005CAB5 /* QSTGraphicsSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTGraphicsSystem.m; sourceTree = "<group>"; };
 		D85E7196113027EA0005CAB5 /* QSTSceneLayered2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTSceneLayered2D.h; sourceTree = "<group>"; };
@@ -68,8 +70,6 @@
 		D85E72241130B8970005CAB5 /* QSTCmpSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTCmpSprite.m; sourceTree = "<group>"; };
 		D85E737E1130C6CE0005CAB5 /* QSTCmpPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTCmpPosition.h; sourceTree = "<group>"; };
 		D85E737F1130C6CE0005CAB5 /* QSTCmpPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTCmpPosition.m; sourceTree = "<group>"; };
-		D85E73921130C7A60005CAB5 /* Vector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2.h; sourceTree = "<group>"; };
-		D85E73931130C7A60005CAB5 /* Vector2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector2.m; sourceTree = "<group>"; };
 		D85E74031130C9540005CAB5 /* QSTCmpPhysics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTCmpPhysics.h; sourceTree = "<group>"; };
 		D85E74041130C9540005CAB5 /* QSTCmpPhysics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTCmpPhysics.m; sourceTree = "<group>"; };
 		D85E74AB1131C01B0005CAB5 /* QSTResourceDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTResourceDB.h; sourceTree = "<group>"; };
@@ -174,6 +174,8 @@
 		D81E8C9E1131EB84006994C7 /* ext */ = {
 			isa = PBXGroup;
 			children = (
+				D81E8DD31132DCD8006994C7 /* Vector2.h */,
+				D81E8DD41132DCD8006994C7 /* Vector2.m */,
 				D81E8C9F1131EB84006994C7 /* lodepng.c */,
 				D81E8CA01131EB84006994C7 /* lodepng.h */,
 			);
@@ -184,8 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				D81E8C9E1131EB84006994C7 /* ext */,
-				D85E73921130C7A60005CAB5 /* Vector2.h */,
-				D85E73931130C7A60005CAB5 /* Vector2.m */,
 				D85E7177113025120005CAB5 /* QSTGraphicsSystem.h */,
 				D85E7178113025120005CAB5 /* QSTGraphicsSystem.m */,
 				D85E7196113027EA0005CAB5 /* QSTSceneLayered2D.h */,
@@ -289,7 +289,6 @@
 				D85E720511303C5B0005CAB5 /* QSTPhysicsSystem.m in Sources */,
 				D85E72251130B8970005CAB5 /* QSTCmpSprite.m in Sources */,
 				D85E73801130C6CE0005CAB5 /* QSTCmpPosition.m in Sources */,
-				D85E73941130C7A60005CAB5 /* Vector2.m in Sources */,
 				D85E74051130C9540005CAB5 /* QSTCmpPhysics.m in Sources */,
 				D85E74AD1131C01B0005CAB5 /* QSTResourceDB.m in Sources */,
 				D85E74B11131E9C60005CAB5 /* QSTResSprite.m in Sources */,
@@ -297,6 +296,7 @@
 				D81E8CBE1131FB22006994C7 /* QSTResTexture.m in Sources */,
 				D81E8CC711320E63006994C7 /* QSTResTextureAnimation.m in Sources */,
 				D81E8CCA11320E6E006994C7 /* QSTResTextureStrip.m in Sources */,
+				D81E8DD51132DCD8006994C7 /* Vector2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

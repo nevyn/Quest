@@ -37,8 +37,38 @@
 		[graphicsSystem.scene addComponent:gfx toLayer:0];
 		[physicsSystem addComponent:ph toLayer:0];
 		
+		[pos release];
 		[gfx release];
 		[ph release];
+		
+		pos = [[QSTCmpPosition alloc] initWithEID:1];
+		pos.position.x = 12.0f;
+		pos.position.y = 1.3f;
+		gfx = [[QSTCmpSprite alloc] initWithEID:1 name:@"testgame/sprites/leif.png" position:pos];
+		ph = [[QSTCmpPhysics alloc] initWithEID:1 position:pos];
+		
+		[graphicsSystem.scene addComponent:gfx toLayer:0];
+		[physicsSystem addComponent:ph toLayer:0];
+		
+		[pos release];
+		[gfx release];
+		[ph release];
+		
+		pos = [[QSTCmpPosition alloc] initWithEID:2];
+		pos.position.x = 19.0f;
+		pos.position.y = 10.0f;
+		gfx = [[QSTCmpSprite alloc] initWithEID:2 name:@"testgame/sprites/lasse.png" position:pos];
+		ph = [[QSTCmpPhysics alloc] initWithEID:2 position:pos];
+		
+		[graphicsSystem.scene addComponent:gfx toLayer:0];
+		[physicsSystem addComponent:ph toLayer:0];
+		
+		[pos release];
+		[gfx release];
+		[ph release];
+		
+		printf("Det var det!\n");
+		
 	}
 	return self;
 }

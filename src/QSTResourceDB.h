@@ -8,12 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class QSTResTexture;
 @class QSTResSprite;
 
 @interface QSTResourceDB : NSObject {
 
 }
 
++(QSTResTexture*)getTextureWithName:(NSString*)name;
 +(QSTResSprite*)getSpriteWithName:(NSString*)name;
 
 @end

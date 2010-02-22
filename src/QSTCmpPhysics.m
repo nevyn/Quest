@@ -18,7 +18,7 @@
 -(id)initWithEID:(int)theEID position:(QSTCmpPosition*)thePos {
 	if(self = [super init]) {
 		EID = theEID;
-		position = thePos;
+		position = [thePos retain];
 		velocity = [[MutableVector2 alloc] init];
 	}
 	return self;

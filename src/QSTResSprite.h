@@ -34,5 +34,6 @@
 }
 
 -(id)initWithTexture:(NSString*)tex;
+-(void)use;
 
 @end
