@@ -20,6 +20,11 @@
  */
 @interface QSTResTextureStrip : NSObject {
 	QSTResTexture	*texture;
-	NSArray			*subdivs;	// Array of bboxes with tex coords
+	NSMutableArray	*subdivs;	// Array of bboxes with tex coords
 }
+
+@property (nonatomic,readonly) NSMutableArray *subdivs;
+
+-(id)initWithTexturePath:(NSString*)path frames:(int)frames;
+
 @end

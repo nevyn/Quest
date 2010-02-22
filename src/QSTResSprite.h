@@ -25,20 +25,18 @@
 @class QSTBoundingBox;
 @class QSTResTexture;
 
-@interface QSTResSprite : NSObject {
-	QSTResTexture		*texture;
-	
-	NSArray			*animations;
-	Vector2			*center;
-	Vector2			*size;
-	QSTBoundingBox	*frame;
+@interface QSTResSprite : NSObject {	
+	NSMutableDictionary	*animations;
+	QSTBoundingBox	*canvas;
 }
 
-@property (nonatomic, readonly) Vector2 *size;
-@property (nonatomic, readonly) Vector2 *center;
-@property (nonatomic, readonly) QSTBoundingBox *frame;
+//@property (nonatomic, readonly) Vector2 *size;
+//@property (nonatomic, readonly) Vector2 *center;
+@property (nonatomic, readonly) QSTBoundingBox *canvas;
 
--(id)initWithTexture:(NSString*)tex;
--(void)use;
+-(id)initWithName:(NSString*)name;
+-(int)maxFramesForAnimation:(NSString*)animName;
+-(void)useWithAnimation:(NSString*)animName frame:(int)frame;
+-(QSTBoundingBox*)texCoordsForAnimation:(NSString*)animName frame:(int)frame;
 
 @end

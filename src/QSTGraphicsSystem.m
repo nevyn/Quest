@@ -36,10 +36,12 @@ typedef struct {
 	if(self = [super init]) {
 		scene = [[QSTSceneLayered2D alloc] init];
 		
+		pixelToUnitRatio = 64;
+		
 		glViewport(0, 0, 640, 480);		
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		glOrtho(0., 20.0f, 15.0f, 0., -1., 1.);	
+		glOrtho(0., 10.0f, 7.5f, 0., -1., 1.);	
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 		

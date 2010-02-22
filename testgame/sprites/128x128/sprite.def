@@ -1,0 +1,14 @@
+{
+	"data" : {
+		"size" : [128, 128],
+		"center" : [64, 120]
+	},
+	"animations" : {
+		"idle" : {
+			"fps" : 1.0,
+			"loopstart" : 0,
+			"frames" : 1,
+			"texture" : "128x128"
+		}
+	}
+}

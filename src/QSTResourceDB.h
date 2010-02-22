@@ -15,7 +15,7 @@
 
 }
 
-+(QSTResTexture*)getTextureWithName:(NSString*)name;
++(QSTResTexture*)getTextureWithPath:(NSString*)path;
 +(QSTResSprite*)getSpriteWithName:(NSString*)name;
 
 @end

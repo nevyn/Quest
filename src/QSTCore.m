@@ -31,7 +31,7 @@
 		QSTCmpPosition *pos = [[QSTCmpPosition alloc] initWithEID:0];
 		pos.position.x = 4.0f;
 		pos.position.y = 7.0f;
-		QSTCmpSprite *gfx = [[QSTCmpSprite alloc] initWithEID:0 name:@"testgame/sprites/32x32.png" position:pos];
+		QSTCmpSprite *gfx = [[QSTCmpSprite alloc] initWithEID:0 name:@"lasse" position:pos];
 		QSTCmpPhysics *ph = [[QSTCmpPhysics alloc] initWithEID:0 position:pos];
 		
 		[graphicsSystem.scene addComponent:gfx toLayer:0];
@@ -40,11 +40,11 @@
 		[pos release];
 		[gfx release];
 		[ph release];
-		
+		/*
 		pos = [[QSTCmpPosition alloc] initWithEID:1];
 		pos.position.x = 10.0f;
 		pos.position.y = 7.0f;
-		gfx = [[QSTCmpSprite alloc] initWithEID:1 name:@"testgame/sprites/64x64.png" position:pos];
+		gfx = [[QSTCmpSprite alloc] initWithEID:1 name:@"64x64" position:pos];
 		ph = [[QSTCmpPhysics alloc] initWithEID:1 position:pos];
 		
 		[graphicsSystem.scene addComponent:gfx toLayer:0];
@@ -57,7 +57,7 @@
 		pos = [[QSTCmpPosition alloc] initWithEID:2];
 		pos.position.x = 16.0f;
 		pos.position.y = 7.0f;
-		gfx = [[QSTCmpSprite alloc] initWithEID:2 name:@"testgame/sprites/lasse.png" position:pos];
+		gfx = [[QSTCmpSprite alloc] initWithEID:2 name:@"lasse" position:pos];
 		ph = [[QSTCmpPhysics alloc] initWithEID:2 position:pos];
 		
 		[graphicsSystem.scene addComponent:gfx toLayer:0];
@@ -66,6 +66,7 @@
 		[pos release];
 		[gfx release];
 		[ph release];
+		 */
 	}
 	return self;
 }

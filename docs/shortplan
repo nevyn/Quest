@@ -2,10 +2,10 @@
 2 En riktig sprite, utan animation men med textur.
 3 Tre olika entities som faller, 2 har samma sprite, 1 har en egen.
 4 Korrekt storlek och position på spritesen
-
 5 Animerande sprites, en animation
 
 6 en mark med lite sluttningar som entitiesen kolliderar med och kasar ner för
+
 7 två av entitiesen kolliderar med varandra
 8 man kan styra en av entitiesen, och hoppa.
 9 ladda in allt från en fil istället

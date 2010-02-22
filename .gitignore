@@ -2,3 +2,4 @@
 Mac/build/
 *.pbxuser
 *.mode2v3
+src/ext/JSON/Documentation/

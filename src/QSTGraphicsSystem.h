@@ -32,6 +32,8 @@
 @interface QSTGraphicsSystem : NSObject {
 	// Egentligen id eller id<QSTScene>
 	QSTSceneLayered2D	*scene;
+	
+	int	pixelToUnitRatio;	// Pixels per unit at normal zoom
 }
 
 -(id)init;

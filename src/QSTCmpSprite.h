@@ -20,7 +20,7 @@
 	
 	QSTCmpPosition	*position;
 	
-	int				currentAnimation;
+	NSString*		currentAnimation;
 	int				currentFrame;
 	
 	QSTResSprite	*sprite;

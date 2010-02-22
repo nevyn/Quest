@@ -8,6 +8,7 @@
 
 #import "QSTResourceDB.h"
 
+#import "JSON.h"
 #import "QSTResTexture.h"
 #import "QSTResSprite.h"
 
@@ -21,14 +22,14 @@ static NSMutableDictionary *sprites;
 	sprites = [[NSMutableDictionary alloc] init];
 }
 
-+(QSTResTexture*)getTextureWithName:(NSString*)name {
-	printf("ResourceDB: getTextureWithName [%s]\n", [name UTF8String]);
++(QSTResTexture*)getTextureWithPath:(NSString*)path {
+	printf("ResourceDB: getTextureWithPath [%s]\n", [path UTF8String]);
 	
-	QSTResTexture *texture = [textures objectForKey:name];
+	QSTResTexture *texture = [textures objectForKey:path];
 	if(texture != nil) { printf("Already loaded.\n"); return texture; }
 	
-	
-	NSBitmapImageRep *img = [NSBitmapImageRep imageRepWithContentsOfFile:name];
+	NSString *fullPath = [NSString stringWithFormat:@"%@.png", path];
+	NSBitmapImageRep *img = [NSBitmapImageRep imageRepWithContentsOfFile:fullPath];
 		
 	unsigned char *data = [img bitmapData];
 	int	width = [img pixelsWide];
@@ -36,7 +37,7 @@ static NSMutableDictionary *sprites;
 	BOOL hasAlpha = [img hasAlpha];
 			
 	texture = [[QSTResTexture alloc] initWithData:data width:width height:height hasAlpha:hasAlpha];
-	[textures setObject:texture forKey:name];
+	[textures setObject:texture forKey:path];
 	[texture release];
 	return texture;
 }
@@ -46,11 +47,8 @@ static NSMutableDictionary *sprites;
 	
 	QSTResSprite *sprite = [sprites objectForKey:name];
 	if(sprite != nil) { printf("Already loaded.\n"); return sprite; }
-	
-	
-	
-	
-	sprite = [[QSTResSprite alloc] initWithTexture:name];
+		
+	sprite = [[QSTResSprite alloc] initWithName:name];
 	[sprites setObject:sprite forKey:name];
 	[sprite release];
 	

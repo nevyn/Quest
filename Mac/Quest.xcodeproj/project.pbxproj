@@ -18,6 +18,12 @@
 		D81E8CCA11320E6E006994C7 /* QSTResTextureStrip.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E8CC911320E6E006994C7 /* QSTResTextureStrip.m */; };
 		D81E8DD51132DCD8006994C7 /* Vector2.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E8DD41132DCD8006994C7 /* Vector2.m */; };
 		D81E8EA61133002D006994C7 /* QSTBoundingBox.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E8EA51133002D006994C7 /* QSTBoundingBox.m */; };
+		D81E91A011331DD8006994C7 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E916611331DD8006994C7 /* NSObject+SBJSON.m */; };
+		D81E91A111331DD8006994C7 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E916811331DD8006994C7 /* NSString+SBJSON.m */; };
+		D81E91A211331DD8006994C7 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E916A11331DD8006994C7 /* SBJSON.m */; };
+		D81E91A311331DD8006994C7 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E916C11331DD8006994C7 /* SBJsonBase.m */; };
+		D81E91A411331DD8006994C7 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E916E11331DD8006994C7 /* SBJsonParser.m */; };
+		D81E91A511331DD8006994C7 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E917011331DD8006994C7 /* SBJsonWriter.m */; };
 		D85E7179113025120005CAB5 /* QSTGraphicsSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E7178113025120005CAB5 /* QSTGraphicsSystem.m */; };
 		D85E7198113027EA0005CAB5 /* QSTSceneLayered2D.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E7197113027EA0005CAB5 /* QSTSceneLayered2D.m */; };
 		D85E71B3113036130005CAB5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D85E71B2113036130005CAB5 /* OpenGL.framework */; };
@@ -57,6 +63,19 @@
 		D81E8DD41132DCD8006994C7 /* Vector2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector2.m; sourceTree = "<group>"; };
 		D81E8EA41133002D006994C7 /* QSTBoundingBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTBoundingBox.h; sourceTree = "<group>"; };
 		D81E8EA51133002D006994C7 /* QSTBoundingBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTBoundingBox.m; sourceTree = "<group>"; };
+		D81E916411331DD8006994C7 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		D81E916511331DD8006994C7 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		D81E916611331DD8006994C7 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		D81E916711331DD8006994C7 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		D81E916811331DD8006994C7 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		D81E916911331DD8006994C7 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		D81E916A11331DD8006994C7 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		D81E916B11331DD8006994C7 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		D81E916C11331DD8006994C7 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		D81E916D11331DD8006994C7 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		D81E916E11331DD8006994C7 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		D81E916F11331DD8006994C7 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		D81E917011331DD8006994C7 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		D85E7177113025120005CAB5 /* QSTGraphicsSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTGraphicsSystem.h; sourceTree = "<group>"; };
 		D85E7178113025120005CAB5 /* QSTGraphicsSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTGraphicsSystem.m; sourceTree = "<group>"; };
 		D85E7196113027EA0005CAB5 /* QSTSceneLayered2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTSceneLayered2D.h; sourceTree = "<group>"; };
@@ -177,12 +196,33 @@
 		D81E8C9E1131EB84006994C7 /* ext */ = {
 			isa = PBXGroup;
 			children = (
+				D81E913311331DD8006994C7 /* JSON */,
 				D81E8DD31132DCD8006994C7 /* Vector2.h */,
 				D81E8DD41132DCD8006994C7 /* Vector2.m */,
 				D81E8C9F1131EB84006994C7 /* lodepng.c */,
 				D81E8CA01131EB84006994C7 /* lodepng.h */,
 			);
 			path = ext;
+			sourceTree = "<group>";
+		};
+		D81E913311331DD8006994C7 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				D81E916411331DD8006994C7 /* JSON.h */,
+				D81E916511331DD8006994C7 /* NSObject+SBJSON.h */,
+				D81E916611331DD8006994C7 /* NSObject+SBJSON.m */,
+				D81E916711331DD8006994C7 /* NSString+SBJSON.h */,
+				D81E916811331DD8006994C7 /* NSString+SBJSON.m */,
+				D81E916911331DD8006994C7 /* SBJSON.h */,
+				D81E916A11331DD8006994C7 /* SBJSON.m */,
+				D81E916B11331DD8006994C7 /* SBJsonBase.h */,
+				D81E916C11331DD8006994C7 /* SBJsonBase.m */,
+				D81E916D11331DD8006994C7 /* SBJsonParser.h */,
+				D81E916E11331DD8006994C7 /* SBJsonParser.m */,
+				D81E916F11331DD8006994C7 /* SBJsonWriter.h */,
+				D81E917011331DD8006994C7 /* SBJsonWriter.m */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		D85E714C113013E40005CAB5 /* src */ = {
@@ -303,6 +343,12 @@
 				D81E8CCA11320E6E006994C7 /* QSTResTextureStrip.m in Sources */,
 				D81E8DD51132DCD8006994C7 /* Vector2.m in Sources */,
 				D81E8EA61133002D006994C7 /* QSTBoundingBox.m in Sources */,
+				D81E91A011331DD8006994C7 /* NSObject+SBJSON.m in Sources */,
+				D81E91A111331DD8006994C7 /* NSString+SBJSON.m in Sources */,
+				D81E91A211331DD8006994C7 /* SBJSON.m in Sources */,
+				D81E91A311331DD8006994C7 /* SBJsonBase.m in Sources */,
+				D81E91A411331DD8006994C7 /* SBJsonParser.m in Sources */,
+				D81E91A511331DD8006994C7 /* SBJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

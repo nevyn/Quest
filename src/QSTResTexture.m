@@ -12,13 +12,18 @@
 
 @implementation QSTResTexture
 
--(id)initWithData:(unsigned char*)data width:(int)width height:(int)height hasAlpha:(BOOL)hasAlpha {
+@synthesize width;
+@synthesize height;
+
+-(id)initWithData:(unsigned char*)data width:(int)tWidth height:(int)tHeight hasAlpha:(BOOL)hasAlpha {
 	if(self = [super init]) {
 		GLuint texId;
 		glGenTextures(1, &texId);
 		glBindTexture(GL_TEXTURE_2D, texId);
 		
 		oglID = texId;
+		width = tWidth;
+		height = tHeight;
 		
 		glTexImage2D(GL_TEXTURE_2D, 0, hasAlpha?GL_RGBA:GL_RGB,
 					 width, height, 0, 
@@ -27,6 +32,8 @@
 		
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		
+		printf("Loaded texture with id: %d\n", oglID);
 	}
 	return self;
 }

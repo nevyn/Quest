@@ -18,8 +18,10 @@
 @property (nonatomic,readonly) Vector2 *min;
 @property (nonatomic,readonly) Vector2 *max;
 
-+(id)bboxWithMinX:(float)minX minY:(float)minY maxX:(float)maxX maxY:(float)maxY;
++(QSTBoundingBox*)bboxWithMinX:(float)minX minY:(float)minY maxX:(float)maxX maxY:(float)maxY;
++(QSTBoundingBox*)bboxWithMin:(Vector2*)tMin max:(Vector2*)tMax;
 
 -(id)initWithMinX:(float)minX minY:(float)minY maxX:(float)maxX maxY:(float)maxY;
+-(id)initWithMin:(Vector2*)tMin max:(Vector2*)tMax;
 
 @end

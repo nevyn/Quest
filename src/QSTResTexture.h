@@ -19,9 +19,14 @@
 
 @interface QSTResTexture : NSObject {
 	int		oglID;
+	
+	int		width, height;
 }
 
--(id)initWithData:(unsigned char*)data width:(int)width height:(int)height hasAlpha:(BOOL)hasAlpha;
+@property (nonatomic,readonly) int width;
+@property (nonatomic,readonly) int height;
+
+-(id)initWithData:(unsigned char*)data width:(int)tWidth height:(int)tHeight hasAlpha:(BOOL)hasAlpha;
 -(void)use;
 
 @end
