@@ -31,7 +31,7 @@
 		QSTCmpPosition *pos = [[QSTCmpPosition alloc] initWithEID:0];
 		pos.position.x = 9.0f;
 		pos.position.y = 2.0f;
-		QSTCmpSprite *gfx = [[QSTCmpSprite alloc] initWithEID:0 name:@"lasse" position:pos];
+		QSTCmpSprite *gfx = [[QSTCmpSprite alloc] initWithEID:0 name:@"testgame/sprites/lasse.png" position:pos];
 		QSTCmpPhysics *ph = [[QSTCmpPhysics alloc] initWithEID:0 position:pos];
 		
 		[graphicsSystem.scene addComponent:gfx toLayer:0];

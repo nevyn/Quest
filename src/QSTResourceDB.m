@@ -25,13 +25,17 @@ static NSMutableDictionary *sprites;
 	QSTResTexture *texture = [textures objectForKey:name];
 	if(texture != nil) return texture;
 	
+	printf("ResourceDB: getTextureWithName [%s]\n", [name UTF8String]);
+	
 	NSBitmapImageRep *img = [NSBitmapImageRep imageRepWithContentsOfFile:name];
-	
-	printf("Bpp: %d", [img bitsPerPixel]);
-	
+		
 	unsigned char *data = [img bitmapData];
+	int	width = [img pixelsWide];
+	int height = [img pixelsHigh];
 	
-	texture = [[QSTResTexture alloc] init];
+	printf("%d %d\n", width, height);
+		
+	texture = [[QSTResTexture alloc] initWithData:data width:width height:height];
 	[textures setValue:texture forKey:name];
 	[texture release];
 	return texture;
@@ -41,8 +45,11 @@ static NSMutableDictionary *sprites;
 	QSTResSprite *sprite = [sprites objectForKey:name];
 	if(sprite != nil) return sprite;
 	
+	printf("ResourceDB: getSpriteWithName [%s]\n", [name UTF8String]);
 	
-	sprite = [[QSTResSprite alloc] init];
+	
+	
+	sprite = [[QSTResSprite alloc] initWithTexture:name];
 	[sprites setObject:sprite forKey:name];
 	[sprite release];
 	

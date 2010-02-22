@@ -21,4 +21,7 @@
 	int		oglID;
 }
 
+-(id)initWithData:(unsigned char*)data width:(int)width height:(int)height;
+-(void)use;
+
 @end

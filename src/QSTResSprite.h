@@ -22,13 +22,17 @@
 */
 
 @class Vector2;
+//@class QSTBoundingBox;
+@class QSTResTexture;
 
 @interface QSTResSprite : NSObject {
-	NSArray	*animations;
-	Vector2	*frameSize;
+	QSTResTexture		*texture;
+	
+	NSArray			*animations;
+	Vector2			*center;
+	//QSTBoundingBox	*bbox;
 }
 
--(void)setAnimation:(int)animNum;
--(void)setFrame:(int)frameNum;
+-(id)initWithTexture:(NSString*)tex;
 
 @end

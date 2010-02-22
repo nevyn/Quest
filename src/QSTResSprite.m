@@ -8,7 +8,13 @@
 
 #import "QSTResSprite.h"
 
+#import "QSTResourceDB.h"
 
 @implementation QSTResSprite
-
+-(id)initWithTexture:(NSString*)tex {
+	if(self = [super init]) {
+		texture = [QSTResourceDB getTextureWithName:tex];
+	}
+	return self;
+}
 @end
