@@ -12,14 +12,16 @@
 
 #import "Vector2.h"
 #import "QSTCmpPosition.h"
+#import "QSTResourceDB.h"
 
 
 @implementation QSTCmpSprite
 
--(id)initWithEID:(int)theEID position:(QSTCmpPosition*)thePosition {
+-(id)initWithEID:(int)theEID name:(NSString*)spriteName position:(QSTCmpPosition*)thePosition {
 	if(self = [super init]) {
 		EID = theEID;
 		position = thePosition;
+		sprite = [[QSTResourceDB getSpriteWithName:spriteName] retain];
 	}
 	return self;
 }

@@ -12,6 +12,10 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		D81E8CA11131EB84006994C7 /* lodepng.c in Sources */ = {isa = PBXBuildFile; fileRef = D81E8C9F1131EB84006994C7 /* lodepng.c */; };
+		D81E8CBE1131FB22006994C7 /* QSTResTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E8CBD1131FB22006994C7 /* QSTResTexture.m */; };
+		D81E8CC711320E63006994C7 /* QSTResTextureAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E8CC611320E63006994C7 /* QSTResTextureAnimation.m */; };
+		D81E8CCA11320E6E006994C7 /* QSTResTextureStrip.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E8CC911320E6E006994C7 /* QSTResTextureStrip.m */; };
 		D85E7179113025120005CAB5 /* QSTGraphicsSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E7178113025120005CAB5 /* QSTGraphicsSystem.m */; };
 		D85E7198113027EA0005CAB5 /* QSTSceneLayered2D.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E7197113027EA0005CAB5 /* QSTSceneLayered2D.m */; };
 		D85E71B3113036130005CAB5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D85E71B2113036130005CAB5 /* OpenGL.framework */; };
@@ -23,6 +27,8 @@
 		D85E73801130C6CE0005CAB5 /* QSTCmpPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E737F1130C6CE0005CAB5 /* QSTCmpPosition.m */; };
 		D85E73941130C7A60005CAB5 /* Vector2.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E73931130C7A60005CAB5 /* Vector2.m */; };
 		D85E74051130C9540005CAB5 /* QSTCmpPhysics.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E74041130C9540005CAB5 /* QSTCmpPhysics.m */; };
+		D85E74AD1131C01B0005CAB5 /* QSTResourceDB.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E74AC1131C01B0005CAB5 /* QSTResourceDB.m */; };
+		D85E74B11131E9C60005CAB5 /* QSTResSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E74B01131E9C60005CAB5 /* QSTResSprite.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +44,14 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Quest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Quest-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D81E8C9F1131EB84006994C7 /* lodepng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lodepng.c; sourceTree = "<group>"; };
+		D81E8CA01131EB84006994C7 /* lodepng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lodepng.h; sourceTree = "<group>"; };
+		D81E8CBC1131FB22006994C7 /* QSTResTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTResTexture.h; sourceTree = "<group>"; };
+		D81E8CBD1131FB22006994C7 /* QSTResTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTResTexture.m; sourceTree = "<group>"; };
+		D81E8CC511320E63006994C7 /* QSTResTextureAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTResTextureAnimation.h; sourceTree = "<group>"; };
+		D81E8CC611320E63006994C7 /* QSTResTextureAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTResTextureAnimation.m; sourceTree = "<group>"; };
+		D81E8CC811320E6E006994C7 /* QSTResTextureStrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTResTextureStrip.h; sourceTree = "<group>"; };
+		D81E8CC911320E6E006994C7 /* QSTResTextureStrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTResTextureStrip.m; sourceTree = "<group>"; };
 		D85E7177113025120005CAB5 /* QSTGraphicsSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTGraphicsSystem.h; sourceTree = "<group>"; };
 		D85E7178113025120005CAB5 /* QSTGraphicsSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTGraphicsSystem.m; sourceTree = "<group>"; };
 		D85E7196113027EA0005CAB5 /* QSTSceneLayered2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTSceneLayered2D.h; sourceTree = "<group>"; };
@@ -58,6 +72,10 @@
 		D85E73931130C7A60005CAB5 /* Vector2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector2.m; sourceTree = "<group>"; };
 		D85E74031130C9540005CAB5 /* QSTCmpPhysics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTCmpPhysics.h; sourceTree = "<group>"; };
 		D85E74041130C9540005CAB5 /* QSTCmpPhysics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTCmpPhysics.m; sourceTree = "<group>"; };
+		D85E74AB1131C01B0005CAB5 /* QSTResourceDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTResourceDB.h; sourceTree = "<group>"; };
+		D85E74AC1131C01B0005CAB5 /* QSTResourceDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTResourceDB.m; sourceTree = "<group>"; };
+		D85E74AF1131E9C60005CAB5 /* QSTResSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTResSprite.h; sourceTree = "<group>"; };
+		D85E74B01131E9C60005CAB5 /* QSTResSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTResSprite.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,9 +171,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D81E8C9E1131EB84006994C7 /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				D81E8C9F1131EB84006994C7 /* lodepng.c */,
+				D81E8CA01131EB84006994C7 /* lodepng.h */,
+			);
+			path = ext;
+			sourceTree = "<group>";
+		};
 		D85E714C113013E40005CAB5 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D81E8C9E1131EB84006994C7 /* ext */,
 				D85E73921130C7A60005CAB5 /* Vector2.h */,
 				D85E73931130C7A60005CAB5 /* Vector2.m */,
 				D85E7177113025120005CAB5 /* QSTGraphicsSystem.h */,
@@ -172,6 +200,16 @@
 				D85E737F1130C6CE0005CAB5 /* QSTCmpPosition.m */,
 				D85E74031130C9540005CAB5 /* QSTCmpPhysics.h */,
 				D85E74041130C9540005CAB5 /* QSTCmpPhysics.m */,
+				D85E74AB1131C01B0005CAB5 /* QSTResourceDB.h */,
+				D85E74AC1131C01B0005CAB5 /* QSTResourceDB.m */,
+				D85E74AF1131E9C60005CAB5 /* QSTResSprite.h */,
+				D85E74B01131E9C60005CAB5 /* QSTResSprite.m */,
+				D81E8CBC1131FB22006994C7 /* QSTResTexture.h */,
+				D81E8CBD1131FB22006994C7 /* QSTResTexture.m */,
+				D81E8CC511320E63006994C7 /* QSTResTextureAnimation.h */,
+				D81E8CC611320E63006994C7 /* QSTResTextureAnimation.m */,
+				D81E8CC811320E6E006994C7 /* QSTResTextureStrip.h */,
+				D81E8CC911320E6E006994C7 /* QSTResTextureStrip.m */,
 			);
 			name = src;
 			path = ../src;
@@ -253,6 +291,12 @@
 				D85E73801130C6CE0005CAB5 /* QSTCmpPosition.m in Sources */,
 				D85E73941130C7A60005CAB5 /* Vector2.m in Sources */,
 				D85E74051130C9540005CAB5 /* QSTCmpPhysics.m in Sources */,
+				D85E74AD1131C01B0005CAB5 /* QSTResourceDB.m in Sources */,
+				D85E74B11131E9C60005CAB5 /* QSTResSprite.m in Sources */,
+				D81E8CA11131EB84006994C7 /* lodepng.c in Sources */,
+				D81E8CBE1131FB22006994C7 /* QSTResTexture.m in Sources */,
+				D81E8CC711320E63006994C7 /* QSTResTextureAnimation.m in Sources */,
+				D81E8CCA11320E6E006994C7 /* QSTResTextureStrip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

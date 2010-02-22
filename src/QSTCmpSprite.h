@@ -12,15 +12,21 @@
 
 
 @class QSTCmpPosition;
+@class QSTResSprite;
 
 
 @interface QSTCmpSprite : NSObject <QSTCmpGraphics> {
 	int				EID;
 	
 	QSTCmpPosition	*position;
+	
+	int				currentAnimation;
+	int				currentFrame;
+	
+	QSTResSprite	*sprite;
 }
 
--(id)initWithEID:(int)theEID position:(QSTCmpPosition*)thePosition;
+-(id)initWithEID:(int)theEID name:(NSString*)spriteName position:(QSTCmpPosition*)thePosition;
 -(void)render;
 
 @end
