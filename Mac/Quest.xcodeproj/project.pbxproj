@@ -40,6 +40,8 @@
 		D8BF0BFB113736050006E86E /* QSTCmpCollisionMap.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BF0BFA113736050006E86E /* QSTCmpCollisionMap.m */; };
 		D8BF0C3911373BDE0006E86E /* QSTCmpPhysicsBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BF0C3811373BDE0006E86E /* QSTCmpPhysicsBase.m */; };
 		D8BF0C9B1137F9880006E86E /* QSTResModel2D.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BF0C9A1137F9880006E86E /* QSTResModel2D.m */; };
+		D8BF13AD113AB4050006E86E /* phys in Resources */ = {isa = PBXBuildFile; fileRef = D8BF13AC113AB4050006E86E /* phys */; };
+		D8BF13B4113AEEBC0006E86E /* QSTInputSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BF13B3113AEEBC0006E86E /* QSTInputSystem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +112,9 @@
 		D8BF0C3811373BDE0006E86E /* QSTCmpPhysicsBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTCmpPhysicsBase.m; sourceTree = "<group>"; };
 		D8BF0C991137F9880006E86E /* QSTResModel2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTResModel2D.h; sourceTree = "<group>"; };
 		D8BF0C9A1137F9880006E86E /* QSTResModel2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTResModel2D.m; sourceTree = "<group>"; };
+		D8BF13AC113AB4050006E86E /* phys */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = phys; sourceTree = "<group>"; };
+		D8BF13B2113AEEBC0006E86E /* QSTInputSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTInputSystem.h; sourceTree = "<group>"; };
+		D8BF13B3113AEEBC0006E86E /* QSTInputSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTInputSystem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,14 +246,16 @@
 			isa = PBXGroup;
 			children = (
 				D81E8C9E1131EB84006994C7 /* ext */,
-				D85E7177113025120005CAB5 /* QSTGraphicsSystem.h */,
-				D85E7178113025120005CAB5 /* QSTGraphicsSystem.m */,
-				D85E7196113027EA0005CAB5 /* QSTSceneLayered2D.h */,
-				D85E7197113027EA0005CAB5 /* QSTSceneLayered2D.m */,
 				D85E71E9113037B60005CAB5 /* QSTCore.h */,
 				D85E71EA113037B60005CAB5 /* QSTCore.m */,
+				D85E7177113025120005CAB5 /* QSTGraphicsSystem.h */,
+				D85E7178113025120005CAB5 /* QSTGraphicsSystem.m */,
 				D85E720311303C5B0005CAB5 /* QSTPhysicsSystem.h */,
 				D85E720411303C5B0005CAB5 /* QSTPhysicsSystem.m */,
+				D8BF13B2113AEEBC0006E86E /* QSTInputSystem.h */,
+				D8BF13B3113AEEBC0006E86E /* QSTInputSystem.m */,
+				D85E7196113027EA0005CAB5 /* QSTSceneLayered2D.h */,
+				D85E7197113027EA0005CAB5 /* QSTSceneLayered2D.m */,
 				D85E72231130B8970005CAB5 /* QSTCmpSprite.h */,
 				D85E72241130B8970005CAB5 /* QSTCmpSprite.m */,
 				D85E737E1130C6CE0005CAB5 /* QSTCmpPosition.h */,
@@ -284,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				D85E720811303DCD0005CAB5 /* shortplan */,
+				D8BF13AC113AB4050006E86E /* phys */,
 			);
 			name = docs;
 			path = ../docs;
@@ -335,6 +343,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				D85E720911303DCD0005CAB5 /* shortplan in Resources */,
+				D8BF13AD113AB4050006E86E /* phys in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +382,7 @@
 				D8BF0BFB113736050006E86E /* QSTCmpCollisionMap.m in Sources */,
 				D8BF0C3911373BDE0006E86E /* QSTCmpPhysicsBase.m in Sources */,
 				D8BF0C9B1137F9880006E86E /* QSTResModel2D.m in Sources */,
+				D8BF13B4113AEEBC0006E86E /* QSTInputSystem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

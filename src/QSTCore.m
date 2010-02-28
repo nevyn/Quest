@@ -11,19 +11,31 @@
 #import "Vector2.h"
 #import "QSTGraphicsSystem.h"
 #import "QSTPhysicsSystem.h"
+#import "QSTInputSystem.h"
 #import "QSTCmpPosition.h"
 #import "QSTCmpSprite.h"
 #import "QSTCmpPhysics.h"
 #import "QSTCmpCollisionMap.h"
 #import "QSTSceneLayered2D.h"
+#import "QSTInputSystem.h"
 
 @implementation QSTCore
+
+@synthesize inputSystem;
 
 -(id)init {
 	if(self = [super init]) {
 		// Create systems
 		graphicsSystem = [[QSTGraphicsSystem alloc] init];
 		physicsSystem = [[QSTPhysicsSystem alloc] init];
+		inputSystem = [[QSTInputSystem alloc] init];
+		
+		
+		QSTInputMapper *mapper = [[QSTInputMapper alloc] init];
+		[mapper registerActionWithName:@"jump" action:@selector(jump) target:self];
+		[mapper mapKey:49 toAction:@"jump"];
+		inputSystem.mapper = mapper;
+		[mapper release];
 						   
 		
 		// Creating an entity
@@ -42,6 +54,8 @@
 		[physicsSystem addComponent:ph toLayer:0];
 		[physicsSystem setCollisionMap:cm forLayer:0];
 		
+		playerPhys = ph;
+		
 		[pos release];
 		[gfx release];
 		[ph release];
@@ -49,7 +63,7 @@
 		
 		
 		pos = [[QSTCmpPosition alloc] initWithEID:1];
-		pos.position.x = 2.0f;
+		pos.position.x = 6.0f;
 		pos.position.y = 0.0f;
 		gfx = [[QSTCmpSprite alloc] initWithEID:1 name:@"64x64" position:pos];
 		ph = [[QSTCmpPhysics alloc] initWithEID:1 position:pos sprite:gfx];
@@ -76,6 +90,11 @@
 		 */
 	}
 	return self;
+}
+
+-(void)jump {
+	printf("JUMP!\n");
+	playerPhys.velocity.y = -0.1f;
 }
 
 -(void)tick {

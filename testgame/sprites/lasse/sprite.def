@@ -2,7 +2,7 @@
 	"data" : {
 		"size" : [64, 64],
 		"center" : [32, 60],
-		"colbox" : [128, 128]
+		"colbox" : [64, 64]
 	},
 	"animations" : {
 		"idle" : {

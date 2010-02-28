@@ -9,6 +9,7 @@
 #import "QSTView.h"
 
 #import "QSTCore.h"
+#import "QSTInputSystem.h"
 
 @implementation QSTView
 
@@ -35,6 +36,17 @@
 - (void)drawRect:(NSRect)rect {
 	[core tick];
 	[[self openGLContext] flushBuffer];
+}
+
+-(void)keyDown:(NSEvent *)theEvent {
+	[core.inputSystem pressedKey:[theEvent keyCode] repeated:[theEvent isARepeat]];
+}
+
+-(void)keyUp:(NSEvent *)theEvent {
+	[core.inputSystem releasedKey:[theEvent keyCode]];
+}
+
+-(void)flagsChanged:(NSEvent *)theEvent {
 }
 
 @end

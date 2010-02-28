@@ -18,4 +18,8 @@
 -(void)setCore:(QSTCore*)theCore;
 -(void)start;
 
+-(void)keyDown:(NSEvent *)theEvent;
+-(void)keyUp:(NSEvent *)theEvent;
+-(void)flagsChanged:(NSEvent *)theEvent;
+
 @end

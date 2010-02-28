@@ -43,6 +43,12 @@
 	for(QSTLine *l in lines) {
 		glVertex2f(l.a.x, l.a.y);
 		glVertex2f(l.b.x, l.b.y);
+		
+		float cx = l.a.x + ((l.b.x - l.a.x) / 2.0f);
+		float cy = l.a.y + ((l.b.y - l.a.y) / 2.0f);
+		
+		glVertex2f(cx, cy);
+		glVertex2f(cx + l.normal.x, cy + l.normal.y);
 	}
 	glEnd();
 	glEnable(GL_TEXTURE_2D);

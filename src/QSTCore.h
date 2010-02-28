@@ -10,11 +10,20 @@
 
 @class QSTGraphicsSystem;
 @class QSTPhysicsSystem;
+@class QSTInputSystem;
+@class QSTCmpPhysics;
 
 @interface QSTCore : NSObject {
 	QSTGraphicsSystem	*graphicsSystem;
 	QSTPhysicsSystem	*physicsSystem;
+	QSTInputSystem		*inputSystem;
+	
+	
+	// Ytterst temp
+	QSTCmpPhysics	*playerPhys;
 }
+
+@property (nonatomic,readonly) QSTInputSystem *inputSystem;
 
 -(void)tick;
 
