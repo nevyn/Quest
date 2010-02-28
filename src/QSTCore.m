@@ -33,7 +33,7 @@
 		pos.position.x = 1.3f;
 		pos.position.y = 3.0f;
 		QSTCmpSprite *gfx = [[QSTCmpSprite alloc] initWithEID:0 name:@"lasse" position:pos];
-		QSTCmpPhysics *ph = [[QSTCmpPhysics alloc] initWithEID:0 position:pos];
+		QSTCmpPhysics *ph = [[QSTCmpPhysics alloc] initWithEID:0 position:pos sprite:gfx];
 		
 		QSTCmpCollisionMap *cm = [[QSTCmpCollisionMap alloc] initWithEID:1];
 		
@@ -47,12 +47,12 @@
 		[ph release];
 		[cm release];
 		
-		/*
+		
 		pos = [[QSTCmpPosition alloc] initWithEID:1];
-		pos.position.x = 10.0f;
-		pos.position.y = 7.0f;
+		pos.position.x = 2.0f;
+		pos.position.y = 0.0f;
 		gfx = [[QSTCmpSprite alloc] initWithEID:1 name:@"64x64" position:pos];
-		ph = [[QSTCmpPhysics alloc] initWithEID:1 position:pos];
+		ph = [[QSTCmpPhysics alloc] initWithEID:1 position:pos sprite:gfx];
 		
 		[graphicsSystem.scene addComponent:gfx toLayer:0];
 		[physicsSystem addComponent:ph toLayer:0];
@@ -61,7 +61,7 @@
 		[gfx release];
 		[ph release];
 		
-		pos = [[QSTCmpPosition alloc] initWithEID:2];
+		/*pos = [[QSTCmpPosition alloc] initWithEID:2];
 		pos.position.x = 16.0f;
 		pos.position.y = 7.0f;
 		gfx = [[QSTCmpSprite alloc] initWithEID:2 name:@"lasse" position:pos];

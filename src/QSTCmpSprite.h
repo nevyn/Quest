@@ -26,6 +26,8 @@
 	QSTResSprite	*sprite;
 }
 
+@property (nonatomic,readonly) QSTResSprite* sprite;
+
 -(id)initWithEID:(int)theEID name:(NSString*)spriteName position:(QSTCmpPosition*)thePosition;
 -(void)render;
 

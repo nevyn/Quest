@@ -24,4 +24,6 @@
 -(id)initWithMinX:(float)minX minY:(float)minY maxX:(float)maxX maxY:(float)maxY;
 -(id)initWithMin:(Vector2*)tMin max:(Vector2*)tMax;
 
+-(NSString*)repr;
+
 @end

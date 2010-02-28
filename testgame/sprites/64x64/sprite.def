@@ -1,15 +1,15 @@
 {
 	"data" : {
 		"size" : [64, 64],
-		"center" : [32, 60],
-		"colbox" : [128, 128]
+		"center" : [32, 10],
+		"colbox" : [96, 64]
 	},
 	"animations" : {
 		"idle" : {
 			"fps" : 15.0,
 			"loopstart" : 0,
-			"frames" : 2,
-			"texture" : "lasse"
+			"frames" : 1,
+			"texture" : "64x64"
 		}
 	}
 }

@@ -14,11 +14,13 @@
 
 @synthesize position;
 @synthesize velocity;
+@synthesize sprite;
 
--(id)initWithEID:(int)theEID position:(QSTCmpPosition*)thePos {
+-(id)initWithEID:(int)theEID position:(QSTCmpPosition*)thePos sprite:(QSTCmpSprite*)theSprite {
 	if(self = [super init]) {
 		EID = theEID;
 		position = [thePos retain];
+		sprite = [theSprite retain];
 		velocity = [[MutableVector2 alloc] init];
 	}
 	return self;

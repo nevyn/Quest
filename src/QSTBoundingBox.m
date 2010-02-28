@@ -39,4 +39,8 @@
 	return self;
 }
 
+-(NSString*)repr {
+	return [NSString stringWithFormat:@"%f %f -> %f %f\n", min.x, min.y, max.x, max.y];
+}
+
 @end

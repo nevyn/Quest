@@ -19,6 +19,8 @@
 
 @implementation QSTCmpSprite
 
+@synthesize sprite;
+
 -(id)initWithEID:(int)theEID name:(NSString*)spriteName position:(QSTCmpPosition*)thePosition {
 	if(self = [super init]) {
 		EID = theEID;
@@ -35,12 +37,26 @@
 	Vector2 *min = sprite.canvas.min;
 	Vector2 *max = sprite.canvas.max;
 	
+	QSTBoundingBox *box = sprite.bbox;
+	
 	QSTBoundingBox *tex = [sprite useWithAnimation:currentAnimation frame:currentFrame];
 	
 	glPushMatrix();
 		
 	glTranslatef(pos.x, pos.y, 0.0f);
 	//glRotatef(currentFrame, 0.0f, 0.0f, 1.0f);
+	
+	glDisable(GL_TEXTURE_2D);
+	
+	glBegin(GL_QUADS);
+	glColor3f(1.0f, 1.0f, 0.0f);
+	glVertex2f(box.min.x, box.min.y);
+	glVertex2f(box.max.x, box.min.y);
+	glVertex2f(box.max.x, box.max.y);
+	glVertex2f(box.min.x, box.max.y);
+	glEnd();
+	
+	glEnable(GL_TEXTURE_2D);
 		
 	glBegin(GL_QUADS);
 	glColor3f(1.0f, 1.0f, 1.0f);

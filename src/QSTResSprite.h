@@ -27,11 +27,14 @@
 
 @interface QSTResSprite : NSObject {	
 	NSMutableDictionary	*animations;
-	QSTBoundingBox	*canvas;
+	
+	QSTBoundingBox	*bbox;		// Physical bbox
+	QSTBoundingBox	*canvas;	// Graphical bbox, for culling
 }
 
 //@property (nonatomic, readonly) Vector2 *size;
 //@property (nonatomic, readonly) Vector2 *center;
+@property (nonatomic, readonly) QSTBoundingBox *bbox;
 @property (nonatomic, readonly) QSTBoundingBox *canvas;
 
 -(id)initWithName:(NSString*)name;
