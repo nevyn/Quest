@@ -14,6 +14,7 @@
 #import "QSTCmpPosition.h"
 #import "QSTCmpSprite.h"
 #import "QSTCmpPhysics.h"
+#import "QSTCmpCollisionMap.h"
 #import "QSTSceneLayered2D.h"
 
 @implementation QSTCore
@@ -29,17 +30,23 @@
 		// Entity is composed of a physical aspect and a
 		// graphical one.
 		QSTCmpPosition *pos = [[QSTCmpPosition alloc] initWithEID:0];
-		pos.position.x = 4.0f;
-		pos.position.y = 7.0f;
+		pos.position.x = 1.3f;
+		pos.position.y = 3.0f;
 		QSTCmpSprite *gfx = [[QSTCmpSprite alloc] initWithEID:0 name:@"lasse" position:pos];
 		QSTCmpPhysics *ph = [[QSTCmpPhysics alloc] initWithEID:0 position:pos];
 		
+		QSTCmpCollisionMap *cm = [[QSTCmpCollisionMap alloc] initWithEID:1];
+		
 		[graphicsSystem.scene addComponent:gfx toLayer:0];
+		[graphicsSystem addDebugComponent:cm];
 		[physicsSystem addComponent:ph toLayer:0];
+		[physicsSystem setCollisionMap:cm forLayer:0];
 		
 		[pos release];
 		[gfx release];
 		[ph release];
+		[cm release];
+		
 		/*
 		pos = [[QSTCmpPosition alloc] initWithEID:1];
 		pos.position.x = 10.0f;

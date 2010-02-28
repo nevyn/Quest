@@ -66,12 +66,8 @@
 	return ((QSTResTextureAnimation*)[animations objectForKey:animName]).maxFrames;
 }
 
--(void)useWithAnimation:(NSString*)animName frame:(int)frame {
-	[[animations objectForKey:animName] useWithFrame:frame];
-}
-
--(QSTBoundingBox*)texCoordsForAnimation:(NSString*)animName frame:(int)frame {
-	return [((QSTResTextureAnimation*)[animations objectForKey:animName]).subdivs objectAtIndex:frame];
+-(QSTBoundingBox*)useWithAnimation:(NSString*)animName frame:(int)frame {
+	return [[animations objectForKey:animName] useWithFrame:frame];
 }
 
 @end

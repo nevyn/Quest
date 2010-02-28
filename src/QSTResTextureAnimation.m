@@ -9,6 +9,7 @@
 #import "QSTResTextureAnimation.h"
 
 #import "QSTResTexture.h"
+#import "QSTBoundingBox.h"
 
 @implementation QSTResTextureAnimation
 
@@ -27,8 +28,9 @@
 	return [super initWithTexturePath:texturePath frames:maxFrames];
 }
 
--(void)useWithFrame:(int)frame {
+-(QSTBoundingBox*)useWithFrame:(int)frame {
 	[texture use];
+	return [subdivs objectAtIndex:frame];
 }
 
 @end

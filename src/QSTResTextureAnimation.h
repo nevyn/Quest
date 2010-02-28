@@ -8,6 +8,8 @@
 
 #import "QSTResTextureStrip.h"
 
+@class QSTBoundingBox;
+
 /*
  =================
  QSTResTextureAnimation
@@ -27,6 +29,6 @@
 @property (nonatomic,readonly) int maxFrames;
 
 -(id)initWithData:(NSMutableDictionary*)data path:(NSString*)path;
--(void)useWithFrame:(int)frame;
+-(QSTBoundingBox*)useWithFrame:(int)frame;
 
 @end

@@ -11,6 +11,7 @@
 #import <OpenGL/OpenGL.h>
 
 #import "QSTSceneLayered2D.h"
+#import "QSTCmpCollisionMap.h"
 
 
 typedef struct {
@@ -35,6 +36,7 @@ typedef struct {
 -(id)init {
 	if(self = [super init]) {
 		scene = [[QSTSceneLayered2D alloc] init];
+		debugComponents = [[NSMutableArray array] retain];
 		
 		pixelToUnitRatio = 64;
 		
@@ -63,12 +65,23 @@ typedef struct {
 	// Render world and entities
 	[scene render];
 	
+	// Debug
+	for(id c in debugComponents) {
+		[c debugDraw];
+	}
+	
 	// GUI
+	
+	
 }
 
 -(void)beginFrame {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
+}
+
+-(void)addDebugComponent:(id)cmp {
+	[debugComponents addObject:cmp];
 }
 
 @end

@@ -8,16 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "QSTCmpPhysicsBase.h"
 
 @class QSTCmpPosition;
 @class MutableVector2;
+@class QSTBoundingBox;
 
-
-@interface QSTCmpPhysics : NSObject {
+@interface QSTCmpPhysics : NSObject {	
 	int				EID;
-	
 	QSTCmpPosition	*position;
-	
 	MutableVector2	*velocity;
 }
 

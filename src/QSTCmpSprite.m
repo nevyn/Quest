@@ -35,10 +35,8 @@
 	Vector2 *min = sprite.canvas.min;
 	Vector2 *max = sprite.canvas.max;
 	
-	[sprite useWithAnimation:currentAnimation frame:currentFrame];
-		
-	QSTBoundingBox *tex = [sprite texCoordsForAnimation:currentAnimation frame:currentFrame];
-		
+	QSTBoundingBox *tex = [sprite useWithAnimation:currentAnimation frame:currentFrame];
+	
 	glPushMatrix();
 		
 	glTranslatef(pos.x, pos.y, 0.0f);

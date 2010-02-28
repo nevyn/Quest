@@ -36,7 +36,6 @@
 
 -(id)initWithName:(NSString*)name;
 -(int)maxFramesForAnimation:(NSString*)animName;
--(void)useWithAnimation:(NSString*)animName frame:(int)frame;
--(QSTBoundingBox*)texCoordsForAnimation:(NSString*)animName frame:(int)frame;
+-(QSTBoundingBox*)useWithAnimation:(NSString*)animName frame:(int)frame;
 
 @end

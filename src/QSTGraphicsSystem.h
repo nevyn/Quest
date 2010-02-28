@@ -34,11 +34,15 @@
 	QSTSceneLayered2D	*scene;
 	
 	int	pixelToUnitRatio;	// Pixels per unit at normal zoom
+	
+	NSMutableArray		*debugComponents;
 }
 
 -(id)init;
 -(void)tick;
 -(void)beginFrame;
+
+-(void)addDebugComponent:(id)cmp;
 
 @property (nonatomic,readonly) QSTSceneLayered2D *scene;
 

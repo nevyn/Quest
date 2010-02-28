@@ -17,16 +17,24 @@
  
 */
 
+typedef enum {
+	QSTCmpPhysicsTypePhysics,
+	QSTCmpPhysicsTypeCollisionMap
+} QSTCmpPhysicsType;
+
 @class QSTCmpPhysics;
+@class QSTCmpCollisionMap;
 
 @interface QSTPhysicsSystem : NSObject {
 
 	NSMutableArray	*components;
+	QSTCmpCollisionMap	*collisionMap;
 	
 }
 
 -(id)init;
 -(void)addComponent:(QSTCmpPhysics*)aComponent toLayer:(int)theLayer;
+-(void)setCollisionMap:(QSTCmpCollisionMap*)aColMap forLayer:(int)theLayer;
 -(void)tick:(float)dt;
 
 @end
