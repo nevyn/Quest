@@ -39,11 +39,11 @@
 	for(int i=0; i<[components count]; i++) {
 		QSTCmpPhysics *ph1 = [components objectAtIndex:i];
 		
-		ph1.velocity.y += 0.1f * dt;
-		//ph1.velocity.x = 0.1f;
+		ph1.velocity.y += 0.1f;
+		ph1.velocity.x = 1.0f;
 				
-		MutableVector2 *to = [MutableVector2 vectorWithX:ph1.position.position.x + ph1.velocity.x 
-													   y:ph1.position.position.y + ph1.velocity.y];
+		MutableVector2 *to = [MutableVector2 vectorWithX:ph1.position.position.x + (ph1.velocity.x * dt)
+													   y:ph1.position.position.y + (ph1.velocity.y * dt)];
 						
 		BOOL collided = NO;
 		for(QSTLine *l in collisionMap.lines) {
@@ -86,8 +86,8 @@
 		}
 		
 		if(collided == NO) {
-			ph1.position.position.x += ph1.velocity.x;
-			ph1.position.position.y += ph1.velocity.y;
+			ph1.position.position.x = to.x;
+			ph1.position.position.y = to.y;
 		}
 		
 	}

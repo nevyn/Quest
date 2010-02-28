@@ -94,7 +94,7 @@
 
 -(void)jump {
 	printf("JUMP!\n");
-	playerPhys.velocity.y = -0.1f;
+	playerPhys.velocity.y = -4.0f;
 }
 
 -(void)tick {
