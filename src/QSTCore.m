@@ -114,7 +114,7 @@
 		
 	float delta = 0.0166f;
 
-	//[physicsSystem tick:delta];
+	[physicsSystem tick:delta];
 	[graphicsSystem tick];
 }
 

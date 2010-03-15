@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class Vector2;
+@class MutableVector2;
 
 typedef enum {
 	QSTPropertyInt,
@@ -22,31 +22,31 @@ typedef enum {
 	NSString *name;
 	
 	union {
-		int			intVal;
-		float		floatVal;
-		Vector2*	vectorVal;
-		NSString*	stringVal;
+		int				intVal;
+		float			floatVal;
+		MutableVector2*	vectorVal;
+		NSString*		stringVal;
 	} data;
 }
 
 +(QSTProperty*)propertyWithInt:(int)i;
-+(QSTProperty*)propertyWithVector:(Vector2*)v;
++(QSTProperty*)propertyWithVector:(MutableVector2*)v;
 +(QSTProperty*)propertyWithFloat:(float)f;
 +(QSTProperty*)propertyWithString:(NSString*)s;
 
 -(id)initWithInt:(int)i;
--(id)initWithVector:(Vector2*)v;
+-(id)initWithVector:(MutableVector2*)v;
 -(id)initWithFloat:(float)f;
 -(id)initWithString:(NSString*)s;
 
 -(int)intVal;
 -(float)floatVal;
--(Vector2*)vectorVal;
+-(MutableVector2*)vectorVal;
 -(NSString*)stringVal;
 
 -(void)setIntVal:(int)val;
 -(void)setFloatVal:(float)val;
--(void)setVectorVal:(Vector2*)val;
+-(void)setVectorVal:(MutableVector2*)val;
 -(void)setStringVal:(NSString*)val;
 
 -(void)print;

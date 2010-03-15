@@ -12,6 +12,7 @@
 #import "QSTResourceDB.h"
 
 #import "QSTResSprite.h"
+#import "QSTTerrain.h"
 
 #import "QSTEntity.h"
 #import "QSTProperty.h"
@@ -24,6 +25,7 @@
 -(id)init {
 	if(self = [super init]) {
 		entities = [[NSMutableArray alloc] init];
+		terrain = [[QSTTerrain alloc] init];
 	}
 	return self;
 }
@@ -33,6 +35,11 @@
 }
 
 -(void)render {
+	[self renderEntities];
+	[self renderTerrain];
+}
+
+-(void)renderEntities {
 	for(QSTEntity *ent in entities) {
 		QSTProperty *sprname = [ent property:@"SpriteName"];
 		QSTProperty *spranim = [ent property:@"SpriteCurrentAnimation"];
@@ -96,6 +103,10 @@
 		if(sprfrm.floatVal >= [sprite maxFramesForAnimation:spranim.stringVal])
 			sprfrm.floatVal = 0.0f;
 	}
+}
+
+-(void)renderTerrain {
+	[terrain render];
 }
 
 @end

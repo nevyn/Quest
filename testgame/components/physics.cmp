@@ -2,7 +2,7 @@
 	"name" : "Physics",
 	"properties" : {
 		"Mass" : 1.0, 
-		"Velocity" : 0.0,
-	 	"Acceleration" : 0.0
+		"Velocity" : [0.0, 0.0],
+	 	"Acceleration" : [0.0, 0.0]
 	}
 }

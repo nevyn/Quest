@@ -16,7 +16,7 @@
 	return [[[QSTProperty alloc] initWithInt:i] autorelease];
 }
 
-+(QSTProperty*)propertyWithVector:(Vector2*)v {
++(QSTProperty*)propertyWithVector:(MutableVector2*)v {
 	return [[[QSTProperty alloc] initWithVector:v] autorelease];
 }
 
@@ -36,10 +36,10 @@
 	return self;
 }
 
--(id)initWithVector:(Vector2*)v {
+-(id)initWithVector:(MutableVector2*)v {
 	if(self = [super init]) {
 		type = QSTPropertyVector;
-		Vector2 *vec = [[Vector2 vectorWithX:v.x y:v.y] retain];
+		MutableVector2 *vec = [[MutableVector2 vectorWithX:v.x y:v.y] retain];
 		data.vectorVal = vec;
 	}
 	return self;
@@ -77,7 +77,7 @@
 	return data.floatVal;
 }
 
--(Vector2*)vectorVal {
+-(MutableVector2*)vectorVal {
 	return data.vectorVal;
 }
 
@@ -93,9 +93,9 @@
 	data.floatVal = val;
 }
 
--(void)setVectorVal:(Vector2*)val {
+-(void)setVectorVal:(MutableVector2*)val {
 	if(data.vectorVal != val) [data.vectorVal release];
-	data.vectorVal = [[Vector2 vectorWithX:val.x y:val.y] retain];
+	data.vectorVal = [[MutableVector2 vectorWithX:val.x y:val.y] retain];
 }
 
 -(void)setStringVal:(NSString*)val {

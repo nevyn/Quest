@@ -8,11 +8,13 @@
 
 #import "QSTPhysicsSystem.h"
 
-#import "QSTCmpPhysicsBase.h"
-#import "QSTCmpPhysics.h"
-#import "QSTCmpPosition.h"
+#import "QSTEntity.h"
+#import "QSTProperty.h"
+
+#import "QSTResourceDB.h"
 #import "QSTCmpCollisionMap.h"
 #import "QSTResSprite.h"
+
 #import "QSTBoundingBox.h"
 #import "QSTLine.h"
 #import "Vector2.h"
@@ -21,56 +23,59 @@
 
 -(id)init {
 	if (self = [super init]) {
-		components = [[NSMutableArray alloc] init];
+		entities = [[NSMutableArray alloc] init];
 	}
 	return self;
 }
 
--(void)addComponent:(QSTCmpPhysics*)aComponent toLayer:(int)theLayer {
-	[components addObject:aComponent];
-}
-
 -(void)registerEntity:(QSTEntity*)entity inLayer:(int)layer {
+	if([entity property:@"Velocity"] != nil) [entities addObject:entity];
 }
 
 -(void)setCollisionMap:(QSTCmpCollisionMap*)aColMap forLayer:(int)theLayer {
 	collisionMap = [aColMap retain];
 }
 
--(void)tick:(float)dt {/*
-	for(int i=0; i<[components count]; i++) {
-		QSTCmpPhysics *ph1 = [components objectAtIndex:i];
+-(void)tick:(float)dt {
+	for(int i=0; i<[entities count]; i++) {
+		QSTEntity *ent1 = [entities objectAtIndex:i];
 		
-		ph1.velocity.y += 9.8f * dt;
-		ph1.velocity.x = 1.0f;
+		QSTProperty *pos = [ent1 property:@"Position"];
+		QSTProperty *vel = [ent1 property:@"Velocity"];
+		QSTResSprite *sprite = [QSTResourceDB getSpriteWithName:[ent1 property:@"SpriteName"].stringVal];
+		
+		vel.vectorVal.y += 9.8f * dt;
+		vel.vectorVal.x = 1.0f;
 				
-		MutableVector2 *to = [MutableVector2 vectorWithX:ph1.position.position.x + (ph1.velocity.x * dt)
-													   y:ph1.position.position.y + (ph1.velocity.y * dt)];
+		MutableVector2 *to = [MutableVector2 vectorWithX:pos.vectorVal.x + (vel.vectorVal.x * dt)
+													   y:pos.vectorVal.y + (vel.vectorVal.y * dt)];
 						
 		BOOL collided = NO;
 		for(QSTLine *l in collisionMap.lines) {
 			
-			Vector2 *isct = [self collideBBox:ph1.sprite.sprite.bbox withLine:l from:ph1.position.position to:to];
+			Vector2 *isct = [self collideBBox:sprite.bbox withLine:l from:pos.vectorVal to:to];
 			if(isct == nil) continue;
 			
 			collided = YES;
 			
 			if(l.normal.y > -0.7f) {
-				ph1.position.position.x += l.normal.x;
-				ph1.position.position.y = isct.y;
-				ph1.velocity.y = 0.0f;
+				pos.vectorVal.x += l.normal.x;
+				pos.vectorVal.y = isct.y;
+				vel.vectorVal.y = 0.0f;
 			}
 			else {
-				ph1.position.position.x = isct.x;
-				ph1.position.position.y = isct.y;
-				ph1.velocity.y = 0.0f;
+				pos.vectorVal.x = isct.x;
+				pos.vectorVal.y = isct.y;
+				vel.vectorVal.y = 0.0f;
 			}
 			
 			break;
 		}
 		
-		for(int j=0; j<[components count]; j++) {
+		/*
+		for(int j=0; j<[entities count]; j++) {
 			if(i == j) continue;
+			
 			QSTCmpPhysics *ph2 = [components objectAtIndex:j];
 						
 			Vector2 *isct = [self collideBBox:ph1.sprite.sprite.bbox 
@@ -85,14 +90,14 @@
 			ph1.position.position.x = isct.x;
 			ph1.position.position.y = isct.y-0.01f;
 			ph1.velocity.y = 0.0f;
-		}
+		}*/
 		
 		if(collided == NO) {
-			ph1.position.position.x = to.x;
-			ph1.position.position.y = to.y;
+			pos.vectorVal.x = to.x;
+			pos.vectorVal.y = to.y;
 		}
 		
-	}*/
+	}
 }
 
 -(Vector2*)collideBBox:(QSTBoundingBox*)bbox withLine:(QSTLine*)line from:(Vector2*)from to:(Vector2*)to {

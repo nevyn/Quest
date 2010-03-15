@@ -22,7 +22,6 @@ typedef enum {
 	QSTCmpPhysicsTypeCollisionMap
 } QSTCmpPhysicsType;
 
-@class QSTCmpPhysics;
 @class QSTCmpCollisionMap;
 @class QSTBoundingBox;
 @class QSTLine;
@@ -31,13 +30,12 @@ typedef enum {
 
 @interface QSTPhysicsSystem : NSObject {
 
-	NSMutableArray	*components;
+	NSMutableArray	*entities;
 	QSTCmpCollisionMap	*collisionMap;
 	
 }
 
 -(id)init;
--(void)addComponent:(QSTCmpPhysics*)aComponent toLayer:(int)theLayer;
 -(void)registerEntity:(QSTEntity*)entity inLayer:(int)layer;
 -(void)setCollisionMap:(QSTCmpCollisionMap*)aColMap forLayer:(int)theLayer;
 -(void)tick:(float)dt;

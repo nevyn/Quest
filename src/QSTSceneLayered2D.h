@@ -21,6 +21,7 @@
 @class MutableVector2;
 @class Vector2;
 @class QSTEntity;
+@class QSTTerrain;
 
 @interface QSTLayer2D : NSObject {
 	// Depth affects how much the layers scrolls when the camera
@@ -39,10 +40,14 @@
 	Vector2			*startPosition;	
 	
 	NSMutableArray	*entities;
+	
+	QSTTerrain		*terrain;
 }
 
 -(void)addEntity:(QSTEntity*)entity;
 -(void)render;
+-(void)renderEntities;
+-(void)renderTerrain;
 
 @end
 
