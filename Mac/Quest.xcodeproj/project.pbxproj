@@ -42,6 +42,11 @@
 		D8BF0C9B1137F9880006E86E /* QSTResModel2D.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BF0C9A1137F9880006E86E /* QSTResModel2D.m */; };
 		D8BF13AD113AB4050006E86E /* phys in Resources */ = {isa = PBXBuildFile; fileRef = D8BF13AC113AB4050006E86E /* phys */; };
 		D8BF13B4113AEEBC0006E86E /* QSTInputSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BF13B3113AEEBC0006E86E /* QSTInputSystem.m */; };
+		D8DAFA81114BF0780064B657 /* QSTEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DAFA80114BF0780064B657 /* QSTEntity.m */; };
+		D8DAFA84114BF3730064B657 /* QSTPropertyDB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DAFA83114BF3730064B657 /* QSTPropertyDB.m */; };
+		D8DAFA87114CFCCB0064B657 /* QSTProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DAFA86114CFCCB0064B657 /* QSTProperty.m */; };
+		D8DAFB1E114E593C0064B657 /* QSTEntityDB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DAFB1D114E593C0064B657 /* QSTEntityDB.m */; };
+		D8F174EF1145459000D7D3C3 /* comps in Resources */ = {isa = PBXBuildFile; fileRef = D8F174EE1145459000D7D3C3 /* comps */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +120,17 @@
 		D8BF13AC113AB4050006E86E /* phys */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = phys; sourceTree = "<group>"; };
 		D8BF13B2113AEEBC0006E86E /* QSTInputSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTInputSystem.h; sourceTree = "<group>"; };
 		D8BF13B3113AEEBC0006E86E /* QSTInputSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTInputSystem.m; sourceTree = "<group>"; };
+		D8BF1528113B0A4A0006E86E /* QSTResEntityTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTResEntityTemplate.h; sourceTree = "<group>"; };
+		D8BF1529113B0A4A0006E86E /* QSTResEntityTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTResEntityTemplate.m; sourceTree = "<group>"; };
+		D8DAFA7F114BF0780064B657 /* QSTEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTEntity.h; sourceTree = "<group>"; };
+		D8DAFA80114BF0780064B657 /* QSTEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTEntity.m; sourceTree = "<group>"; };
+		D8DAFA82114BF3730064B657 /* QSTPropertyDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTPropertyDB.h; sourceTree = "<group>"; };
+		D8DAFA83114BF3730064B657 /* QSTPropertyDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTPropertyDB.m; sourceTree = "<group>"; };
+		D8DAFA85114CFCCB0064B657 /* QSTProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTProperty.h; sourceTree = "<group>"; };
+		D8DAFA86114CFCCB0064B657 /* QSTProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTProperty.m; sourceTree = "<group>"; };
+		D8DAFB1C114E593C0064B657 /* QSTEntityDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTEntityDB.h; sourceTree = "<group>"; };
+		D8DAFB1D114E593C0064B657 /* QSTEntityDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTEntityDB.m; sourceTree = "<group>"; };
+		D8F174EE1145459000D7D3C3 /* comps */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = comps; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +298,16 @@
 				D8BF0C3811373BDE0006E86E /* QSTCmpPhysicsBase.m */,
 				D8BF0C991137F9880006E86E /* QSTResModel2D.h */,
 				D8BF0C9A1137F9880006E86E /* QSTResModel2D.m */,
+				D8BF1528113B0A4A0006E86E /* QSTResEntityTemplate.h */,
+				D8BF1529113B0A4A0006E86E /* QSTResEntityTemplate.m */,
+				D8DAFA7F114BF0780064B657 /* QSTEntity.h */,
+				D8DAFA80114BF0780064B657 /* QSTEntity.m */,
+				D8DAFA82114BF3730064B657 /* QSTPropertyDB.h */,
+				D8DAFA83114BF3730064B657 /* QSTPropertyDB.m */,
+				D8DAFA85114CFCCB0064B657 /* QSTProperty.h */,
+				D8DAFA86114CFCCB0064B657 /* QSTProperty.m */,
+				D8DAFB1C114E593C0064B657 /* QSTEntityDB.h */,
+				D8DAFB1D114E593C0064B657 /* QSTEntityDB.m */,
 			);
 			name = src;
 			path = ../src;
@@ -292,6 +318,7 @@
 			children = (
 				D85E720811303DCD0005CAB5 /* shortplan */,
 				D8BF13AC113AB4050006E86E /* phys */,
+				D8F174EE1145459000D7D3C3 /* comps */,
 			);
 			name = docs;
 			path = ../docs;
@@ -344,6 +371,7 @@
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				D85E720911303DCD0005CAB5 /* shortplan in Resources */,
 				D8BF13AD113AB4050006E86E /* phys in Resources */,
+				D8F174EF1145459000D7D3C3 /* comps in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +411,10 @@
 				D8BF0C3911373BDE0006E86E /* QSTCmpPhysicsBase.m in Sources */,
 				D8BF0C9B1137F9880006E86E /* QSTResModel2D.m in Sources */,
 				D8BF13B4113AEEBC0006E86E /* QSTInputSystem.m in Sources */,
+				D8DAFA81114BF0780064B657 /* QSTEntity.m in Sources */,
+				D8DAFA84114BF3730064B657 /* QSTPropertyDB.m in Sources */,
+				D8DAFA87114CFCCB0064B657 /* QSTProperty.m in Sources */,
+				D8DAFB1E114E593C0064B657 /* QSTEntityDB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,20 +18,7 @@
 -(id)initWithEID:(int)theEID {
 	if(self = [super init]) {
 		EID = theEID;
-		
 		lines = [[NSMutableArray array] retain];
-		
-		QSTLine *line1 = [[QSTLine alloc] initWithX1:0.0f y1:1.0f x2:2.0f y2:7.0f];
-		QSTLine *line2 = [[QSTLine alloc] initWithX1:2.0f y1:7.0f x2:6.0f y2:7.0f];
-		QSTLine *line3 = [[QSTLine alloc] initWithX1:6.0f y1:7.0f x2:8.0f y2:3.0f];
-		
-		[lines addObject:line1];
-		[lines addObject:line2];
-		[lines addObject:line3];
-		
-		[line1 release];
-		[line2 release];
-		[line3 release];
 	}
 	return self;
 }

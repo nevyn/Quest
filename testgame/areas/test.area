@@ -1,0 +1,19 @@
+{
+  "layers" : [
+    {
+      "depth" : 1.0,
+      "colmap" : [
+        [0.0, 6.0, 6.0, 6.0],
+        [6.0, 6.0, 10.0, 4.5]
+      ],
+      "entities" : [
+        {
+          "type" : "lasse",
+          "components" : {
+            "Position" : [1.0, 2.0]
+          }
+        }
+      ]
+    }
+  ]
+}

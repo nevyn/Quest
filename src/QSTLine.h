@@ -21,6 +21,8 @@
 @property (nonatomic,readonly) Vector2 *b;
 @property (nonatomic,readonly) Vector2 *normal;
 
++(QSTLine*)lineWithA:(Vector2*)ta b:(Vector2*)tb;
+
 -(id)initWithX1:(float)x1 y1:(float)y1 x2:(float)x2 y2:(float)y2;
 -(id)initWithA:(Vector2*)ta b:(Vector2*)tb;
 

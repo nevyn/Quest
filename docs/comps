@@ -1,0 +1,35 @@
+(Om)tänk angående components:
+
+Gillar DB-arch. Verkligen separera datan från logiken.
+Använd nåt queryliknande interface för att få datan.
+
+Exempel:
+
+Fysiksystem
+
+- håller lista på EIDs som ska ha fysik.
+
+foreach EID as ent:
+	pos = DB->Get("position", ent);
+	vel = DB->Get("velocity", ent);
+	
+	
+	
+eller nåt slags proxy-objekt
+
+foreach EID as entId:
+	entity = DB->GetEntity(entId);
+	pos = entity->prop("Position");
+	vel = entity->prop("Velocity");
+	
+	
+	
+Nackdelar:
+- Strängar. inte fint. :(
+- Overheaden blir säkert icke-trivial.
+
+
+Men vad är egentligen stora skillnaden mot hur jag har det?
+
+- Component är en samling Properties som hör ihop.
+- Kan referera andra components.

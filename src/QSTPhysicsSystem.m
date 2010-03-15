@@ -39,7 +39,7 @@
 	for(int i=0; i<[components count]; i++) {
 		QSTCmpPhysics *ph1 = [components objectAtIndex:i];
 		
-		ph1.velocity.y += 0.1f;
+		ph1.velocity.y += 9.8f * dt;
 		ph1.velocity.x = 1.0f;
 				
 		MutableVector2 *to = [MutableVector2 vectorWithX:ph1.position.position.x + (ph1.velocity.x * dt)

@@ -11,15 +11,18 @@
 #import "JSON.h"
 #import "QSTResTexture.h"
 #import "QSTResSprite.h"
+//#import "QSTResEntityTemplate.h"
 
 static NSMutableDictionary *textures;
 static NSMutableDictionary *sprites;
+//static NSMutableDictionary *entityTemplates;
 
 @implementation QSTResourceDB
 
 +(void)initialize {
 	textures = [[NSMutableDictionary alloc] init];
 	sprites = [[NSMutableDictionary alloc] init];
+	//entityTemplates = [[NSMutableDictionary alloc] init];
 }
 
 +(QSTResTexture*)getTextureWithPath:(NSString*)path {
@@ -54,5 +57,20 @@ static NSMutableDictionary *sprites;
 	
 	return sprite;
 }
+
+/*
++(QSTResEntityTemplate*)getEntityTemplateWithName:(NSString*)name {
+	printf("ResourceDB: getEntityTemplateWithName [%s]\n", [name UTF8String]);
+	
+	QSTResEntityTemplate *entTem = [entityTemplates objectForKey:name];
+	if(entTem != nil) { printf("Already loaded.\n"); return entTem; }
+	
+	entTem = [[QSTResEntityTemplate alloc] initWithName:name];
+	[entityTemplates setObject:entTem forKey:name];
+	[entTem release];
+	
+	return entTem;
+}
+ */
 
 @end

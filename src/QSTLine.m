@@ -16,6 +16,10 @@
 @synthesize b;
 @synthesize normal;
 
++(QSTLine*)lineWithA:(Vector2*)ta b:(Vector2*)tb {
+	return [[[QSTLine alloc] initWithA:ta b:tb] autorelease];
+}
+
 -(id)initWithX1:(float)x1 y1:(float)y1 x2:(float)x2 y2:(float)y2 {
 	if(self = [super init]) {
 		a = [[Vector2 vectorWithX:x1 y:y1] retain];

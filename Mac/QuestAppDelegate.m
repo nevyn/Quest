@@ -19,7 +19,7 @@
 	
 	core = [[QSTCore alloc] init];
 	
-	[view setCore:core];
+	//[view setCore:core];
 	[view start];
 }
 

@@ -10,6 +10,7 @@
 
 @class QSTResTexture;
 @class QSTResSprite;
+//@class QSTResEntityTemplate;
 
 @interface QSTResourceDB : NSObject {
 
@@ -17,5 +18,6 @@
 
 +(QSTResTexture*)getTextureWithPath:(NSString*)path;
 +(QSTResSprite*)getSpriteWithName:(NSString*)name;
+//+(QSTResEntityTemplate*)getEntityTemplateWithName:(NSString*)name;
 
 @end

@@ -14,7 +14,7 @@
 @implementation QSTView
 
 -(void)setCore:(QSTCore*)theCore {
-	core = theCore;
+	//core = theCore;
 }
 
 -(void)start {

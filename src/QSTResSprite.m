@@ -29,6 +29,8 @@
 
 		SBJsonParser *parser = [[SBJsonParser alloc] init];
 		NSMutableDictionary *r_root = [parser objectWithString:rawData];
+		[parser release];
+		
 		NSMutableDictionary *r_data = [r_root objectForKey:@"data"];
 		NSMutableArray *r_data_size = [r_data objectForKey:@"size"];
 		NSMutableArray *r_data_center = [r_data objectForKey:@"center"];

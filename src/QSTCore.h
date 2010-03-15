@@ -23,8 +23,18 @@
 	QSTCmpPhysics	*playerPhys;
 }
 
+@property (nonatomic,readonly) QSTGraphicsSystem *graphicsSystem;
+@property (nonatomic,readonly) QSTPhysicsSystem *physicsSystem;
 @property (nonatomic,readonly) QSTInputSystem *inputSystem;
+
+-(void)loadArea:(NSString*)areaName;
+-(void)loadLayer:(NSMutableDictionary*)theLayer withIndex:(int)theIndex;
+-(void)createEntity:(NSMutableDictionary*)data;
 
 -(void)tick;
 
 @end
+
+// Evil global!
+QSTCore *core;
+
