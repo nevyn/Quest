@@ -21,7 +21,7 @@
 	float			rotation;
 }
 
--(id)initWithPosition:(Vector2*)thePos rotation:(float)theRot scale:(float)theScale sprite:(NSString*)spriteName;
+-(id)initWithPosition:(Vector2*)thePos rotation:(float)theRot scale:(float)theScale sprite:(NSString*)spriteName animation:(NSString*)animName;
 -(void)render;
 
 @end

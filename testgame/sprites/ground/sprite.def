@@ -1,0 +1,21 @@
+{
+	"data" : {
+		"size" : [256, 256],
+		"center" : [128, 128],
+		"colbox" : [64, 64]
+	},
+	"animations" : {
+		"idle" : {
+			"fps" : 15.0,
+			"loopstart" : 0,
+			"frames" : 2,
+			"texture" : "ground"
+		},
+		"anim" : {
+			"fps" : 15.0,
+			"loopstart" : 0,
+			"frames" : 2,
+			"texture" : "ground"
+		}
+	}
+}

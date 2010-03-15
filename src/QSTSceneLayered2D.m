@@ -61,7 +61,7 @@
 		glTranslatef(pos.x, pos.y, 0.0f);
 		//glRotatef(currentFrame, 0.0f, 0.0f, 1.0f);
 		
-		glDisable(GL_TEXTURE_2D);
+		/*glDisable(GL_TEXTURE_2D);
 		
 		glBegin(GL_QUADS);
 		glColor3f(1.0f, 1.0f, 0.0f);
@@ -71,7 +71,7 @@
 		glVertex2f(box.min.x, box.max.y);
 		glEnd();
 		
-		glEnable(GL_TEXTURE_2D);
+		glEnable(GL_TEXTURE_2D);*/
 		
 		glBegin(GL_QUADS);
 		glColor3f(1.0f, 1.0f, 1.0f);

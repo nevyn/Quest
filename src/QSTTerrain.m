@@ -16,10 +16,10 @@
 
 @implementation QSTTerrainTile
 
--(id)initWithPosition:(Vector2*)thePos rotation:(float)theRot scale:(float)theScale sprite:(NSString*)spriteName {
+-(id)initWithPosition:(Vector2*)thePos rotation:(float)theRot scale:(float)theScale sprite:(NSString*)spriteName animation:(NSString*)animName {
 	if(self = [super init]) {
 		currentFrame = 0.0f;
-		currentAnimation = [@"idle" retain];
+		currentAnimation = animName;
 		
 		position = [[Vector2 vectorWithVector2:thePos] retain];
 		scale = theScale;
@@ -39,6 +39,9 @@
 	// Would be nice to not need to push/pop the matrix
 	
 	QSTBoundingBox *tex = [sprite useWithAnimation:currentAnimation frame:currentFrame];
+	
+	Vector2 *min = sprite.canvas.min;
+	Vector2 *max = sprite.canvas.max;
 		
 	glPushMatrix();
 	
@@ -50,13 +53,16 @@
 	
 	glBegin(GL_QUADS);
 	glTexCoord2f(tex.min.x, tex.min.y);
-	glVertex2f(-0.5f, -0.5f);
+	glVertex2f(min.x, min.y);
+	
 	glTexCoord2f(tex.max.x, tex.min.y);
-	glVertex2f(0.5f, -0.5f);
+	glVertex2f(max.x, min.y);
+	
 	glTexCoord2f(tex.max.x, tex.max.y);
-	glVertex2f(0.5f, 0.5f);
+	glVertex2f(max.x, max.y);
+	
 	glTexCoord2f(tex.min.x, tex.max.y);
-	glVertex2f(-0.5f, 0.5f);
+	glVertex2f(min.x, max.y);
 	glEnd();
 	
 	glPopMatrix();
@@ -72,21 +78,30 @@
 
 -(id)init {
 	if(self = [super init]) {
-		QSTTerrainTile *t1 = [[QSTTerrainTile alloc] initWithPosition:[Vector2 vectorWithX:3.0f y:7.0f]
-															 rotation:20.0f
-																scale:5.0f
-															   sprite:@"lasse"];
-		QSTTerrainTile *t2 = [[QSTTerrainTile alloc] initWithPosition:[Vector2 vectorWithX:7.0f y:6.0f]
-															 rotation:85.0f
+		QSTTerrainTile *t3 = [[QSTTerrainTile alloc] initWithPosition:[Vector2 vectorWithX:3.0f y:8.0f]
+															 rotation:10.0f
+																scale:2.0f
+															   sprite:@"ground"
+															animation:@"idle"];
+		QSTTerrainTile *t2 = [[QSTTerrainTile alloc] initWithPosition:[Vector2 vectorWithX:8.0f y:6.0f]
+															 rotation:-30.0f
 																scale:1.2f
-															   sprite:@"lasse"];
+															   sprite:@"ground"
+															animation:@"anim"];
+		QSTTerrainTile *t1 = [[QSTTerrainTile alloc] initWithPosition:[Vector2 vectorWithX:6.0f y:5.2f]
+															 rotation:-15.0f
+																scale:1.0f
+															   sprite:@"tree"
+															animation:@"idle"];
 
 		tiles = [[NSMutableArray alloc] init];
 		[tiles addObject:t1];
 		[tiles addObject:t2];
+		[tiles addObject:t3];
 		
 		[t1 release];
 		[t2 release];
+		[t3 release];
 	}
 	return self;
 }
