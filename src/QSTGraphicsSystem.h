@@ -10,17 +10,8 @@
 
 
 @class QSTSceneLayered2D;
+@class QSTEntity;
 
-
-@protocol QSTCmpGraphics
-
--(void)render;
-
-@end
-
-
-@protocol QSTScene
-@end
 
 /*@interface QSTBatch {
 	QSTBatchSettings	settings;
@@ -34,15 +25,13 @@
 	QSTSceneLayered2D	*scene;
 	
 	int	pixelToUnitRatio;	// Pixels per unit at normal zoom
-	
-	NSMutableArray		*debugComponents;
 }
 
 -(id)init;
 -(void)tick;
 -(void)beginFrame;
 
--(void)addDebugComponent:(id)cmp;
+-(void)registerEntity:(QSTEntity*)entity inLayer:(int)layer;
 
 @property (nonatomic,readonly) QSTSceneLayered2D *scene;
 

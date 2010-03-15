@@ -32,9 +32,6 @@
 		D85E71EB113037B60005CAB5 /* QSTCore.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E71EA113037B60005CAB5 /* QSTCore.m */; };
 		D85E720511303C5B0005CAB5 /* QSTPhysicsSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E720411303C5B0005CAB5 /* QSTPhysicsSystem.m */; };
 		D85E720911303DCD0005CAB5 /* shortplan in Resources */ = {isa = PBXBuildFile; fileRef = D85E720811303DCD0005CAB5 /* shortplan */; };
-		D85E72251130B8970005CAB5 /* QSTCmpSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E72241130B8970005CAB5 /* QSTCmpSprite.m */; };
-		D85E73801130C6CE0005CAB5 /* QSTCmpPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E737F1130C6CE0005CAB5 /* QSTCmpPosition.m */; };
-		D85E74051130C9540005CAB5 /* QSTCmpPhysics.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E74041130C9540005CAB5 /* QSTCmpPhysics.m */; };
 		D85E74AD1131C01B0005CAB5 /* QSTResourceDB.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E74AC1131C01B0005CAB5 /* QSTResourceDB.m */; };
 		D85E74B11131E9C60005CAB5 /* QSTResSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E74B01131E9C60005CAB5 /* QSTResSprite.m */; };
 		D8BF0BFB113736050006E86E /* QSTCmpCollisionMap.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BF0BFA113736050006E86E /* QSTCmpCollisionMap.m */; };
@@ -46,6 +43,7 @@
 		D8DAFA84114BF3730064B657 /* QSTPropertyDB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DAFA83114BF3730064B657 /* QSTPropertyDB.m */; };
 		D8DAFA87114CFCCB0064B657 /* QSTProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DAFA86114CFCCB0064B657 /* QSTProperty.m */; };
 		D8DAFB1E114E593C0064B657 /* QSTEntityDB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DAFB1D114E593C0064B657 /* QSTEntityDB.m */; };
+		D8DAFC64114E6F110064B657 /* JSONHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D8DAFC63114E6F110064B657 /* JSONHelper.m */; };
 		D8F174EF1145459000D7D3C3 /* comps in Resources */ = {isa = PBXBuildFile; fileRef = D8F174EE1145459000D7D3C3 /* comps */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +128,8 @@
 		D8DAFA86114CFCCB0064B657 /* QSTProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTProperty.m; sourceTree = "<group>"; };
 		D8DAFB1C114E593C0064B657 /* QSTEntityDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTEntityDB.h; sourceTree = "<group>"; };
 		D8DAFB1D114E593C0064B657 /* QSTEntityDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTEntityDB.m; sourceTree = "<group>"; };
+		D8DAFC62114E6F110064B657 /* JSONHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONHelper.h; sourceTree = "<group>"; };
+		D8DAFC63114E6F110064B657 /* JSONHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONHelper.m; sourceTree = "<group>"; };
 		D8F174EE1145459000D7D3C3 /* comps */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = comps; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -308,6 +308,8 @@
 				D8DAFA86114CFCCB0064B657 /* QSTProperty.m */,
 				D8DAFB1C114E593C0064B657 /* QSTEntityDB.h */,
 				D8DAFB1D114E593C0064B657 /* QSTEntityDB.m */,
+				D8DAFC62114E6F110064B657 /* JSONHelper.h */,
+				D8DAFC63114E6F110064B657 /* JSONHelper.m */,
 			);
 			name = src;
 			path = ../src;
@@ -389,9 +391,6 @@
 				D85E71E8113036ED0005CAB5 /* QSTView.m in Sources */,
 				D85E71EB113037B60005CAB5 /* QSTCore.m in Sources */,
 				D85E720511303C5B0005CAB5 /* QSTPhysicsSystem.m in Sources */,
-				D85E72251130B8970005CAB5 /* QSTCmpSprite.m in Sources */,
-				D85E73801130C6CE0005CAB5 /* QSTCmpPosition.m in Sources */,
-				D85E74051130C9540005CAB5 /* QSTCmpPhysics.m in Sources */,
 				D85E74AD1131C01B0005CAB5 /* QSTResourceDB.m in Sources */,
 				D85E74B11131E9C60005CAB5 /* QSTResSprite.m in Sources */,
 				D81E8CA11131EB84006994C7 /* lodepng.c in Sources */,
@@ -415,6 +414,7 @@
 				D8DAFA84114BF3730064B657 /* QSTPropertyDB.m in Sources */,
 				D8DAFA87114CFCCB0064B657 /* QSTProperty.m in Sources */,
 				D8DAFB1E114E593C0064B657 /* QSTEntityDB.m in Sources */,
+				D8DAFC64114E6F110064B657 /* JSONHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

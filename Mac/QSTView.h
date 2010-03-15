@@ -12,7 +12,7 @@
 
 @interface QSTView : NSOpenGLView {
 	NSTimer		*loopTimer;
-	QSTCore		*core;
+	//QSTCore		*core;
 }
 
 -(void)setCore:(QSTCore*)theCore;

@@ -12,13 +12,14 @@
 
 #import "QSTSceneLayered2D.h"
 #import "QSTCmpCollisionMap.h"
+#import "QSTEntity.h"
 
 
-typedef struct {
+/*typedef struct {
 } QSTBatchSettings;
 
 
-/*@implementation QSTBatch
+@implementation QSTBatch
 
 -(void)render: {
 	for(QSTComponent *aComponent in components) {
@@ -36,7 +37,6 @@ typedef struct {
 -(id)init {
 	if(self = [super init]) {
 		scene = [[QSTSceneLayered2D alloc] init];
-		debugComponents = [[NSMutableArray array] retain];
 		
 		pixelToUnitRatio = 64;
 		
@@ -64,15 +64,9 @@ typedef struct {
 	
 	// Render world and entities
 	[scene render];
-	
-	// Debug
-	for(id c in debugComponents) {
-		[c debugDraw];
-	}
-	
+		
 	// GUI
-	
-	
+
 }
 
 -(void)beginFrame {
@@ -80,8 +74,9 @@ typedef struct {
 	glLoadIdentity();
 }
 
--(void)addDebugComponent:(id)cmp {
-	[debugComponents addObject:cmp];
+-(void)registerEntity:(QSTEntity*)entity inLayer:(int)layer {
+	if([entity property:@"SpriteName"] == nil) return;
+	[scene addEntity:entity toLayer:layer];
 }
 
 @end

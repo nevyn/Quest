@@ -1,5 +1,8 @@
 {
 	"Position" : [0.0, 0.0],
 	"Physics" : { },
-	"Sprite" : "lasse"
+	"Sprite" : {
+		"SpriteName" : "lasse",
+		"SpriteCurrentAnimation" : "idle"
+	}
 }

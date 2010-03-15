@@ -46,10 +46,10 @@ static NSMutableDictionary *sprites;
 }
 
 +(QSTResSprite*)getSpriteWithName:(NSString*)name {
-	printf("ResourceDB: getSpriteWithName [%s]\n", [name UTF8String]);
+	//printf("ResourceDB: getSpriteWithName [%s]\n", [name UTF8String]);
 	
 	QSTResSprite *sprite = [sprites objectForKey:name];
-	if(sprite != nil) { printf("Already loaded.\n"); return sprite; }
+	if(sprite != nil) { /*printf("Already loaded.\n");*/ return sprite; }
 		
 	sprite = [[QSTResSprite alloc] initWithName:name];
 	[sprites setObject:sprite forKey:name];

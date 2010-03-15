@@ -27,6 +27,7 @@ typedef enum {
 @class QSTBoundingBox;
 @class QSTLine;
 @class Vector2;
+@class QSTEntity;
 
 @interface QSTPhysicsSystem : NSObject {
 
@@ -37,6 +38,7 @@ typedef enum {
 
 -(id)init;
 -(void)addComponent:(QSTCmpPhysics*)aComponent toLayer:(int)theLayer;
+-(void)registerEntity:(QSTEntity*)entity inLayer:(int)layer;
 -(void)setCollisionMap:(QSTCmpCollisionMap*)aColMap forLayer:(int)theLayer;
 -(void)tick:(float)dt;
 

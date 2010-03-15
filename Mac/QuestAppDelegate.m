@@ -17,6 +17,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	
+	printf("Create core.");
 	core = [[QSTCore alloc] init];
 	
 	//[view setCore:core];

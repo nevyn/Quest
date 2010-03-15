@@ -8,7 +8,7 @@
 
 #import "QSTResSprite.h"
 
-#import "JSON.h"
+#import "JSONHelper.h"
 #import "Vector2.h"
 #import "QSTBoundingBox.h"
 #import "QSTResourceDB.h"
@@ -25,11 +25,8 @@
 	if(self = [super init]) {
 		NSString *spritePath = [NSString stringWithFormat:@"testgame/sprites/%@/", name];
 		NSString *defpath = [NSString stringWithFormat:@"%@sprite.def", spritePath];
-		NSString *rawData = [NSString stringWithContentsOfFile:defpath encoding:NSUTF8StringEncoding error:NULL];
 
-		SBJsonParser *parser = [[SBJsonParser alloc] init];
-		NSMutableDictionary *r_root = [parser objectWithString:rawData];
-		[parser release];
+		NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONPath:defpath];
 		
 		NSMutableDictionary *r_data = [r_root objectForKey:@"data"];
 		NSMutableArray *r_data_size = [r_data objectForKey:@"size"];

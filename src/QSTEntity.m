@@ -8,7 +8,7 @@
 
 #import "QSTEntity.h"
 
-#import "JSON.h"
+#import "JSONHelper.h"
 #import "QSTProperty.h"
 #import "QSTPropertyDB.h"
 
@@ -16,18 +16,12 @@
 
 +(QSTEntity*)entityWithType:(NSString*)type {
 	NSString *path = [NSString stringWithFormat:@"testgame/entities/%@.ent", type];
-	NSString *rawData = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
 	
-	printf("Entity: path: %s\n", [path UTF8String]);
-	printf("Entity: json:\n%s\n", [rawData UTF8String]);
+	NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONPath:path];
 	
-	SBJsonParser *parser = [[SBJsonParser alloc] init];
-	NSMutableDictionary *r_root = [parser objectWithString:rawData];
-	[parser release];
-	
-	NSDictionary *properties = [QSTPropertyDB propertiesFromDictionary:r_root];
-	
-	QSTEntity *entity = [[[QSTEntity alloc] initWithProperties:properties] autorelease];
+	NSDictionary *props = [QSTPropertyDB propertiesFromDictionary:r_root];
+		
+	QSTEntity *entity = [[[QSTEntity alloc] initWithProperties:props] autorelease];
 	return entity;
 }
 
@@ -35,16 +29,22 @@
 -(id)initWithProperties:(NSDictionary*)props {
 	if(self = [super init]) {
 		properties = [props retain];
-		printf("Entity: inited with properties:\n");
 		[self printProperties];
 	}
 	return self;
 }
 
 
+-(void)dealloc {
+	printf("FUUUUUUUU....!!!");
+	[super dealloc];
+}
+
+
 -(void)printProperties {
+	printf("Entity [%d] properties:\n", EID);
 	for(NSString *key in properties) {
-		printf("  %s:\t", [key UTF8String]);
+		printf("  %16s: ", [key UTF8String]);
 		[((QSTProperty*)[properties objectForKey:key]) print];
 		printf("\n");
 	}

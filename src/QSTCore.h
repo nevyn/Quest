@@ -12,6 +12,7 @@
 @class QSTPhysicsSystem;
 @class QSTInputSystem;
 @class QSTCmpPhysics;
+@class QSTEntity;
 
 @interface QSTCore : NSObject {
 	QSTGraphicsSystem	*graphicsSystem;
@@ -29,7 +30,8 @@
 
 -(void)loadArea:(NSString*)areaName;
 -(void)loadLayer:(NSMutableDictionary*)theLayer withIndex:(int)theIndex;
--(void)createEntity:(NSMutableDictionary*)data;
+-(void)createEntity:(NSMutableDictionary*)data layer:(int)layerIndex;
+-(void)registerWithSystems:(QSTEntity*)entity layer:(int)layerIndex;
 
 -(void)tick;
 

@@ -10,24 +10,44 @@
 
 @class Vector2;
 
+typedef enum {
+	QSTPropertyInt,
+	QSTPropertyFloat,
+	QSTPropertyVector,
+	QSTPropertyString
+} QSTPropertyType;
+
 @interface QSTProperty : NSObject {
-	int type;
+	QSTPropertyType type;
 	NSString *name;
 	
 	union {
+		int			intVal;
 		float		floatVal;
 		Vector2*	vectorVal;
 		NSString*	stringVal;
 	} data;
 }
 
++(QSTProperty*)propertyWithInt:(int)i;
 +(QSTProperty*)propertyWithVector:(Vector2*)v;
 +(QSTProperty*)propertyWithFloat:(float)f;
 +(QSTProperty*)propertyWithString:(NSString*)s;
 
+-(id)initWithInt:(int)i;
 -(id)initWithVector:(Vector2*)v;
 -(id)initWithFloat:(float)f;
 -(id)initWithString:(NSString*)s;
+
+-(int)intVal;
+-(float)floatVal;
+-(Vector2*)vectorVal;
+-(NSString*)stringVal;
+
+-(void)setIntVal:(int)val;
+-(void)setFloatVal:(float)val;
+-(void)setVectorVal:(Vector2*)val;
+-(void)setStringVal:(NSString*)val;
 
 -(void)print;
 

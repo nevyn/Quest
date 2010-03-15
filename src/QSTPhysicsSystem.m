@@ -12,7 +12,6 @@
 #import "QSTCmpPhysics.h"
 #import "QSTCmpPosition.h"
 #import "QSTCmpCollisionMap.h"
-#import "QSTCmpSprite.h"
 #import "QSTResSprite.h"
 #import "QSTBoundingBox.h"
 #import "QSTLine.h"
@@ -31,11 +30,14 @@
 	[components addObject:aComponent];
 }
 
+-(void)registerEntity:(QSTEntity*)entity inLayer:(int)layer {
+}
+
 -(void)setCollisionMap:(QSTCmpCollisionMap*)aColMap forLayer:(int)theLayer {
 	collisionMap = [aColMap retain];
 }
 
--(void)tick:(float)dt {
+-(void)tick:(float)dt {/*
 	for(int i=0; i<[components count]; i++) {
 		QSTCmpPhysics *ph1 = [components objectAtIndex:i];
 		
@@ -90,7 +92,7 @@
 			ph1.position.position.y = to.y;
 		}
 		
-	}
+	}*/
 }
 
 -(Vector2*)collideBBox:(QSTBoundingBox*)bbox withLine:(QSTLine*)line from:(Vector2*)from to:(Vector2*)to {

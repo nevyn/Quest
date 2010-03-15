@@ -12,30 +12,42 @@
 
 @implementation QSTProperty
 
++(QSTProperty*)propertyWithInt:(int)i {
+	return [[[QSTProperty alloc] initWithInt:i] autorelease];
+}
+
 +(QSTProperty*)propertyWithVector:(Vector2*)v {
-	return [[QSTProperty alloc] initWithVector:v];
+	return [[[QSTProperty alloc] initWithVector:v] autorelease];
 }
 
 +(QSTProperty*)propertyWithFloat:(float)f {
-	return [[QSTProperty alloc] initWithFloat:f];
+	return [[[QSTProperty alloc] initWithFloat:f] autorelease];
 }
 
 +(QSTProperty*)propertyWithString:(NSString*)s {
-	return [[QSTProperty alloc] initWithString:s];
+	return [[[QSTProperty alloc] initWithString:s] autorelease];
 }
 
--(QSTProperty*)initWithVector:(Vector2*)v {
+-(id)initWithInt:(int)i {
 	if(self = [super init]) {
-		type = 0;
+		type = QSTPropertyInt;
+		data.intVal = i;
+	}
+	return self;
+}
+
+-(id)initWithVector:(Vector2*)v {
+	if(self = [super init]) {
+		type = QSTPropertyVector;
 		Vector2 *vec = [[Vector2 vectorWithX:v.x y:v.y] retain];
 		data.vectorVal = vec;
 	}
 	return self;
 }
 
--(QSTProperty*)initWithFloat:(float)f {
+-(id)initWithFloat:(float)f {
 	if(self = [super init]) {
-		type = 1;
+		type = QSTPropertyFloat;
 		data.floatVal = f;
 	}
 	return self;
@@ -43,20 +55,63 @@
 
 -(id)initWithString:(NSString*)s {
 	if(self = [super init]) {
-		type = 2;
+		type = QSTPropertyString;
 		data.stringVal = s;
 		[s retain];
 	}
 	return self;
 }
 
+-(void)dealloc {
+	printf("Property: Dealloc ");
+	[self print];
+	printf("\n");
+	[super dealloc];
+}
+
+-(int)intVal {
+	return data.intVal;
+}
+
+-(float)floatVal {
+	return data.floatVal;
+}
+
+-(Vector2*)vectorVal {
+	return data.vectorVal;
+}
+
+-(NSString*)stringVal {
+	return data.stringVal;
+}
+
+-(void)setIntVal:(int)val {
+	data.intVal = val;
+}
+
+-(void)setFloatVal:(float)val {
+	data.floatVal = val;
+}
+
+-(void)setVectorVal:(Vector2*)val {
+	if(data.vectorVal != val) [data.vectorVal release];
+	data.vectorVal = [[Vector2 vectorWithX:val.x y:val.y] retain];
+}
+
+-(void)setStringVal:(NSString*)val {
+	if(data.stringVal != val) [data.stringVal release];
+	data.stringVal = [val retain];
+}
+
 -(void)print {
-	if(type == 0)
+	if(type == QSTPropertyVector)
 		printf(" v: %f %f", data.vectorVal.x, data.vectorVal.y);
-	else if(type == 1)
+	else if(type == QSTPropertyFloat)
 		printf(" f: %f", data.floatVal);
-	else
+	else if(type == QSTPropertyString)
 		printf(" s: %s", [data.stringVal UTF8String]);
+	else
+		printf(" i: %d", data.intVal);
 }
 
 

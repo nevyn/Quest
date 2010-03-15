@@ -1,0 +1,8 @@
+{
+	"name" : "Sprite",
+	"properties" : {
+		"SpriteCurrentAnimation" : "",
+		"SpriteCurrentFrame" : 0
+		"SpriteName" : ""
+	}
+}

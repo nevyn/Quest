@@ -18,9 +18,9 @@
   
 */
 
-@protocol QSTCmpGraphics;
 @class MutableVector2;
 @class Vector2;
+@class QSTEntity;
 
 @interface QSTLayer2D : NSObject {
 	// Depth affects how much the layers scrolls when the camera
@@ -38,10 +38,10 @@
 	MutableVector2	*currentPosition;
 	Vector2			*startPosition;	
 	
-	NSMutableArray	*components;
+	NSMutableArray	*entities;
 }
 
--(void)addComponent:(id<QSTCmpGraphics>)aComponent;
+-(void)addEntity:(QSTEntity*)entity;
 -(void)render;
 
 @end
@@ -52,7 +52,7 @@
 }
 
 -(id)init;
--(void)addComponent:(id<QSTCmpGraphics>)aComponent toLayer:(int)layerIndex;
+-(void)addEntity:(QSTEntity*)entity toLayer:(int)layer;
 -(void)render;
 
 @end

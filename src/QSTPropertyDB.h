@@ -14,9 +14,7 @@
 
 }
 
-//-(QSTProperty*)propertyWithName:(NSString*)name forEntity:(int)tEID;
-
-+(QSTProperty*)propertyFromName:(NSString*)type data:(id)data;
++(QSTProperty*)propertyWithName:(NSString*)type data:(id)data;
 +(NSDictionary*)propertiesFromDictionary:(NSDictionary*)data;
 
 @end

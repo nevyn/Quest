@@ -13,6 +13,11 @@
 
 @implementation QSTView
 
+-(void)awakeFromNib {
+	// Hinder drawRect until core is created.
+	[self setNeedsDisplay:NO];
+}
+
 -(void)setCore:(QSTCore*)theCore {
 	//core = theCore;
 }
