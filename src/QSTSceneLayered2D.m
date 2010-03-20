@@ -51,7 +51,7 @@
 		Vector2 *min = sprite.canvas.min;
 		Vector2 *max = sprite.canvas.max;
 		
-		QSTBoundingBox *box = sprite.bbox;
+		//QSTBoundingBox *box = sprite.bbox;
 		
 		QSTBoundingBox *tex = [sprite useWithAnimation:spranim.stringVal	
 												 frame:(int)sprfrm.floatVal];
