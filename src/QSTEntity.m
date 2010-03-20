@@ -21,6 +21,13 @@
 	
 	NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONURL:path];
 	
+	// Return an Error Entity instead, that has a visible
+	// debug sprite.
+	if(r_root == nil) {
+		printf("Warning: Unknown entity type %s\n", [type UTF8String]);
+		return nil;
+	}
+	
 	NSDictionary *props = [core.propertyDB propertiesFromDictionary:r_root];
 		
 	QSTEntity *entity = [[[QSTEntity alloc] initWithProperties:props] autorelease];

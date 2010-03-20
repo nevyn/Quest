@@ -21,11 +21,12 @@
 
 @interface QSTLayer ()
 @property (nonatomic, retain) QSTResourceDB *resourceDB;
+@property (nonatomic, retain) MutableVector2	*currentPosition;
 @end
 
 
 @implementation QSTLayer
-@synthesize resourceDB;
+@synthesize resourceDB, depth, terrain, currentPosition;
 
 -(id)initUsingResourceDB:(QSTResourceDB*)resourceDB_;
 {
@@ -33,7 +34,8 @@
 	
 	self.resourceDB = resourceDB_;
 	entities = [[NSMutableArray alloc] init];
-	
+	self.currentPosition = [MutableVector2 vector];
+
 	return self;
 }
 -(void)dealloc;
@@ -41,6 +43,7 @@
 	[entities release]; entities = nil;
 	self.terrain = nil;
 	self.resourceDB = nil;
+	self.currentPosition = nil;
 	[super dealloc];
 }
 
@@ -52,11 +55,20 @@
 -(void)addEntity:(QSTEntity*)entity {
 	[entities addObject:entity];
 }
-@synthesize terrain;
 
--(void)render {
+-(void)renderWithCameraPosition:(Vector2*)position {
+	glPushMatrix();
+	
+	glScalef(depth, depth, 0.0f);
+	glTranslatef(-position.x + (5.0f / depth), -position.y + (3.75f / depth), 0.0f);
+	//glTranslatef(-position.x * depth + 5.0f, position.y * depth + 3.75f, 0.0f);
+	
 	[self renderEntities];
 	[self renderTerrain];
+	
+	[self renderGrid];
+	
+	glPopMatrix();
 }
 
 -(void)renderEntities {
@@ -77,7 +89,8 @@
 												 frame:(int)sprfrm.floatVal];
 		
 		glPushMatrix();
-		
+
+		//glTranslatef(pos.x * depth, pos.y * depth, 0.0f);
 		glTranslatef(pos.x, pos.y, 0.0f);
 		//glRotatef(currentFrame, 0.0f, 0.0f, 1.0f);
 		
@@ -127,6 +140,24 @@
 
 -(void)renderTerrain {
 	[terrain render];
+}
+
+-(void)renderGrid {
+	glDisable(GL_TEXTURE_2D);
+	float color = depth / 3.0f;
+	glColor3f(color,color,color);
+	glLineWidth(depth * 5);
+	glBegin(GL_LINES);
+	for(int i=0; i<20; i++) {
+		for(int j=0; j<20; j++) {
+			glVertex2f(i, 0.0f);
+			glVertex2f(i, 20.0f);
+			glVertex2f(0.0f, j);
+			glVertex2f(20.0f, j);
+		}
+	}
+	glEnd();
+	glEnable(GL_TEXTURE_2D);
 }
 
 @end

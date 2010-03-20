@@ -57,7 +57,11 @@
 	
 	QSTInputMapper *mapper = [[QSTInputMapper alloc] init];
 	[mapper registerActionWithName:@"jump" action:@selector(jump) target:self];
+	[mapper registerStateActionWithName:@"left" beginAction:@selector(leftStart) endAction:@selector(leftStop) target:self];
+	[mapper registerStateActionWithName:@"right" beginAction:@selector(rightStart) endAction:@selector(rightStop) target:self];
 	[mapper mapKey:49 toAction:@"jump"];
+	[mapper mapKey:123 toAction:@"left"];
+	[mapper mapKey:124 toAction:@"right"];
 	inputSystem.mapper = mapper;
 	[mapper release];
 	
@@ -94,6 +98,10 @@
 	for(int i=0; i<[r_layers count];i++) {
 		[self loadLayer:[r_layers objectAtIndex:i] withIndex:i];
 	}
+	
+	// Create player entity
+	// ATTN: or is there always a player entity?
+	
 }
 
 -(void)loadLayer:(NSMutableDictionary*)layerData withIndex:(int)theIndex {
@@ -103,6 +111,9 @@
 	/* Graphics */
 	QSTLayer *layer = [[[QSTLayer alloc] initUsingResourceDB:self.resourceDB] autorelease];
 	
+	float depth = [[layerData objectForKey:@"depth"] floatValue];
+	layer.depth = depth;
+	
 	NSMutableArray *r_terrain = [layerData objectForKey:@"terrain"];
 	QSTTerrain *terrain = [QSTTerrain terrainWithData:r_terrain resources:self.resourceDB];
 	[layer setTerrain:terrain];
@@ -110,24 +121,30 @@
 	
 	/* Physics */
 	NSMutableArray *r_colmap = [layerData objectForKey:@"colmap"];
-	QSTCmpCollisionMap *colmap = [[[QSTCmpCollisionMap alloc] initWithEID:0] autorelease];
-	for(NSMutableArray *vec in r_colmap) {
-		Vector2 *v1 = [Vector2 vectorWithX:[[vec objectAtIndex:0] floatValue]
-										 y:[[vec objectAtIndex:1] floatValue]];
-		Vector2 *v2 = [Vector2 vectorWithX:[[vec objectAtIndex:2] floatValue]
-										 y:[[vec objectAtIndex:3] floatValue]];
-		
-		[colmap.lines addObject:[QSTLine lineWithA:v1 b:v2]];
+	if(r_colmap != nil) {
+		QSTCmpCollisionMap *colmap = [[[QSTCmpCollisionMap alloc] initWithEID:0] autorelease];
+		for(NSMutableArray *vec in r_colmap) {
+			Vector2 *v1 = [Vector2 vectorWithX:[[vec objectAtIndex:0] floatValue]
+											 y:[[vec objectAtIndex:1] floatValue]];
+			Vector2 *v2 = [Vector2 vectorWithX:[[vec objectAtIndex:2] floatValue]
+											 y:[[vec objectAtIndex:3] floatValue]];
+			
+			[colmap.lines addObject:[QSTLine lineWithA:v1 b:v2]];
+		}
+		[physicsSystem setCollisionMap:colmap forLayer:theIndex];
 	}
-	[physicsSystem setCollisionMap:colmap forLayer:theIndex];
-		
+	
 	NSMutableArray *r_entities = [layerData objectForKey:@"entities"];
 	
 	for(NSMutableDictionary *r_entity in r_entities) {
 		QSTEntity *entity = [self createEntity:r_entity layer:theIndex];
 		
-		[layer registerEntity:entity];
-		[physicsSystem registerEntity:entity inLayer:theIndex];
+		if(entity != nil) {
+			[layer registerEntity:entity];
+			[physicsSystem registerEntity:entity inLayer:theIndex];
+			
+			[graphicsSystem.camera follow:entity withSpeed:0.0f];
+		}
 	}
 	
 	[graphicsSystem addLayer:layer];
@@ -140,6 +157,7 @@
 	
 	// Get archetype
 	QSTEntity *ent = [QSTEntity entityWithType:r_entity_type inCore:self];
+	if(ent == nil) return nil;
 		
 	// Override with specific
 	NSMutableDictionary *r_entity_components = [data objectForKey:@"components"];
@@ -160,12 +178,24 @@
 	//playerPhys.velocity.y = -4.0f;
 }
 
+-(void)leftStart {
+}
+
+-(void)leftStop {
+}
+
+-(void)rightStart {
+}
+
+-(void)rightStop {
+}
+
 -(void)tick {
 		
 	float delta = 0.0166f;
 
 	[physicsSystem tick:delta];
-	[graphicsSystem tick];
+	[graphicsSystem tick:delta];
 }
 
 @end
