@@ -25,7 +25,6 @@
 -(id)init {
 	if(self = [super init]) {
 		entities = [[NSMutableArray alloc] init];
-		terrain = [[QSTTerrain alloc] init];
 	}
 	return self;
 }
@@ -34,7 +33,12 @@
 	[entities addObject:entity];
 }
 
+-(void)setTerrain:(QSTTerrain *)tTerrain {
+	terrain = [tTerrain retain];
+}
+
 -(void)render {
+	printf("render layer");
 	[self renderEntities];
 	[self renderTerrain];
 }
@@ -106,12 +110,13 @@
 }
 
 -(void)renderTerrain {
+	printf("render terrain");
 	[terrain render];
 }
 
 @end
 
-
+/*
 @implementation QSTSceneLayered2D
 
 -(id)init {
@@ -142,3 +147,4 @@
 }
 
 @end
+*/

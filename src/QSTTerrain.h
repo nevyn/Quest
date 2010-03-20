@@ -32,8 +32,10 @@
 	NSMutableArray	*tiles;
 }
 
--(id)init;
++(QSTTerrain*)terrainWithData:(NSMutableArray*)terrainData;
 
+-(id)initWithTerrainData:(NSMutableArray*)terrainData;
+				   
 -(void)render;
 
 @end

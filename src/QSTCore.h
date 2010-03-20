@@ -29,8 +29,8 @@
 @property (nonatomic,readonly) QSTInputSystem *inputSystem;
 
 -(void)loadArea:(NSString*)areaName;
--(void)loadLayer:(NSMutableDictionary*)theLayer withIndex:(int)theIndex;
--(void)createEntity:(NSMutableDictionary*)data layer:(int)layerIndex;
+-(void)loadLayer:(NSMutableDictionary*)layerData withIndex:(int)theIndex;
+-(QSTEntity*)createEntity:(NSMutableDictionary*)data layer:(int)layerIndex;
 -(void)registerWithSystems:(QSTEntity*)entity layer:(int)layerIndex;
 
 -(void)tick;

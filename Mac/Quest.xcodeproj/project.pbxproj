@@ -26,7 +26,6 @@
 		D81E91A511331DD8006994C7 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E917011331DD8006994C7 /* SBJsonWriter.m */; };
 		D81E952D11335507006994C7 /* QSTLine.m in Sources */ = {isa = PBXBuildFile; fileRef = D81E952C11335507006994C7 /* QSTLine.m */; };
 		D85E7179113025120005CAB5 /* QSTGraphicsSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E7178113025120005CAB5 /* QSTGraphicsSystem.m */; };
-		D85E7198113027EA0005CAB5 /* QSTSceneLayered2D.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E7197113027EA0005CAB5 /* QSTSceneLayered2D.m */; };
 		D85E71B3113036130005CAB5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D85E71B2113036130005CAB5 /* OpenGL.framework */; };
 		D85E71E8113036ED0005CAB5 /* QSTView.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E71E7113036ED0005CAB5 /* QSTView.m */; };
 		D85E71EB113037B60005CAB5 /* QSTCore.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E71EA113037B60005CAB5 /* QSTCore.m */; };
@@ -34,8 +33,9 @@
 		D85E720911303DCD0005CAB5 /* shortplan in Resources */ = {isa = PBXBuildFile; fileRef = D85E720811303DCD0005CAB5 /* shortplan */; };
 		D85E74AD1131C01B0005CAB5 /* QSTResourceDB.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E74AC1131C01B0005CAB5 /* QSTResourceDB.m */; };
 		D85E74B11131E9C60005CAB5 /* QSTResSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E74B01131E9C60005CAB5 /* QSTResSprite.m */; };
+		D889DF3011525EB9005110F6 /* arch in Resources */ = {isa = PBXBuildFile; fileRef = D889DF2F11525EB9005110F6 /* arch */; };
+		D889E0781152CF5E005110F6 /* QSTLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D889E0771152CF5E005110F6 /* QSTLayer.m */; };
 		D8BF0BFB113736050006E86E /* QSTCmpCollisionMap.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BF0BFA113736050006E86E /* QSTCmpCollisionMap.m */; };
-		D8BF0C3911373BDE0006E86E /* QSTCmpPhysicsBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BF0C3811373BDE0006E86E /* QSTCmpPhysicsBase.m */; };
 		D8BF0C9B1137F9880006E86E /* QSTResModel2D.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BF0C9A1137F9880006E86E /* QSTResModel2D.m */; };
 		D8BF13AD113AB4050006E86E /* phys in Resources */ = {isa = PBXBuildFile; fileRef = D8BF13AC113AB4050006E86E /* phys */; };
 		D8BF13B4113AEEBC0006E86E /* QSTInputSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BF13B3113AEEBC0006E86E /* QSTInputSystem.m */; };
@@ -90,8 +90,6 @@
 		D81E952C11335507006994C7 /* QSTLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTLine.m; sourceTree = "<group>"; };
 		D85E7177113025120005CAB5 /* QSTGraphicsSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTGraphicsSystem.h; sourceTree = "<group>"; };
 		D85E7178113025120005CAB5 /* QSTGraphicsSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTGraphicsSystem.m; sourceTree = "<group>"; };
-		D85E7196113027EA0005CAB5 /* QSTSceneLayered2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTSceneLayered2D.h; sourceTree = "<group>"; };
-		D85E7197113027EA0005CAB5 /* QSTSceneLayered2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTSceneLayered2D.m; sourceTree = "<group>"; };
 		D85E71B2113036130005CAB5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		D85E71E6113036ED0005CAB5 /* QSTView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTView.h; sourceTree = "<group>"; };
 		D85E71E7113036ED0005CAB5 /* QSTView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTView.m; sourceTree = "<group>"; };
@@ -100,20 +98,15 @@
 		D85E720311303C5B0005CAB5 /* QSTPhysicsSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTPhysicsSystem.h; sourceTree = "<group>"; };
 		D85E720411303C5B0005CAB5 /* QSTPhysicsSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTPhysicsSystem.m; sourceTree = "<group>"; };
 		D85E720811303DCD0005CAB5 /* shortplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shortplan; sourceTree = "<group>"; };
-		D85E72231130B8970005CAB5 /* QSTCmpSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTCmpSprite.h; sourceTree = "<group>"; };
-		D85E72241130B8970005CAB5 /* QSTCmpSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTCmpSprite.m; sourceTree = "<group>"; };
-		D85E737E1130C6CE0005CAB5 /* QSTCmpPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTCmpPosition.h; sourceTree = "<group>"; };
-		D85E737F1130C6CE0005CAB5 /* QSTCmpPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTCmpPosition.m; sourceTree = "<group>"; };
-		D85E74031130C9540005CAB5 /* QSTCmpPhysics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTCmpPhysics.h; sourceTree = "<group>"; };
-		D85E74041130C9540005CAB5 /* QSTCmpPhysics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTCmpPhysics.m; sourceTree = "<group>"; };
 		D85E74AB1131C01B0005CAB5 /* QSTResourceDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTResourceDB.h; sourceTree = "<group>"; };
 		D85E74AC1131C01B0005CAB5 /* QSTResourceDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTResourceDB.m; sourceTree = "<group>"; };
 		D85E74AF1131E9C60005CAB5 /* QSTResSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTResSprite.h; sourceTree = "<group>"; };
 		D85E74B01131E9C60005CAB5 /* QSTResSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTResSprite.m; sourceTree = "<group>"; };
+		D889DF2F11525EB9005110F6 /* arch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arch; sourceTree = "<group>"; };
+		D889E0761152CF5E005110F6 /* QSTLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTLayer.h; sourceTree = "<group>"; };
+		D889E0771152CF5E005110F6 /* QSTLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTLayer.m; sourceTree = "<group>"; };
 		D8BF0BF9113736050006E86E /* QSTCmpCollisionMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTCmpCollisionMap.h; sourceTree = "<group>"; };
 		D8BF0BFA113736050006E86E /* QSTCmpCollisionMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTCmpCollisionMap.m; sourceTree = "<group>"; };
-		D8BF0C3711373BDE0006E86E /* QSTCmpPhysicsBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTCmpPhysicsBase.h; sourceTree = "<group>"; };
-		D8BF0C3811373BDE0006E86E /* QSTCmpPhysicsBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTCmpPhysicsBase.m; sourceTree = "<group>"; };
 		D8BF0C991137F9880006E86E /* QSTResModel2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTResModel2D.h; sourceTree = "<group>"; };
 		D8BF0C9A1137F9880006E86E /* QSTResModel2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTResModel2D.m; sourceTree = "<group>"; };
 		D8BF13AC113AB4050006E86E /* phys */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = phys; sourceTree = "<group>"; };
@@ -273,32 +266,24 @@
 				D85E720411303C5B0005CAB5 /* QSTPhysicsSystem.m */,
 				D8BF13B2113AEEBC0006E86E /* QSTInputSystem.h */,
 				D8BF13B3113AEEBC0006E86E /* QSTInputSystem.m */,
-				D85E7196113027EA0005CAB5 /* QSTSceneLayered2D.h */,
-				D85E7197113027EA0005CAB5 /* QSTSceneLayered2D.m */,
-				D85E72231130B8970005CAB5 /* QSTCmpSprite.h */,
-				D85E72241130B8970005CAB5 /* QSTCmpSprite.m */,
-				D85E737E1130C6CE0005CAB5 /* QSTCmpPosition.h */,
-				D85E737F1130C6CE0005CAB5 /* QSTCmpPosition.m */,
-				D85E74031130C9540005CAB5 /* QSTCmpPhysics.h */,
-				D85E74041130C9540005CAB5 /* QSTCmpPhysics.m */,
+				D889E0761152CF5E005110F6 /* QSTLayer.h */,
+				D889E0771152CF5E005110F6 /* QSTLayer.m */,
 				D8BF0BF9113736050006E86E /* QSTCmpCollisionMap.h */,
 				D8BF0BFA113736050006E86E /* QSTCmpCollisionMap.m */,
 				D85E74AB1131C01B0005CAB5 /* QSTResourceDB.h */,
 				D85E74AC1131C01B0005CAB5 /* QSTResourceDB.m */,
-				D85E74AF1131E9C60005CAB5 /* QSTResSprite.h */,
-				D85E74B01131E9C60005CAB5 /* QSTResSprite.m */,
 				D81E8CBC1131FB22006994C7 /* QSTResTexture.h */,
 				D81E8CBD1131FB22006994C7 /* QSTResTexture.m */,
-				D81E8CC511320E63006994C7 /* QSTResTextureAnimation.h */,
-				D81E8CC611320E63006994C7 /* QSTResTextureAnimation.m */,
 				D81E8CC811320E6E006994C7 /* QSTResTextureStrip.h */,
 				D81E8CC911320E6E006994C7 /* QSTResTextureStrip.m */,
+				D81E8CC511320E63006994C7 /* QSTResTextureAnimation.h */,
+				D81E8CC611320E63006994C7 /* QSTResTextureAnimation.m */,
+				D85E74AF1131E9C60005CAB5 /* QSTResSprite.h */,
+				D85E74B01131E9C60005CAB5 /* QSTResSprite.m */,
 				D81E8EA41133002D006994C7 /* QSTBoundingBox.h */,
 				D81E8EA51133002D006994C7 /* QSTBoundingBox.m */,
 				D81E952B11335507006994C7 /* QSTLine.h */,
 				D81E952C11335507006994C7 /* QSTLine.m */,
-				D8BF0C3711373BDE0006E86E /* QSTCmpPhysicsBase.h */,
-				D8BF0C3811373BDE0006E86E /* QSTCmpPhysicsBase.m */,
 				D8BF0C991137F9880006E86E /* QSTResModel2D.h */,
 				D8BF0C9A1137F9880006E86E /* QSTResModel2D.m */,
 				D8BF1528113B0A4A0006E86E /* QSTResEntityTemplate.h */,
@@ -326,6 +311,7 @@
 				D85E720811303DCD0005CAB5 /* shortplan */,
 				D8BF13AC113AB4050006E86E /* phys */,
 				D8F174EE1145459000D7D3C3 /* comps */,
+				D889DF2F11525EB9005110F6 /* arch */,
 			);
 			name = docs;
 			path = ../docs;
@@ -379,6 +365,7 @@
 				D85E720911303DCD0005CAB5 /* shortplan in Resources */,
 				D8BF13AD113AB4050006E86E /* phys in Resources */,
 				D8F174EF1145459000D7D3C3 /* comps in Resources */,
+				D889DF3011525EB9005110F6 /* arch in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +379,6 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* QuestAppDelegate.m in Sources */,
 				D85E7179113025120005CAB5 /* QSTGraphicsSystem.m in Sources */,
-				D85E7198113027EA0005CAB5 /* QSTSceneLayered2D.m in Sources */,
 				D85E71E8113036ED0005CAB5 /* QSTView.m in Sources */,
 				D85E71EB113037B60005CAB5 /* QSTCore.m in Sources */,
 				D85E720511303C5B0005CAB5 /* QSTPhysicsSystem.m in Sources */,
@@ -412,7 +398,6 @@
 				D81E91A511331DD8006994C7 /* SBJsonWriter.m in Sources */,
 				D81E952D11335507006994C7 /* QSTLine.m in Sources */,
 				D8BF0BFB113736050006E86E /* QSTCmpCollisionMap.m in Sources */,
-				D8BF0C3911373BDE0006E86E /* QSTCmpPhysicsBase.m in Sources */,
 				D8BF0C9B1137F9880006E86E /* QSTResModel2D.m in Sources */,
 				D8BF13B4113AEEBC0006E86E /* QSTInputSystem.m in Sources */,
 				D8DAFA81114BF0780064B657 /* QSTEntity.m in Sources */,
@@ -421,6 +406,7 @@
 				D8DAFB1E114E593C0064B657 /* QSTEntityDB.m in Sources */,
 				D8DAFC64114E6F110064B657 /* JSONHelper.m in Sources */,
 				D8DA002E114EDBEC0064B657 /* QSTTerrain.m in Sources */,
+				D889E0781152CF5E005110F6 /* QSTLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -45,13 +45,14 @@
 }
 
 -(void)addEntity:(QSTEntity*)entity;
+-(void)setTerrain:(QSTTerrain*)tTerrain;
 -(void)render;
 -(void)renderEntities;
 -(void)renderTerrain;
 
 @end
 
-
+/*
 @interface QSTSceneLayered2D : NSObject {
 	NSMutableArray	*layers;
 }
@@ -61,3 +62,4 @@
 -(void)render;
 
 @end
+*/

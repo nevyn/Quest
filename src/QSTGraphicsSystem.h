@@ -8,10 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@class QSTSceneLayered2D;
 @class QSTEntity;
-
+@class QSTTerrain;
+@class QSTLayer;
 
 /*@interface QSTBatch {
 	QSTBatchSettings	settings;
@@ -21,9 +20,8 @@
 
 
 @interface QSTGraphicsSystem : NSObject {
-	// Egentligen id eller id<QSTScene>
-	QSTSceneLayered2D	*scene;
-	
+	NSMutableArray		*layers;
+		
 	int	pixelToUnitRatio;	// Pixels per unit at normal zoom
 }
 
@@ -31,8 +29,11 @@
 -(void)tick;
 -(void)beginFrame;
 
--(void)registerEntity:(QSTEntity*)entity inLayer:(int)layer;
+-(void)addLayer:(QSTLayer*)theLayer;
 
-@property (nonatomic,readonly) QSTSceneLayered2D *scene;
+/*
+-(void)registerEntity:(QSTEntity*)entity inLayer:(int)layer;
+-(void)setTerrain:(QSTTerrain*)tTerrain forLayer:(int)layer;
+*/
 
 @end

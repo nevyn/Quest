@@ -43,6 +43,7 @@ static NSMutableDictionary *componentTemplates;
 	// - float
 	// - (int)
 	// - array (vector2)
+	// - string
 	if([data isKindOfClass:[NSArray class]]) {
 		NSArray *data_array = (NSArray*)data;
 		MutableVector2 *val = [MutableVector2 vectorWithX:[[data_array objectAtIndex:0] floatValue] 

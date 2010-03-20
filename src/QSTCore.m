@@ -16,6 +16,8 @@
 #import "QSTPhysicsSystem.h"
 #import "QSTInputSystem.h"
 
+#import "QSTLayer.h"
+#import "QSTTerrain.h"
 #import "QSTCmpCollisionMap.h"
 
 #import "QSTEntity.h"
@@ -46,6 +48,10 @@
 	return self;
 }
 
+// TODO:
+// Flytta ut all area-laddningskod härifrån! 
+// Kanske ha en Area-klass, eller åtminstone nån loader. AreaLoader?
+
 -(void)loadArea:(NSString*)areaName {
 	NSString *areaPath = [NSString stringWithFormat:@"testgame/areas/%@.area", areaName];
 	
@@ -55,16 +61,25 @@
 	// music and mood etc
 				
 	NSMutableArray *r_layers = [r_root objectForKey:@"layers"];
-	for(int i=0; i<[r_layers count];i++)
+	for(int i=0; i<[r_layers count];i++) {
 		[self loadLayer:[r_layers objectAtIndex:i] withIndex:i];
+	}
 }
 
--(void)loadLayer:(NSMutableDictionary*)theLayer withIndex:(int)theIndex {
+-(void)loadLayer:(NSMutableDictionary*)layerData withIndex:(int)theIndex {
 	
 	printf("Load layer %d...\n", theIndex);
 	
-	NSMutableArray *r_colmap = [theLayer objectForKey:@"colmap"];
+	/* Graphics */
+	QSTLayer *layer = [[QSTLayer alloc] init];
 	
+	NSMutableArray *r_terrain = [layerData objectForKey:@"terrain"];
+	QSTTerrain *terrain = [QSTTerrain terrainWithData:r_terrain];
+	[layer setTerrain:terrain];
+	
+	
+	/* Physics */
+	NSMutableArray *r_colmap = [layerData objectForKey:@"colmap"];
 	QSTCmpCollisionMap *colmap = [[QSTCmpCollisionMap alloc] initWithEID:0];
 	for(NSMutableArray *vec in r_colmap) {
 		Vector2 *v1 = [Vector2 vectorWithX:[[vec objectAtIndex:0] floatValue]
@@ -76,14 +91,19 @@
 	}
 	[physicsSystem setCollisionMap:colmap forLayer:theIndex];
 		
-	NSMutableArray *r_entities = [theLayer objectForKey:@"entities"];
+	NSMutableArray *r_entities = [layerData objectForKey:@"entities"];
 	
 	for(NSMutableDictionary *r_entity in r_entities) {
-		[self createEntity:r_entity layer:theIndex];
+		QSTEntity *entity = [self createEntity:r_entity layer:theIndex];
+		
+		[layer registerEntity:entity];
+		[physicsSystem registerEntity:entity inLayer:theIndex];
 	}
+	
+	[graphicsSystem addLayer:layer];
 }
 
--(void)createEntity:(NSMutableDictionary*)data layer:(int)layerIndex {
+-(QSTEntity*)createEntity:(NSMutableDictionary*)data layer:(int)layerIndex {
 	NSString *r_entity_type = [data objectForKey:@"type"];
 	
 	printf("Create entity of type %s...\n", [r_entity_type UTF8String]);
@@ -97,11 +117,11 @@
 	for(NSString *key in properties)
 		[ent setProperty:key to:[properties objectForKey:key]];
 		
-	[self registerWithSystems:ent layer:layerIndex];
+	return ent;
 }
 
 -(void)registerWithSystems:(QSTEntity*)entity layer:(int)layerIndex {
-	[graphicsSystem registerEntity:entity inLayer:layerIndex];
+	//[graphicsSystem registerEntity:entity inLayer:layerIndex];
 	[physicsSystem registerEntity:entity inLayer:layerIndex];
 }
 

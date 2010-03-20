@@ -32,12 +32,8 @@
 
 @implementation QSTGraphicsSystem
 
-@synthesize scene;
-
 -(id)init {
-	if(self = [super init]) {
-		scene = [[QSTSceneLayered2D alloc] init];
-		
+	if(self = [super init]) {		
 		pixelToUnitRatio = 64;
 		
 		glViewport(0, 0, 640, 480);		
@@ -55,18 +51,25 @@
 		
 		glEnable(GL_TEXTURE_2D);
 		glPointSize(5.0f);
+		
+		layers = [[NSMutableArray alloc] init];
 	}
 	return self;
+}
+
+-(void)clear {
+	[layers release];
+	layers = [[NSMutableArray alloc] init];
 }
 
 -(void)tick {
 	[self beginFrame];
 	
 	// Render world and entities
-	[scene render];
+	for(QSTLayer *aLayer in layers)
+		[aLayer render];
 		
 	// GUI
-
 }
 
 -(void)beginFrame {
@@ -74,9 +77,19 @@
 	glLoadIdentity();
 }
 
+-(void)addLayer:(QSTLayer*)theLayer {
+	[layers addObject:theLayer];
+}
+
+/*
 -(void)registerEntity:(QSTEntity*)entity inLayer:(int)layer {
 	if([entity property:@"SpriteName"] == nil) return;
-	[scene addEntity:entity toLayer:layer];
+	[[layers objectAtIndex:layer] addEntity:entity];
 }
+
+-(void)setTerrain:(QSTTerrain *)tTerrain forLayer:(int)layer {
+	[[layers objectAtIndex:layer] setTerrain:tTerrain];
+}
+*/
 
 @end

@@ -2,6 +2,29 @@
   "layers" : [
     {
       "depth" : 1.0,
+      "terrain" : [
+        {
+          "sprite" : "ground",
+          "position" : [3.0, 8.0],
+          "rotation" : 10.0,
+          "scale" : 2.0,
+          "animation" : "idle"
+        },
+        {
+          "sprite" : "ground",
+          "position" : [8.0, 6.0],
+          "rotation" : -30.0,
+          "scale" : 1.2,
+          "animation" : "anim"
+        },
+        {
+          "sprite" : "tree",
+          "position" : [0.0, 5.2],
+          "rotation" : 10.0,
+          "scale" : 2.3,
+          "animation" : "idle"
+        }
+      ],
       "colmap" : [
         [0.0, 4.5, 6.0, 4.5],
         [6.0, 6.0, 10.0, 4.5]

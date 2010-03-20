@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class Vector2;
 
 @interface JSONHelper : NSObject {
 
@@ -15,5 +16,7 @@
 
 +(NSMutableDictionary*)dictionaryFromJSONPath:(NSString*)path;
 +(NSMutableDictionary*)dictionaryFromJSONString:(NSString*)data;
+
++(Vector2*)vectorFromKey:(NSString*)key data:(NSMutableDictionary*)data;
 
 @end
