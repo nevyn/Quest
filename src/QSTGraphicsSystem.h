@@ -11,6 +11,8 @@
 @class QSTEntity;
 @class QSTTerrain;
 @class QSTLayer;
+@class Vector2;
+@class MutableVector2;
 
 /*@interface QSTBatch {
 	QSTBatchSettings	settings;
@@ -18,15 +20,48 @@
 }
 @end*/
 
+@interface QSTCamera : NSObject {
+	MutableVector2	*position;
+	
+	BOOL			followMode;
+	QSTEntity		*entityToFollow;
+	
+	// When not in follow mode, use this as destination instead:
+	MutableVector2	*destination;
+	
+	float			speed;
+	float			zoomFactor;
+	float			goalZoomFactor;
+	float			zoomSpeed;
+	
+	// YES while in the midst of zooming in or out. Used
+	// so that the camera doesn't always call the GFX system's
+	// zoom functions.
+	BOOL			zooming;
+}
+
+@property (nonatomic,readonly) Vector2 *position;
+
+-(void)update:(float)delta;
+
+-(void)zoomTo:(float)theZoom withSpeed:(float)theSpeed;
+-(void)panToX:(float)x y:(float)y withSpeed:(float)theSpeed;
+-(void)follow:(QSTEntity*)follow withSpeed:(float)theSpeed;
+
+@end
+
 
 @interface QSTGraphicsSystem : NSObject {
+	QSTCamera			*camera;
 	NSMutableArray		*layers;
 		
 	int	pixelToUnitRatio;	// Pixels per unit at normal zoom
 }
 
+@property (nonatomic,readonly) QSTCamera *camera;
+
 -(id)init;
--(void)tick;
+-(void)tick:(float)delta;
 -(void)beginFrame;
 
 -(void)addLayer:(QSTLayer*)theLayer;

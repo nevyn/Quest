@@ -44,7 +44,8 @@
 		QSTProperty *vel = [ent1 property:@"Velocity"];
 		QSTResSprite *sprite = [QSTResourceDB getSpriteWithName:[ent1 property:@"SpriteName"].stringVal];
 		
-		vel.vectorVal.y += 9.8f * dt;
+		//vel.vectorVal.y += 9.8f * dt;
+		vel.vectorVal.y = 1.0f;
 		vel.vectorVal.x = 1.0f;
 				
 		MutableVector2 *to = [MutableVector2 vectorWithX:pos.vectorVal.x + (vel.vectorVal.x * dt)
@@ -94,9 +95,11 @@
 		
 		if(collided == NO) {
 			pos.vectorVal.x = to.x;
-			pos.vectorVal.y = to.y;
+			//pos.vectorVal.y = to.y;
 		}
 		
+		pos.vectorVal.x = to.x;
+		pos.vectorVal.y = to.y;
 	}
 }
 

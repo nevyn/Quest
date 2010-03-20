@@ -1,3 +1,33 @@
+Koncept, tankar och idéer:
+
+Quest är en 2D-äventyrsspelmotor.
+
+Med Quest kan man göra Super Metroid/Shadow Complex-liknande spel OCH INGET ANNAT.
+
+Med andra ord är i princip det enda som skiljer spelen åt deras grafik, karta och fiendelogik. Gameplay är samma. Kontrollerna är samma. Kartsystemet är samma. Allt detta står motorn för.
+
+
+
+Världen är "freeform"-baserad istället för tilemap. Karaktärer är riktiga skelettstyrda (2D)modeller istället för enkla sprites.
+Modellerna kommer vara uppbyggda av sprites.
+
+
+
+
+Saker jag tänker på snabbt och som kan vara bra att alla får reda på:
+- Spelaren sätter man inte ut i Area manuellt, det gör motorn. Vilken Area och position spelet börjar i och hur spelaren ser ut osv anges någon annanstans. Kanske borde man kunna sätta ut en för debug-syfte i och för sig...
+
+
+
+
+
+
+
+
+
+
+
+
 Hm, kan jag ha bara en enda scen?
 Nej, inte snyggt, för varje system vill ha olika grejer däri,
 och det känns lite bättre att de tar hand om det själva.
