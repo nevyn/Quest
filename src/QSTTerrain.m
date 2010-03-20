@@ -16,22 +16,38 @@
 #import "QSTBoundingBox.h"
 #import "Vector2.h"
 
-@implementation QSTTerrainTile
+@interface QSTTerrainTile ()
+@property (nonatomic, retain) QSTResSprite *sprite;
+@property (nonatomic, retain) NSString *currentAnimation;
+@property (nonatomic, retain) Vector2 *position;
+@end
 
--(id)initWithPosition:(Vector2*)thePos rotation:(float)theRot scale:(float)theScale sprite:(NSString*)spriteName animation:(NSString*)animName {
-	if(self = [super init]) {
-		currentFrame = 0.0f;
-		currentAnimation = [animName retain];
+
+@implementation QSTTerrainTile
+@synthesize sprite, currentAnimation, position;
+
+-(id)initWithPosition:(Vector2*)thePos rotation:(float)theRot scale:(float)theScale sprite:(QSTResSprite*)sprite_ animation:(NSString*)animName {
+	if(![super init]) return nil;
+	
+	currentFrame = 0.0f;
+	self.currentAnimation = animName;
+	
+	self.position = [Vector2 vectorWithVector2:thePos];
+	scale = theScale;
+	rotation = theRot;
+	
+	sprite = sprite_;
 		
-		position = [[Vector2 vectorWithVector2:thePos] retain];
-		scale = theScale;
-		rotation = theRot;
-		
-		sprite = [[QSTResourceDB getSpriteWithName:spriteName] retain];
-		
-		printf("Tile: %f %f, %f degrees, %f scale, %s, %s\n", position.x, position.y, rotation, scale, [spriteName UTF8String], [animName UTF8String]);
-	}
+	printf("Tile: %f %f, %f degrees, %f scale, %s, %s\n", position.x, position.y, rotation, scale, [[sprite description] UTF8String], [animName UTF8String]);
+	
 	return self;
+}
+-(void)dealloc;
+{
+	self.sprite = nil;
+	self.currentAnimation = nil;
+	self.position = nil;
+	[super dealloc];
 }
 
 -(void)render {
@@ -77,34 +93,45 @@
 
 @end
 
+@interface QSTTerrain ()
+@property (nonatomic, retain) NSMutableArray	*tiles;
+@end
+
 
 @implementation QSTTerrain
-
-+(QSTTerrain*)terrainWithData:(NSMutableArray*)terrainData {
-	return [[[QSTTerrain alloc] initWithTerrainData:terrainData] autorelease];
+@synthesize tiles;
++(QSTTerrain*)terrainWithData:(NSMutableArray*)terrainData resources:(QSTResourceDB*)resourceDB;
+ {
+	return [[[QSTTerrain alloc] initWithTerrainData:terrainData resources:resourceDB] autorelease];
 }
 
--(id)initWithTerrainData:(NSMutableArray*)terrainData {
-	if(self = [super init]) {
-		tiles = [[NSMutableArray alloc] init];
+-(id)initWithTerrainData:(NSMutableArray*)terrainData resources:(QSTResourceDB*)resourceDB;
+{
+	if(![super init]) return nil;
+	tiles = [[NSMutableArray alloc] init];
+	
+	for(NSMutableDictionary *tileData in terrainData) {
+		Vector2 *position = [JSONHelper vectorFromKey:@"position" data:tileData];
+		float rotation = [[tileData objectForKey:@"rotation"] floatValue];
+		float scale = [[tileData objectForKey:@"scale"] floatValue];
+		QSTResSprite *sprite = [resourceDB getSpriteWithName:[tileData objectForKey:@"sprite"]];
+		NSString *animName = [tileData objectForKey:@"animation"];
 		
-		for(NSMutableDictionary *tileData in terrainData) {
-			Vector2 *position = [JSONHelper vectorFromKey:@"position" data:tileData];
-			float rotation = [[tileData objectForKey:@"rotation"] floatValue];
-			float scale = [[tileData objectForKey:@"scale"] floatValue];
-			NSString *spriteName = [tileData objectForKey:@"sprite"];
-			NSString *animName = [tileData objectForKey:@"animation"];
-			
-			QSTTerrainTile *tile = [[QSTTerrainTile alloc] initWithPosition:position 
-																   rotation:rotation 
-																	  scale:scale 
-																	 sprite:spriteName 
-																  animation:animName];
-			
-			[tiles addObject:tile];
-		}
+		QSTTerrainTile *tile = [[[QSTTerrainTile alloc] initWithPosition:position 
+																													 rotation:rotation 
+																															scale:scale 
+																														 sprite:sprite 
+																													animation:animName] autorelease];
+		
+		[tiles addObject:tile];
 	}
+	
 	return self;
+}
+-(void)dealloc;
+{
+	self.tiles = nil;
+	[super dealloc];
 }
 
 -(void)render {

@@ -19,18 +19,28 @@
 #import "Vector2.h"
 #import "QSTBoundingBox.h"
 
-@implementation QSTLayer
+@interface QSTLayer ()
+@property (nonatomic, retain) QSTResourceDB *resourceDB;
+@end
 
--(id)init {
-	if(self = [super init]) {
-		entities = [[NSMutableArray alloc] init];
-	}
+
+@implementation QSTLayer
+@synthesize resourceDB;
+
+-(id)initUsingResourceDB:(QSTResourceDB*)resourceDB_;
+{
+ if(![super init]) return nil;
+	
+	self.resourceDB = resourceDB_;
+	entities = [[NSMutableArray alloc] init];
+	
 	return self;
 }
 -(void)dealloc;
 {
 	[entities release]; entities = nil;
 	self.terrain = nil;
+	self.resourceDB = nil;
 	[super dealloc];
 }
 
@@ -55,7 +65,7 @@
 		QSTProperty *spranim = [ent property:@"SpriteCurrentAnimation"];
 		QSTProperty *sprfrm = [ent property:@"SpriteCurrentFrame"];
 		QSTProperty *position = [ent property:@"Position"];
-		QSTResSprite *sprite = [QSTResourceDB getSpriteWithName:sprname.stringVal];
+		QSTResSprite *sprite = [resourceDB getSpriteWithName:sprname.stringVal];
 		
 		Vector2	*pos = position.vectorVal;
 		Vector2 *min = sprite.canvas.min;

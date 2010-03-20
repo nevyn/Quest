@@ -12,14 +12,21 @@
 #import "QSTResTexture.h"
 #import "QSTBoundingBox.h"
 
+@interface QSTResTextureStrip ()
+@property (nonatomic,retain) QSTResTexture *texture;
+@property (nonatomic,retain,readwrite) NSMutableArray *subdivs;
+@end
+
+
 @implementation QSTResTextureStrip
 
-@synthesize subdivs;
+@synthesize subdivs, texture;
 
--(id)initWithTexturePath:(NSURL*)path frames:(int)frames {
+-(id)initWithTexture:(QSTResTexture*)tex frames:(int)frames;
+{
 	if(self = [super init]) {
-		texture = [[QSTResourceDB getTextureWithPath:path] retain];
-		
+		self.texture = tex;
+				
 		//int frameSize = texture.width / frames;
 		float subsize = 1.0f / frames;		
 		
@@ -34,5 +41,10 @@
 	}
 	return self;
 }
-
+-(void)dealloc;
+{
+	self.texture = nil;
+	self.subdivs = nil;
+	[super dealloc];
+}
 @end

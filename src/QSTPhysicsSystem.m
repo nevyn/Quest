@@ -18,14 +18,31 @@
 #import "QSTBoundingBox.h"
 #import "QSTLine.h"
 #import "Vector2.h"
+#import "QSTCore.h"
+
+@interface QSTPhysicsSystem ()
+@property (nonatomic, assign) QSTCore *core;
+@end
+
 
 @implementation QSTPhysicsSystem
+@synthesize core;
 
--(id)init {
-	if (self = [super init]) {
-		entities = [[NSMutableArray alloc] init];
-	}
+-(id)initOnCore:(QSTCore*)core_;
+{
+	if (![super init]) return nil;
+	
+	self.core = core_;
+	entities = [[NSMutableArray alloc] init];
+	
 	return self;
+}
+-(void)dealloc;
+{
+	self.core = nil;
+	[entities release]; entities = nil;
+	[collisionMap release]; collisionMap = nil;
+	[super dealloc];
 }
 
 -(void)registerEntity:(QSTEntity*)entity inLayer:(int)layer {
@@ -42,7 +59,7 @@
 		
 		QSTProperty *pos = [ent1 property:@"Position"];
 		QSTProperty *vel = [ent1 property:@"Velocity"];
-		QSTResSprite *sprite = [QSTResourceDB getSpriteWithName:[ent1 property:@"SpriteName"].stringVal];
+		QSTResSprite *sprite = [core.resourceDB getSpriteWithName:[ent1 property:@"SpriteName"].stringVal];
 		
 		vel.vectorVal.y += 9.8f * dt;
 		vel.vectorVal.x = 1.0f;
@@ -101,7 +118,7 @@
 }
 
 -(Vector2*)collideBBox:(QSTBoundingBox*)bbox withLine:(QSTLine*)line from:(Vector2*)from to:(Vector2*)to {
-	QSTLine *lines[4];
+	QSTLine *lines[4] = {nil};
 	
 	lines[0] = [[QSTLine alloc] initWithX1:from.x + bbox.min.x y1:from.y + bbox.min.y x2:to.x + bbox.min.x y2:to.y + bbox.min.y];
 	lines[1] = [[QSTLine alloc] initWithX1:from.x + bbox.max.x y1:from.y + bbox.min.y x2:to.x + bbox.max.x y2:to.y + bbox.min.y];
@@ -112,7 +129,6 @@
 	Vector2 *ret = nil;
 	for(int i=0; i<4; i++) {
 		Vector2 *isct = [lines[i] intersects:line];
-		[lines[i] release];
 		if(isct == nil)
 			continue;
 		
@@ -123,12 +139,13 @@
 			ret = [Vector2 vectorWithX:from.x + move.x y:from.y + move.y];
 		}
 	}
+	for(int i=0; i<4; i++) [lines[i] release];
 	
 	return ret;
 }
 
 -(Vector2*)collideBBox:(QSTBoundingBox*)bbox withBBox:(QSTBoundingBox*)other atPosition:(Vector2*)pos from:(Vector2*)from to:(Vector2*)to {
-	QSTLine *lines[4];
+	QSTLine *lines[4] = {nil};
 	
 	lines[0] = [[QSTLine alloc] initWithX1:pos.x + other.min.x y1:pos.y + other.min.y x2:pos.x + other.max.x y2:pos.y + other.min.y];
 	lines[1] = [[QSTLine alloc] initWithX1:pos.x + other.max.x y1:pos.y + other.min.y x2:pos.x + other.max.x y2:pos.y + other.max.y];
@@ -149,6 +166,8 @@
 			//ret = [Vector2 vectorWithX:from.x + move.x y:from.y + move.y];
 		}
 	}
+	
+	for(int i=0; i<4; i++) [lines[i] release];
 	
 	return ret;
 }

@@ -12,6 +12,7 @@
 		05D98CCE11551E3B002DC175 /* Logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D98CC911551E3B002DC175 /* Logging.m */; };
 		05D98CCF11551E3B002DC175 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D98CCB11551E3B002DC175 /* Test.m */; };
 		05D98CDE11551F1B002DC175 /* NSURL+QuestPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D98CDD11551F1B002DC175 /* NSURL+QuestPath.m */; };
+		05D98E0511553BE4002DC175 /* QSTNetworkSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D98E0411553BE4002DC175 /* QSTNetworkSystem.m */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* QuestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* QuestAppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -64,6 +65,8 @@
 		05D98CCB11551E3B002DC175 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		05D98CDC11551F1B002DC175 /* NSURL+QuestPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QuestPath.h"; sourceTree = "<group>"; };
 		05D98CDD11551F1B002DC175 /* NSURL+QuestPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+QuestPath.m"; sourceTree = "<group>"; };
+		05D98E0311553BE4002DC175 /* QSTNetworkSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTNetworkSystem.h; sourceTree = "<group>"; };
+		05D98E0411553BE4002DC175 /* QSTNetworkSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTNetworkSystem.m; sourceTree = "<group>"; };
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -297,6 +300,8 @@
 				D85E720411303C5B0005CAB5 /* QSTPhysicsSystem.m */,
 				D8BF13B2113AEEBC0006E86E /* QSTInputSystem.h */,
 				D8BF13B3113AEEBC0006E86E /* QSTInputSystem.m */,
+				05D98E0311553BE4002DC175 /* QSTNetworkSystem.h */,
+				05D98E0411553BE4002DC175 /* QSTNetworkSystem.m */,
 				D889E0761152CF5E005110F6 /* QSTLayer.h */,
 				D889E0771152CF5E005110F6 /* QSTLayer.m */,
 				D8BF0BF9113736050006E86E /* QSTCmpCollisionMap.h */,
@@ -445,6 +450,7 @@
 				05D98CCE11551E3B002DC175 /* Logging.m in Sources */,
 				05D98CCF11551E3B002DC175 /* Test.m in Sources */,
 				05D98CDE11551F1B002DC175 /* NSURL+QuestPath.m in Sources */,
+				05D98E0511553BE4002DC175 /* QSTNetworkSystem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,9 +487,12 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Quest_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = _DEBUG;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Quest-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = Quest;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 			};
 			name = Debug;
 		};
@@ -495,9 +504,11 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Quest_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Quest-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = Quest;
+				RUN_CLANG_STATIC_ANALYZER = YES;
 			};
 			name = Release;
 		};

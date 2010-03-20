@@ -15,12 +15,13 @@
 
 @implementation QSTEntity
 
-+(QSTEntity*)entityWithType:(NSString*)type {
++(QSTEntity*)entityWithType:(NSString*)type inCore:(QSTCore*)core;
+{
 	NSURL *path = $joinUrls(core.gamePath, @"entities", [type stringByAppendingPathExtension:@"ent"]);
 	
 	NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONURL:path];
 	
-	NSDictionary *props = [QSTPropertyDB propertiesFromDictionary:r_root];
+	NSDictionary *props = [core.propertyDB propertiesFromDictionary:r_root];
 		
 	QSTEntity *entity = [[[QSTEntity alloc] initWithProperties:props] autorelease];
 	return entity;

@@ -22,9 +22,9 @@
 @synthesize bbox;
 @synthesize	canvas;
 
--(id)initWithName:(NSString*)name {
+-(id)initWithPath:(NSURL*)spritePath resources:(QSTResourceDB*)resourceDB;
+{
 	if(self = [super init]) {
-		NSURL *spritePath = $joinUrls(core.gamePath, @"sprites", name);
 		NSURL *defpath = $joinUrls(spritePath, @"sprite.def");
 
 		NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONURL:defpath];
@@ -64,12 +64,12 @@
 		
 		for(NSString* animName in r_animations) {
 			QSTResTextureAnimation *anim = [[QSTResTextureAnimation alloc]
-											initWithData:[r_animations objectForKey:animName] path:spritePath];
+											initWithData:[r_animations objectForKey:animName] path:spritePath resources:resourceDB];
 			[animations setObject:anim forKey:animName];
 			[anim release];
 		}
 		
-		printf("Sprite %s, animations:\n", [name UTF8String]);
+		printf("Sprite %s, animations:\n", [[spritePath lastPathComponent] UTF8String]);
 		for(NSString *a in animations)
 			printf("  %s\n", [a UTF8String]);
 	}

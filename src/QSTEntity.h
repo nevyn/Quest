@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class QSTProperty;
+@class QSTCore;
 
 /*
 	Entity
@@ -22,7 +23,7 @@
 	NSMutableDictionary	*properties;
 }
 
-+(QSTEntity*)entityWithType:(NSString*)type;
++(QSTEntity*)entityWithType:(NSString*)type inCore:(QSTCore*)core;
 
 -(id)initWithProperties:(NSDictionary*)props;
 

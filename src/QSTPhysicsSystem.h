@@ -27,15 +27,16 @@ typedef enum {
 @class QSTLine;
 @class Vector2;
 @class QSTEntity;
+@class QSTCore;
 
 @interface QSTPhysicsSystem : NSObject {
 
 	NSMutableArray	*entities;
 	QSTCmpCollisionMap	*collisionMap;
-	
+	QSTCore *core;
 }
 
--(id)init;
+-(id)initOnCore:(QSTCore*)core_;
 -(void)registerEntity:(QSTEntity*)entity inLayer:(int)layer;
 -(void)setCollisionMap:(QSTCmpCollisionMap*)aColMap forLayer:(int)theLayer;
 -(void)tick:(float)dt;

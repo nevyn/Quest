@@ -13,14 +13,22 @@
 #import "JSONHelper.h"
 #import "QSTCore.h"
 
-static NSMutableDictionary *componentTemplates;
+@interface QSTPropertyDB ()
+@property (assign) QSTCore *core;
+@property (retain) NSMutableDictionary *componentTemplates;
+@end
+
 
 @implementation QSTPropertyDB
-
-+(void)initialize {
+@synthesize core, componentTemplates;
+-(id)initOnCore:(QSTCore*)core_;
+{
+	if(![super init]) return nil;
 	printf("PropertyDB: Initializing!\n");
 	
-	componentTemplates = [[NSMutableDictionary dictionary] retain];
+	self.core = core_;
+	
+	self.componentTemplates = [NSMutableDictionary new];
 	
 	NSFileManager *fm = [NSFileManager defaultManager];
 	NSURL *componentsRoot = $joinUrls(core.gamePath, @"components");
@@ -37,6 +45,14 @@ static NSMutableDictionary *componentTemplates;
 		
 		[componentTemplates setObject:r_props forKey:r_name];
 	}
+	
+	return self;
+}
+-(void)dealloc;
+{
+	self.core = nil;
+	self.componentTemplates = nil;
+	[super dealloc];
 }
 
 
@@ -61,7 +77,7 @@ static NSMutableDictionary *componentTemplates;
 }
 
 
-+(NSDictionary*)propertiesFromDictionary:(NSDictionary*)data {
+-(NSDictionary*)propertiesFromDictionary:(NSDictionary*)data {
 	NSMutableDictionary *resultProps = [NSMutableDictionary dictionary];
 	for(NSString *key in data) {
 		printf(" Check %s...", [key UTF8String]);

@@ -9,12 +9,15 @@
 #import <Cocoa/Cocoa.h>
 
 @class QSTProperty;
+@class QSTCore;
 
 @interface QSTPropertyDB : NSObject {
-
+	QSTCore *core;
+	NSMutableDictionary *componentTemplates;
 }
-
 +(QSTProperty*)propertyWithName:(NSString*)type data:(id)data;
-+(NSDictionary*)propertiesFromDictionary:(NSDictionary*)data;
+
+-(id)initOnCore:(QSTCore*)core_;
+-(NSDictionary*)propertiesFromDictionary:(NSDictionary*)data;
 
 @end

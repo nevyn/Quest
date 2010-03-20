@@ -10,12 +10,14 @@
 
 #import "QSTResTexture.h"
 #import "QSTBoundingBox.h"
+#import "QSTResourceDB.h"
 
 @implementation QSTResTextureAnimation
 
 @synthesize maxFrames;
 
--(id)initWithData:(NSMutableDictionary*)data path:(NSURL*)path {
+-(id)initWithData:(NSMutableDictionary*)data path:(NSURL*)path resources:(QSTResourceDB*)resourceDB;
+{
 	fps = [[data objectForKey:@"fps"] floatValue];
 	loopStart = [[data objectForKey:@"loopstart"] intValue];
 	maxFrames = [[data objectForKey:@"frames"] intValue];
@@ -24,8 +26,9 @@
 	
 	NSString *textureName = [data objectForKey:@"texture"];
 	NSURL *texturePath = $joinUrls(path, textureName);
+	QSTResTexture *tex = [resourceDB getTextureWithPath:texturePath];
 		
-	return [super initWithTexturePath:texturePath frames:maxFrames];
+	return [super initWithTexture:tex frames:maxFrames];
 }
 
 -(QSTBoundingBox*)useWithFrame:(int)frame {

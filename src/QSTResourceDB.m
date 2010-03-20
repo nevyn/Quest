@@ -11,21 +11,38 @@
 #import "JSON.h"
 #import "QSTResTexture.h"
 #import "QSTResSprite.h"
+#import "QSTCore.h"
 //#import "QSTResEntityTemplate.h"
 
-static NSMutableDictionary *textures;
-static NSMutableDictionary *sprites;
-//static NSMutableDictionary *entityTemplates;
+@interface QSTResourceDB ()
+@property (assign) QSTCore *core;
+@property (retain) NSMutableDictionary *textures;
+@property (retain) NSMutableDictionary *sprites;
+@end
+
 
 @implementation QSTResourceDB
+@synthesize core, textures, sprites;
 
-+(void)initialize {
+-(id)initOnCore:(QSTCore*)core_;
+{
+	if(![super init]) return nil;
+	
+	self.core = core_;
 	textures = [[NSMutableDictionary alloc] init];
 	sprites = [[NSMutableDictionary alloc] init];
 	//entityTemplates = [[NSMutableDictionary alloc] init];
+	
+	return self;
+}
+-(void)dealloc;
+{
+	self.textures = self.sprites = nil;
+	self.core = nil;
+	[super dealloc];
 }
 
-+(QSTResTexture*)getTextureWithPath:(NSURL*)path {
+-(QSTResTexture*)getTextureWithPath:(NSURL*)path {
 	printf("ResourceDB: getTextureWithPath [%s]\n", [[path path] UTF8String]);
 	
 	QSTResTexture *texture = [textures objectForKey:path];
@@ -45,15 +62,15 @@ static NSMutableDictionary *sprites;
 	return texture;
 }
 
-+(QSTResSprite*)getSpriteWithName:(NSString*)name {
+-(QSTResSprite*)getSpriteWithName:(NSString*)name {
 	//printf("ResourceDB: getSpriteWithName [%s]\n", [name UTF8String]);
 	
 	QSTResSprite *sprite = [sprites objectForKey:name];
 	if(sprite != nil) { /*printf("Already loaded.\n");*/ return sprite; }
-		
-	sprite = [[QSTResSprite alloc] initWithName:name];
+	
+	NSURL *spritePath = $joinUrls(core.gamePath, @"sprites", name);
+	sprite = [[(QSTResSprite*)[QSTResSprite alloc] initWithPath:spritePath resources:self] autorelease];
 	[sprites setObject:sprite forKey:name];
-	[sprite release];
 	
 	return sprite;
 }

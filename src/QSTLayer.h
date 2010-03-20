@@ -12,6 +12,7 @@
 @class MutableVector2;
 @class QSTEntity;
 @class QSTTerrain;
+@class QSTResourceDB;
 
 @interface QSTLayer : NSObject {
 	// Depth affects how much the layers scrolls when the camera
@@ -32,8 +33,10 @@
 	NSMutableArray	*entities;
 	
 	QSTTerrain		*terrain;
+	
+	QSTResourceDB* resourceDB;
 }
-
+-(id)initUsingResourceDB:(QSTResourceDB*)resourceDB_;
 -(void)registerEntity:(QSTEntity*)entity;
 -(void)addEntity:(QSTEntity*)entity;		// Dangerous, no checking
 @property (nonatomic, retain) QSTTerrain *terrain;

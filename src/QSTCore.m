@@ -25,23 +25,34 @@
 #import "QSTPropertyDB.h"
 
 @interface QSTCore ()
+@property (nonatomic,readwrite,retain) QSTGraphicsSystem *graphicsSystem;
+@property (nonatomic,readwrite,retain) QSTPhysicsSystem *physicsSystem;
+@property (nonatomic,readwrite,retain) QSTInputSystem *inputSystem;
+@property (nonatomic,readwrite,retain) QSTNetworkSystem *networkSystem;
+
+@property (nonatomic,readwrite,retain) QSTPropertyDB *propertyDB;
+@property (nonatomic,readwrite,retain) QSTResourceDB *resourceDB;
+
 @property (nonatomic,readwrite, copy) NSURL *gamePath;
 @end
 
 
 @implementation QSTCore
-@synthesize graphicsSystem, physicsSystem, inputSystem;
+@synthesize graphicsSystem, physicsSystem, inputSystem, networkSystem;
+@synthesize propertyDB, resourceDB;
 @synthesize gamePath;
 
 -(id)initWithGame:(NSURL*)gamePath_;
 {
 	if(![super init]) return nil;
-	core = self;
 	
 	self.gamePath = gamePath_;
 	
+	self.propertyDB = [[[QSTPropertyDB alloc] initOnCore:self] autorelease];
+	self.resourceDB = [[[QSTResourceDB alloc] initOnCore:self] autorelease];
+	
 	graphicsSystem = [[QSTGraphicsSystem alloc] init];
-	physicsSystem = [[QSTPhysicsSystem alloc] init];
+	physicsSystem = [[QSTPhysicsSystem alloc] initOnCore:self];
 	inputSystem = [[QSTInputSystem alloc] init];
 	
 	QSTInputMapper *mapper = [[QSTInputMapper alloc] init];
@@ -54,13 +65,23 @@
 	[self loadArea:@"test"];
 	return self;
 }
-
+-(void)dealloc;
+{
+	self.graphicsSystem = nil;
+	self.physicsSystem = nil;
+	self.inputSystem = nil;
+	self.networkSystem = nil;
+	self.gamePath = nil;
+	self.propertyDB = nil;
+	self.resourceDB = nil;
+	[super dealloc];
+}
 // TODO:
 // Flytta ut all area-laddningskod härifrån! 
 // Kanske ha en Area-klass, eller åtminstone nån loader. AreaLoader?
 
 -(void)loadArea:(NSString*)areaName {
-	NSURL *areaPath = [core.gamePath URLByAppendingPathComponents:$array(
+	NSURL *areaPath = [self.gamePath URLByAppendingPathComponents:$array(
 		@"areas", $sprintf(@"%@.area", areaName)
 	)];
 	
@@ -80,16 +101,16 @@
 	printf("Load layer %d...\n", theIndex);
 	
 	/* Graphics */
-	QSTLayer *layer = [[QSTLayer alloc] init];
+	QSTLayer *layer = [[[QSTLayer alloc] initUsingResourceDB:self.resourceDB] autorelease];
 	
 	NSMutableArray *r_terrain = [layerData objectForKey:@"terrain"];
-	QSTTerrain *terrain = [QSTTerrain terrainWithData:r_terrain];
+	QSTTerrain *terrain = [QSTTerrain terrainWithData:r_terrain resources:self.resourceDB];
 	[layer setTerrain:terrain];
 	
 	
 	/* Physics */
 	NSMutableArray *r_colmap = [layerData objectForKey:@"colmap"];
-	QSTCmpCollisionMap *colmap = [[QSTCmpCollisionMap alloc] initWithEID:0];
+	QSTCmpCollisionMap *colmap = [[[QSTCmpCollisionMap alloc] initWithEID:0] autorelease];
 	for(NSMutableArray *vec in r_colmap) {
 		Vector2 *v1 = [Vector2 vectorWithX:[[vec objectAtIndex:0] floatValue]
 										 y:[[vec objectAtIndex:1] floatValue]];
@@ -118,11 +139,11 @@
 	printf("Create entity of type %s...\n", [r_entity_type UTF8String]);
 	
 	// Get archetype
-	QSTEntity *ent = [QSTEntity entityWithType:r_entity_type];
+	QSTEntity *ent = [QSTEntity entityWithType:r_entity_type inCore:self];
 		
 	// Override with specific
 	NSMutableDictionary *r_entity_components = [data objectForKey:@"components"];
-	NSDictionary *properties = [QSTPropertyDB propertiesFromDictionary:r_entity_components];
+	NSDictionary *properties = [propertyDB propertiesFromDictionary:r_entity_components];
 	for(NSString *key in properties)
 		[ent setProperty:key to:[properties objectForKey:key]];
 		

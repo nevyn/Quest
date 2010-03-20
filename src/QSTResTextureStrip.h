@@ -23,8 +23,8 @@
 	NSMutableArray	*subdivs;	// Array of bboxes with tex coords
 }
 
-@property (nonatomic,readonly) NSMutableArray *subdivs;
+@property (nonatomic,retain,readonly) NSMutableArray *subdivs;
 
--(id)initWithTexturePath:(NSURL*)path frames:(int)frames;
+-(id)initWithTexture:(QSTResTexture*)tex frames:(int)frames;
 
 @end

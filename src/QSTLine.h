@@ -17,9 +17,9 @@
 	Vector2 *normal;
 }
 
-@property (nonatomic,readonly) Vector2 *a;
-@property (nonatomic,readonly) Vector2 *b;
-@property (nonatomic,readonly) Vector2 *normal;
+@property (nonatomic,retain,readonly) Vector2 *a;
+@property (nonatomic,retain,readonly) Vector2 *b;
+@property (nonatomic,retain,readonly) Vector2 *normal;
 
 +(QSTLine*)lineWithA:(Vector2*)ta b:(Vector2*)tb;
 

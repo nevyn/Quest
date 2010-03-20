@@ -10,6 +10,14 @@
 
 #import "Vector2.h"
 
+@interface QSTLine ()
+@property (nonatomic,retain,readwrite) Vector2 *a;
+@property (nonatomic,retain,readwrite) Vector2 *b;
+@property (nonatomic,retain,readwrite) Vector2 *normal;
+
+@end
+
+
 @implementation QSTLine
 
 @synthesize a;
@@ -22,8 +30,8 @@
 
 -(id)initWithX1:(float)x1 y1:(float)y1 x2:(float)x2 y2:(float)y2 {
 	if(self = [super init]) {
-		a = [[Vector2 vectorWithX:x1 y:y1] retain];
-		b = [[Vector2 vectorWithX:x2 y:y2] retain];
+		self.a = [Vector2 vectorWithX:x1 y:y1];
+		self.b = [Vector2 vectorWithX:x2 y:y2];
 		
 		float vx = x2 - x1;
 		float vy = y2 - y1;
@@ -31,13 +39,21 @@
 		float nx = vy;
 		float ny = -vx;
 		
-		normal = [[[Vector2 vectorWithX:nx y:ny] normalizedVector] retain];
+		self.normal = [[Vector2 vectorWithX:nx y:ny] normalizedVector];
 	}
 	return self;
 }
 
 -(id)initWithA:(Vector2*)ta b:(Vector2*)tb {
 	return [self initWithX1:ta.x y1:ta.y x2:tb.x y2:tb.y];
+}
+
+-(void)dealloc;
+{
+	self.a = nil;
+	self.b = nil;
+	self.normal = nil;
+	[super dealloc];
 }
 
 #define EPSILON 0.001f

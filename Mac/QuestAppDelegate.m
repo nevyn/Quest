@@ -34,7 +34,11 @@ static NSString *QSTFirstBootKey = @"QSTFirstBoot";
 		QSTFirstBootKey, (id)kCFBooleanTrue
 	)];
 }
-
+-(void)dealloc;
+{
+	[core release];
+	[super dealloc];
+}
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	
 	// Parse argv
@@ -112,6 +116,15 @@ static NSString *QSTFirstBootKey = @"QSTFirstBoot";
 		[self start:nil];
 	}	
 }
+- (void)applicationWillTerminate:(NSNotification *)notification;
+{
+#ifdef _DEBUG
+	// Completely useless in production; but in development, make sure we are able to clean up
+	// memory properly
+	assert([core retainCount] == 1);
+	[core release];
+#endif
+}
 
 -(IBAction)start:(id)sender;
 {
@@ -121,9 +134,9 @@ static NSString *QSTFirstBootKey = @"QSTFirstBoot";
 
 	NSData *encodedGamePath = [[NSUserDefaults standardUserDefaults] objectForKey:QSTStartWithGameKey];
 	NSURL *gamePath = [NSUnarchiver unarchiveObjectWithData:encodedGamePath];
-	[[QSTCore alloc] initWithGame:gamePath];
+	core = [[QSTCore alloc] initWithGame:gamePath];
 	
-	//[view setCore:core];
+	[view setCore:core];
 	[view start];
 }
 @end

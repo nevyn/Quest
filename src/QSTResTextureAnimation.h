@@ -9,7 +9,7 @@
 #import "QSTResTextureStrip.h"
 
 @class QSTBoundingBox;
-
+@class QSTResourceDB;
 /*
  =================
  QSTResTextureAnimation
@@ -28,7 +28,7 @@
 
 @property (nonatomic,readonly) int maxFrames;
 
--(id)initWithData:(NSMutableDictionary*)data path:(NSURL*)path;
+-(id)initWithData:(NSMutableDictionary*)data path:(NSURL*)path resources:(QSTResourceDB*)resourceDB;
 -(QSTBoundingBox*)useWithFrame:(int)frame;
 
 @end

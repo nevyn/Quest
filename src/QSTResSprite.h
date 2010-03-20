@@ -24,6 +24,7 @@
 @class Vector2;
 @class QSTBoundingBox;
 @class QSTResTexture;
+@class QSTResourceDB;
 
 @interface QSTResSprite : NSObject {	
 	NSMutableDictionary	*animations;
@@ -37,7 +38,7 @@
 @property (nonatomic, readonly) QSTBoundingBox *bbox;
 @property (nonatomic, readonly) QSTBoundingBox *canvas;
 
--(id)initWithName:(NSString*)name;
+-(id)initWithPath:(NSURL*)path resources:(QSTResourceDB*)resourceDB;
 -(int)maxFramesForAnimation:(NSString*)animName;
 -(QSTBoundingBox*)useWithAnimation:(NSString*)animName frame:(int)frame;
 

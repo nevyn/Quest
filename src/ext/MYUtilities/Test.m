@@ -119,7 +119,7 @@ void RunTestCases( int argc, const char **argv )
 }
 
 
-#endif DEBUG
+#endif // DEBUG
 
 
 #pragma mark -

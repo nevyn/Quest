@@ -13,22 +13,33 @@
 @class QSTInputSystem;
 @class QSTCmpPhysics;
 @class QSTEntity;
+@class QSTNetworkSystem;
+@class QSTPropertyDB;
+@class QSTResourceDB;
 
 @interface QSTCore : NSObject {
 	QSTGraphicsSystem	*graphicsSystem;
 	QSTPhysicsSystem	*physicsSystem;
 	QSTInputSystem		*inputSystem;
+	QSTNetworkSystem  *networkSystem;
+	
+	QSTPropertyDB     *propertyDB;
+	QSTResourceDB     *resourceDB;
 	
 	NSURL *gamePath;
-	
-	// Ytterst temp
-	QSTCmpPhysics	*playerPhys;
+
 }
 
-@property (nonatomic,readonly) QSTGraphicsSystem *graphicsSystem;
-@property (nonatomic,readonly) QSTPhysicsSystem *physicsSystem;
-@property (nonatomic,readonly) QSTInputSystem *inputSystem;
-@property (nonatomic,readonly, copy) NSURL *gamePath;
+@property (nonatomic,readonly,retain) QSTGraphicsSystem *graphicsSystem;
+@property (nonatomic,readonly,retain) QSTPhysicsSystem *physicsSystem;
+@property (nonatomic,readonly,retain) QSTInputSystem *inputSystem;
+@property (nonatomic,readonly,retain) QSTNetworkSystem *networkSystem;
+
+@property (nonatomic,readonly,retain) QSTPropertyDB *propertyDB;
+@property (nonatomic,readonly,retain) QSTResourceDB *resourceDB;
+
+@property (nonatomic,readonly,copy) NSURL *gamePath;
+
 -(id)initWithGame:(NSURL*)gamePath;
 -(void)loadArea:(NSString*)areaName;
 -(void)loadLayer:(NSMutableDictionary*)layerData withIndex:(int)theIndex;
@@ -38,7 +49,3 @@
 -(void)tick;
 
 @end
-
-// Evil global!
-QSTCore *core;
-

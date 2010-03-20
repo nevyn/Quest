@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class QSTResSprite;
+@class QSTResourceDB;
 @class Vector2;
 
 @interface QSTTerrainTile : NSObject {
@@ -21,7 +22,7 @@
 	float			rotation;
 }
 
--(id)initWithPosition:(Vector2*)thePos rotation:(float)theRot scale:(float)theScale sprite:(NSString*)spriteName animation:(NSString*)animName;
+-(id)initWithPosition:(Vector2*)thePos rotation:(float)theRot scale:(float)theScale sprite:(QSTResSprite*)sprite animation:(NSString*)animName;
 -(void)render;
 
 @end
@@ -32,9 +33,9 @@
 	NSMutableArray	*tiles;
 }
 
-+(QSTTerrain*)terrainWithData:(NSMutableArray*)terrainData;
++(QSTTerrain*)terrainWithData:(NSMutableArray*)terrainData resources:(QSTResourceDB*)resourceDB;
 
--(id)initWithTerrainData:(NSMutableArray*)terrainData;
+-(id)initWithTerrainData:(NSMutableArray*)terrainData resources:(QSTResourceDB*)resourceDB;
 				   
 -(void)render;
 
