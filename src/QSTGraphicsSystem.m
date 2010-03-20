@@ -58,8 +58,7 @@
 }
 
 -(void)clear {
-	[layers release];
-	layers = [[NSMutableArray alloc] init];
+	[layers removeAllObjects];
 }
 
 -(void)tick {

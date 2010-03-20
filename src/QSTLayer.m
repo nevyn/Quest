@@ -27,6 +27,12 @@
 	}
 	return self;
 }
+-(void)dealloc;
+{
+	[entities release]; entities = nil;
+	self.terrain = nil;
+	[super dealloc];
+}
 
 -(void)registerEntity:(QSTEntity*)entity {
 	if([entity property:@"SpriteName"] == nil) return;
@@ -36,10 +42,7 @@
 -(void)addEntity:(QSTEntity*)entity {
 	[entities addObject:entity];
 }
-
--(void)setTerrain:(QSTTerrain *)tTerrain {
-	terrain = [tTerrain retain];
-}
+@synthesize terrain;
 
 -(void)render {
 	[self renderEntities];

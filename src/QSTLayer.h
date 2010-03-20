@@ -36,7 +36,7 @@
 
 -(void)registerEntity:(QSTEntity*)entity;
 -(void)addEntity:(QSTEntity*)entity;		// Dangerous, no checking
--(void)setTerrain:(QSTTerrain*)tTerrain;
+@property (nonatomic, retain) QSTTerrain *terrain;
 -(void)render;
 -(void)renderEntities;
 -(void)renderTerrain;
