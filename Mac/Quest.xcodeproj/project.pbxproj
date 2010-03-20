@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05D98CCC11551E3B002DC175 /* CollectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D98CC511551E3B002DC175 /* CollectionUtils.m */; };
+		05D98CCD11551E3B002DC175 /* ExceptionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D98CC711551E3B002DC175 /* ExceptionUtils.m */; };
+		05D98CCE11551E3B002DC175 /* Logging.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D98CC911551E3B002DC175 /* Logging.m */; };
+		05D98CCF11551E3B002DC175 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D98CCB11551E3B002DC175 /* Test.m */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* QuestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* QuestAppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -49,6 +53,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05D98CC411551E3B002DC175 /* CollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionUtils.h; sourceTree = "<group>"; };
+		05D98CC511551E3B002DC175 /* CollectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionUtils.m; sourceTree = "<group>"; };
+		05D98CC611551E3B002DC175 /* ExceptionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExceptionUtils.h; sourceTree = "<group>"; };
+		05D98CC711551E3B002DC175 /* ExceptionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExceptionUtils.m; sourceTree = "<group>"; };
+		05D98CC811551E3B002DC175 /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logging.h; sourceTree = "<group>"; };
+		05D98CC911551E3B002DC175 /* Logging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Logging.m; sourceTree = "<group>"; };
+		05D98CCA11551E3B002DC175 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
+		05D98CCB11551E3B002DC175 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -149,6 +161,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05D98CC311551E3B002DC175 /* MYUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				05D98CC411551E3B002DC175 /* CollectionUtils.h */,
+				05D98CC511551E3B002DC175 /* CollectionUtils.m */,
+				05D98CC611551E3B002DC175 /* ExceptionUtils.h */,
+				05D98CC711551E3B002DC175 /* ExceptionUtils.m */,
+				05D98CC811551E3B002DC175 /* Logging.h */,
+				05D98CC911551E3B002DC175 /* Logging.m */,
+				05D98CCA11551E3B002DC175 /* Test.h */,
+				05D98CCB11551E3B002DC175 /* Test.m */,
+			);
+			path = MYUtilities;
+			sourceTree = "<group>";
+		};
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				D81E913311331DD8006994C7 /* JSON */,
+				05D98CC311551E3B002DC175 /* MYUtilities */,
 				D81E8DD31132DCD8006994C7 /* Vector2.h */,
 				D81E8DD41132DCD8006994C7 /* Vector2.m */,
 				D81E8C9F1131EB84006994C7 /* lodepng.c */,
@@ -421,6 +449,10 @@
 				D8DAFB1E114E593C0064B657 /* QSTEntityDB.m in Sources */,
 				D8DAFC64114E6F110064B657 /* JSONHelper.m in Sources */,
 				D8DA002E114EDBEC0064B657 /* QSTTerrain.m in Sources */,
+				05D98CCC11551E3B002DC175 /* CollectionUtils.m in Sources */,
+				05D98CCD11551E3B002DC175 /* ExceptionUtils.m in Sources */,
+				05D98CCE11551E3B002DC175 /* Logging.m in Sources */,
+				05D98CCF11551E3B002DC175 /* Test.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

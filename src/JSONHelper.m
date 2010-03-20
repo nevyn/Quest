@@ -10,8 +10,13 @@
 
 #import "JSON.h"
 
-@implementation JSONHelper
+static SBJsonParser *sharedParser = nil;
 
+@implementation JSONHelper
++(NSMutableDictionary*)dictionaryFromJSONURL:(NSURL*)path;
+{
+	return [JSONHelper dictionaryFromJSONString:[path absoluteString]];
+}
 
 +(NSMutableDictionary*)dictionaryFromJSONPath:(NSString*)path {
 	NSString *rawData = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
@@ -19,9 +24,9 @@
 }
 
 +(NSMutableDictionary*)dictionaryFromJSONString:(NSString*)data {
-	SBJsonParser *parser = [[SBJsonParser alloc] init];
-	NSMutableDictionary *root = [parser objectWithString:data];
-	[parser release];	
+	if(!sharedParser) sharedParser = [SBJsonParser new];
+	
+	NSMutableDictionary *root = [sharedParser objectWithString:data];
 	return root;
 }
 

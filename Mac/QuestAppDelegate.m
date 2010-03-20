@@ -29,11 +29,10 @@ static NSString *QSTFirstBootKey = @"QSTFirstBoot";
 @implementation QuestAppDelegate
 +(void)initialize;
 {
-	[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
-		[NSNumber numberWithInt:QSTStartSingleplayer], QSTStartInModeKey,
-		(id)kCFBooleanTrue, QSTFirstBootKey,
-		nil
-	]];
+	[[NSUserDefaults standardUserDefaults] registerDefaults:$dict(
+		QSTStartInModeKey, [NSNumber numberWithInt:QSTStartSingleplayer],
+		QSTFirstBootKey, (id)kCFBooleanTrue
+	)];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -61,7 +60,7 @@ static NSString *QSTFirstBootKey = @"QSTFirstBoot";
 		QSTStartInModeKey, YES, ^ (NSString *arg, NSString *value) {
 			for(int i = 0; i < QSTStartModeCount; i++)
 				if([value isEqual:QSTStartModeNames[i]]) {
-					[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:i] forKey:QSTStartInModeKey];
+					[[NSUserDefaults standardUserDefaults] setObject:$object(i) forKey:QSTStartInModeKey];
 					return;
 				}
 			usage();

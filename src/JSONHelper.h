@@ -9,10 +9,8 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface JSONHelper : NSObject {
-
-}
-
+@interface JSONHelper : NSObject
++(NSMutableDictionary*)dictionaryFromJSONURL:(NSURL*)path;
 +(NSMutableDictionary*)dictionaryFromJSONPath:(NSString*)path;
 +(NSMutableDictionary*)dictionaryFromJSONString:(NSString*)data;
 
