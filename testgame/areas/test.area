@@ -1,5 +1,18 @@
 {
+  "player_start" : [5.0, 3.0],
   "layers" : [
+    {
+      "depth" : 0.5,
+      "terrain" : [
+        {
+          "sprite" : "ground",
+          "position" : [5.0, 4.0],
+          "rotation" : 180.0,
+          "scale" : 1.0,
+          "animation" : "idle"
+        }
+      ]
+    },
     {
       "depth" : 1.0,
       "terrain" : [
@@ -7,21 +20,21 @@
           "sprite" : "ground",
           "position" : [3.0, 8.0],
           "rotation" : 10.0,
-          "scale" : 2.0,
+          "scale" : 1.0,
           "animation" : "idle"
         },
         {
           "sprite" : "ground",
           "position" : [8.0, 6.0],
           "rotation" : -30.0,
-          "scale" : 1.2,
+          "scale" : 1.0,
           "animation" : "anim"
         },
         {
           "sprite" : "tree",
           "position" : [0.0, 5.2],
           "rotation" : 10.0,
-          "scale" : 2.3,
+          "scale" : 1.0,
           "animation" : "idle"
         }
       ],
@@ -31,10 +44,42 @@
       ],
       "entities" : [
         {
+          "type" : "player",
+          "components" : {
+            "Position" : [2.0, 1.0]
+          }
+        },
+        {
           "type" : "lasse",
           "components" : {
-            "Position" : [1.0, 2.0]
-          
+            "Position" : [0.0, 0.0]
+          }
+        }
+      ]
+    },
+    {
+      "depth" : 2.0,
+      "terrain" : [
+        {
+          "sprite" : "tree",
+          "position" : [0.0, 3.25],
+          "rotation" : 0.0,
+          "scale" : 1.0,
+          "animation" : "idle"
+        },
+        {
+          "sprite" : "tree",
+          "position" : [2.5, 3.25],
+          "rotation" : 0.0,
+          "scale" : 1.0,
+          "animation" : "idle"
+        }
+      ],
+      "entities" : [
+        {
+          "type" : "bajs",
+          "components" : {
+            "Position" : [0.0, 0.0]
           }
         }
       ]

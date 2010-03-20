@@ -2,7 +2,7 @@
 	"Position" : [0.0, 0.0],
 	"Physics" : { },
 	"Sprite" : {
-		"SpriteName" : "lasse",
+		"SpriteName" : "128x128",
 		"SpriteCurrentAnimation" : "idle"
 	}
 }

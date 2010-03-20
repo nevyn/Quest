@@ -1,7 +1,8 @@
 {
 	"data" : {
 		"size" : [128, 128],
-		"center" : [64, 120]
+		"center" : [64, 120],
+		"colbox" : [128, 128]
 	},
 	"animations" : {
 		"idle" : {

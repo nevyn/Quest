@@ -26,6 +26,7 @@
 	// but can be used to tile a static but small layer too.
 	BOOL			repeatX, repeatY;
 	
+	// Internal use.
 	MutableVector2	*currentPosition;
 	Vector2			*startPosition;	
 	
@@ -34,11 +35,14 @@
 	QSTTerrain		*terrain;
 }
 
+@property (nonatomic) float depth;
+
 -(void)registerEntity:(QSTEntity*)entity;
 -(void)addEntity:(QSTEntity*)entity;		// Dangerous, no checking
 @property (nonatomic, retain) QSTTerrain *terrain;
--(void)render;
+-(void)renderWithCameraPosition:(Vector2*)position;
 -(void)renderEntities;
 -(void)renderTerrain;
+-(void)renderGrid;
 
 @end
