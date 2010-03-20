@@ -16,7 +16,7 @@
 
 }
 
-+(QSTResTexture*)getTextureWithPath:(NSString*)path;
++(QSTResTexture*)getTextureWithPath:(NSURL*)path;
 +(QSTResSprite*)getSpriteWithName:(NSString*)name;
 //+(QSTResEntityTemplate*)getEntityTemplateWithName:(NSString*)name;
 

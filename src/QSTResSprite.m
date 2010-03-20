@@ -13,6 +13,7 @@
 #import "QSTBoundingBox.h"
 #import "QSTResourceDB.h"
 #import "QSTResTextureAnimation.h"
+#import "QSTCore.h"
 
 @implementation QSTResSprite
 
@@ -23,10 +24,10 @@
 
 -(id)initWithName:(NSString*)name {
 	if(self = [super init]) {
-		NSString *spritePath = [NSString stringWithFormat:@"testgame/sprites/%@/", name];
-		NSString *defpath = [NSString stringWithFormat:@"%@sprite.def", spritePath];
+		NSURL *spritePath = $joinUrls(core.gamePath, @"sprites", name);
+		NSURL *defpath = $joinUrls(spritePath, @"sprite.def");
 
-		NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONPath:defpath];
+		NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONURL:defpath];
 		
 		NSMutableDictionary *r_data = [r_root objectForKey:@"data"];
 		NSMutableArray *r_data_size = [r_data objectForKey:@"size"];

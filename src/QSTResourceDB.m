@@ -25,14 +25,14 @@ static NSMutableDictionary *sprites;
 	//entityTemplates = [[NSMutableDictionary alloc] init];
 }
 
-+(QSTResTexture*)getTextureWithPath:(NSString*)path {
-	printf("ResourceDB: getTextureWithPath [%s]\n", [path UTF8String]);
++(QSTResTexture*)getTextureWithPath:(NSURL*)path {
+	printf("ResourceDB: getTextureWithPath [%s]\n", [[path path] UTF8String]);
 	
 	QSTResTexture *texture = [textures objectForKey:path];
 	if(texture != nil) { printf("Already loaded.\n"); return texture; }
 	
-	NSString *fullPath = [NSString stringWithFormat:@"%@.png", path];
-	NSBitmapImageRep *img = [NSBitmapImageRep imageRepWithContentsOfFile:fullPath];
+	NSURL *fullPath = [path URLByAppendingPathExtension:@"png"];
+	NSBitmapImageRep *img = [NSBitmapImageRep imageRepWithContentsOfURL:fullPath];
 		
 	unsigned char *data = [img bitmapData];
 	int	width = [img pixelsWide];

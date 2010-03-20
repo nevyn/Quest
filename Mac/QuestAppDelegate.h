@@ -14,9 +14,9 @@
 @interface QuestAppDelegate : NSObject <NSApplicationDelegate> {
 	//QSTCore		*core;
 	
-	QSTView		*view;
+	IBOutlet QSTView		*view;
+	IBOutlet NSWindow *gameWindow;
+	IBOutlet NSWindow *modeSelection;
 }
-
-@property (assign) IBOutlet QSTView *view;
-
+-(IBAction)start:(id)sender;
 @end

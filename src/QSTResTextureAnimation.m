@@ -15,7 +15,7 @@
 
 @synthesize maxFrames;
 
--(id)initWithData:(NSMutableDictionary*)data path:(NSString*)path {
+-(id)initWithData:(NSMutableDictionary*)data path:(NSURL*)path {
 	fps = [[data objectForKey:@"fps"] floatValue];
 	loopStart = [[data objectForKey:@"loopstart"] intValue];
 	maxFrames = [[data objectForKey:@"frames"] intValue];
@@ -23,8 +23,8 @@
 	startFrame = 0;
 	
 	NSString *textureName = [data objectForKey:@"texture"];
-	NSString *texturePath = [NSString stringWithFormat:@"%@%@", path, textureName];
-	
+	NSURL *texturePath = $joinUrls(path, textureName);
+		
 	return [super initWithTexturePath:texturePath frames:maxFrames];
 }
 

@@ -10,10 +10,8 @@
 
 @class Vector2;
 
-@interface JSONHelper : NSObject {
-
-}
-
+@interface JSONHelper : NSObject
++(NSMutableDictionary*)dictionaryFromJSONURL:(NSURL*)path;
 +(NSMutableDictionary*)dictionaryFromJSONPath:(NSString*)path;
 +(NSMutableDictionary*)dictionaryFromJSONString:(NSString*)data;
 

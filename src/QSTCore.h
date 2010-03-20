@@ -19,6 +19,7 @@
 	QSTPhysicsSystem	*physicsSystem;
 	QSTInputSystem		*inputSystem;
 	
+	NSURL *gamePath;
 	
 	// Ytterst temp
 	QSTCmpPhysics	*playerPhys;
@@ -27,7 +28,8 @@
 @property (nonatomic,readonly) QSTGraphicsSystem *graphicsSystem;
 @property (nonatomic,readonly) QSTPhysicsSystem *physicsSystem;
 @property (nonatomic,readonly) QSTInputSystem *inputSystem;
-
+@property (nonatomic,readonly, copy) NSURL *gamePath;
+-(id)initWithGame:(NSURL*)gamePath;
 -(void)loadArea:(NSString*)areaName;
 -(void)loadLayer:(NSMutableDictionary*)layerData withIndex:(int)theIndex;
 -(QSTEntity*)createEntity:(NSMutableDictionary*)data layer:(int)layerIndex;

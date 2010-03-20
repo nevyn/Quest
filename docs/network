@@ -1,0 +1,17 @@
+Quest ska klara
+ - Singleplayer, utan nätverk, *utan* att behöva ansluta till sig själv q3-style
+ - Multiplayer, server & klient, mellan två LAN-burkar eller nåt
+ - MMO, server centralt och masssa klienter.
+
+Singleplayer så funkar motorn som den gör nu. Man ska fortsätta kunna bygga singleplayerspel med Quest utan att behöva joxa.
+
+Som klient så kör en QSTClientSystem igång och tar emot entity- och scene-uppdateringar. En annnan PhysicsSystem kanske kör. Input hijackas och actions skickas via nätverket istället för att gå till entiteter.
+
+Som server så kör en QSTServerSystem igång. En nätverkskomponent på varje entitet prenumererar på uppdateringar och forwardar dem. Servern skickar vidare till intresserade parties.
+
+
+Med MMO tänker jag givetvis på Mutable Adventure. Varje användare får en shard, = en "game"-mapp på servern + en instans av den. När någon försöker ansluta till just den sharden så körs en vanlig multiplayerserver igång på serverdatorn och klienten routas till den, och börjar ladda ner shardens game-mapp och håller den synkad mot servern. Skillnaden mot LAN-multiplayer är att MMO-servern har fler serverkomponenter:
+- Mastern, som tar hand om alla shardservrar, säger åt klienten var den ska ansluta, ger shards unika URLs osv osv
+- Global resursserver, med sprites osv man kan dra in i sin egen shard (med nån fin in-game browser)
+- Userserver, håller koll på permissions, cross-shard user state, användarens sprite, osv
+

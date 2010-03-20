@@ -16,7 +16,7 @@
 
 @synthesize subdivs;
 
--(id)initWithTexturePath:(NSString*)path frames:(int)frames {
+-(id)initWithTexturePath:(NSURL*)path frames:(int)frames {
 	if(self = [super init]) {
 		texture = [[QSTResourceDB getTextureWithPath:path] retain];
 		
