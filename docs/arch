@@ -1,0 +1,18 @@
+Hm, kan jag ha bara en enda scen?
+Nej, inte snyggt, för varje system vill ha olika grejer däri,
+och det känns lite bättre att de tar hand om det själva.
+
+Känns också onödigt att ha olika sorters scenes, ett för
+varje system. Enklare att bara ha en lista.
+
+Flytta ut scenen till grafiksystemet.
+
+
+
+Jag vill:
+Ta bort allt som heter Cmp
+Göra om CollisionMap till en Res?
+Fastställa vad en resource är (=något laddat från hddn?)
+							  (=en instans som används av flera?)
+							  
+Skit i scener for now.
