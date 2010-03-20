@@ -11,6 +11,7 @@
 #import "QSTProperty.h"
 #import "Vector2.h"
 #import "JSONHelper.h"
+#import "QSTCore.h"
 
 static NSMutableDictionary *componentTemplates;
 
@@ -21,20 +22,21 @@ static NSMutableDictionary *componentTemplates;
 	
 	componentTemplates = [[NSMutableDictionary dictionary] retain];
 	
-	NSFileManager *fm = [[NSFileManager alloc] init];
-	NSArray *files = [fm contentsOfDirectoryAtPath:@"testgame/components" error:NULL];
-	for(NSString *filename in files) {
-		NSString *fullpath = [@"testgame/components/" stringByAppendingString:filename];
-		printf("Reading %s...\n", [fullpath UTF8String]);
+	NSFileManager *fm = [NSFileManager defaultManager];
+	NSURL *componentsRoot = $joinUrls(core.gamePath, @"components");
+	
+	for(NSString *filename in [fm contentsOfDirectoryAtPath:[componentsRoot path] error:NULL]) {
+		NSURL *fullpath = $joinUrls(componentsRoot, filename);
+		
+		printf("Reading %s...\n", [[fullpath path] UTF8String]);
 				
-		NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONPath:fullpath];
+		NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONURL:fullpath];
 		
 		NSString *r_name = [r_root objectForKey:@"name"];
 		NSMutableDictionary *r_props = [r_root objectForKey:@"properties"];
 		
 		[componentTemplates setObject:r_props forKey:r_name];
 	}
-	[fm release];
 }
 
 

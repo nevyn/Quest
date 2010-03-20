@@ -44,8 +44,8 @@
 -(id)initWithName:(NSString*)name {
 	if(self = [super init]) {
 		// Load template
-		NSString *templatePath = [@"testgame/entities/" stringByAppendingFormat:"%@.ent", name];
-		NSString *rawTemplate = [NSString stringWithContentsOfFile:templatePath encoding:NSUTF8StringEncoding error:NULL];
+		NSURL *templatePath = $joinUrls(core.gamePath, @"entities", [name stringByAppendingPathExtension:@"ent"]);
+		NSString *rawTemplate = [NSString stringWithContentsOfURL:templatePath encoding:NSUTF8StringEncoding error:NULL];
 				
 		SBJsonParser *parser = [[SBJsonParser alloc] init];
 		root = [QSTTemplateNode nodeWithDictionary:[parser objectWithString:rawTemplate]];

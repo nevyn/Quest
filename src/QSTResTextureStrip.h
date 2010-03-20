@@ -25,6 +25,6 @@
 
 @property (nonatomic,readonly) NSMutableArray *subdivs;
 
--(id)initWithTexturePath:(NSString*)path frames:(int)frames;
+-(id)initWithTexturePath:(NSURL*)path frames:(int)frames;
 
 @end

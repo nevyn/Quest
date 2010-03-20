@@ -22,34 +22,43 @@
 #import "QSTResourceDB.h"
 #import "QSTPropertyDB.h"
 
+@interface QSTCore ()
+@property (nonatomic,readwrite, copy) NSURL *gamePath;
+@end
+
+
 @implementation QSTCore
+@synthesize graphicsSystem, physicsSystem, inputSystem;
+@synthesize gamePath;
 
-@synthesize graphicsSystem;
-@synthesize physicsSystem;
-@synthesize inputSystem;
-
--(id)init {
-	if(self = [super init]) {
-		graphicsSystem = [[QSTGraphicsSystem alloc] init];
-		physicsSystem = [[QSTPhysicsSystem alloc] init];
-		inputSystem = [[QSTInputSystem alloc] init];
-		
-		QSTInputMapper *mapper = [[QSTInputMapper alloc] init];
-		[mapper registerActionWithName:@"jump" action:@selector(jump) target:self];
-		[mapper mapKey:49 toAction:@"jump"];
-		inputSystem.mapper = mapper;
-		[mapper release];
-		
-		
-		[self loadArea:@"test"];
-	}
+-(id)initWithGame:(NSURL*)gamePath_;
+{
+	if(![super init]) return nil;
+	core = self;
+	
+	self.gamePath = gamePath_;
+	
+	graphicsSystem = [[QSTGraphicsSystem alloc] init];
+	physicsSystem = [[QSTPhysicsSystem alloc] init];
+	inputSystem = [[QSTInputSystem alloc] init];
+	
+	QSTInputMapper *mapper = [[QSTInputMapper alloc] init];
+	[mapper registerActionWithName:@"jump" action:@selector(jump) target:self];
+	[mapper mapKey:49 toAction:@"jump"];
+	inputSystem.mapper = mapper;
+	[mapper release];
+	
+	
+	[self loadArea:@"test"];
 	return self;
 }
 
 -(void)loadArea:(NSString*)areaName {
-	NSString *areaPath = [NSString stringWithFormat:@"testgame/areas/%@.area", areaName];
+	NSURL *areaPath = [core.gamePath URLByAppendingPathComponents:$array(
+		@"areas", $sprintf(@"%@.area", areaName)
+	)];
 	
-	NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONPath:areaPath];
+	NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONURL:areaPath];
 	
 	// Later there will be some area-global data here, like
 	// music and mood etc

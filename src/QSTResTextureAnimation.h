@@ -28,7 +28,7 @@
 
 @property (nonatomic,readonly) int maxFrames;
 
--(id)initWithData:(NSMutableDictionary*)data path:(NSString*)path;
+-(id)initWithData:(NSMutableDictionary*)data path:(NSURL*)path;
 -(QSTBoundingBox*)useWithFrame:(int)frame;
 
 @end

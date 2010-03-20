@@ -11,13 +11,14 @@
 #import "JSONHelper.h"
 #import "QSTProperty.h"
 #import "QSTPropertyDB.h"
+#import "QSTCore.h"
 
 @implementation QSTEntity
 
 +(QSTEntity*)entityWithType:(NSString*)type {
-	NSString *path = [NSString stringWithFormat:@"testgame/entities/%@.ent", type];
+	NSURL *path = $joinUrls(core.gamePath, @"entities", [type stringByAppendingPathExtension:@"ent"]);
 	
-	NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONPath:path];
+	NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONURL:path];
 	
 	NSDictionary *props = [QSTPropertyDB propertiesFromDictionary:r_root];
 		

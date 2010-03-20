@@ -15,7 +15,7 @@ static SBJsonParser *sharedParser = nil;
 @implementation JSONHelper
 +(NSMutableDictionary*)dictionaryFromJSONURL:(NSURL*)path;
 {
-	return [JSONHelper dictionaryFromJSONString:[path absoluteString]];
+	return [JSONHelper dictionaryFromJSONPath:[path path]];
 }
 
 +(NSMutableDictionary*)dictionaryFromJSONPath:(NSString*)path {

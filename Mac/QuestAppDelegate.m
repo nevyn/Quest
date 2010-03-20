@@ -109,7 +109,6 @@ static NSString *QSTFirstBootKey = @"QSTFirstBoot";
 		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:QSTFirstBootKey];
 		[modeSelection makeKeyAndOrderFront:nil];
 	} else {
-		[gameWindow makeKeyAndOrderFront:nil];
 		[self start:nil];
 	}	
 }
@@ -117,9 +116,12 @@ static NSString *QSTFirstBootKey = @"QSTFirstBoot";
 -(IBAction)start:(id)sender;
 {
 	printf("Create core.");
+	[modeSelection close];
+	[gameWindow makeKeyAndOrderFront:nil];
+
 	NSData *encodedGamePath = [[NSUserDefaults standardUserDefaults] objectForKey:QSTStartWithGameKey];
-	NSString *gamePath = encodedGamePath ? [[NSUnarchiver unarchiveObjectWithData:encodedGamePath] absoluteString] : nil;
-	core = [[QSTCore alloc] init];
+	NSURL *gamePath = [NSUnarchiver unarchiveObjectWithData:encodedGamePath];
+	[[QSTCore alloc] initWithGame:gamePath];
 	
 	//[view setCore:core];
 	[view start];
