@@ -1,5 +1,5 @@
 {
-  "size" : [3, 1],
+  "size" : [2, 2],
   "layers" : [
     {
       "depth" : 0.4,
@@ -7,15 +7,15 @@
       "terrain" : [
         {
           "sprite" : "tree",
-          "position" : [10.0, 6.0],
+          "position" : [8.0, 6.0],
           "rotation" : 0.0,
-          "scale" : 12.0,
+          "scale" : 8.0,
           "animation" : "idle"
         }
       ],
       "entities" : [
         {
-          "type" : "fgi",
+          "type" : "dfdf",
           "components" : {
             "Position" : [2.0, 2.0]
           }
@@ -27,42 +27,42 @@
       "terrain" : [
         {
           "sprite" : "ground",
-          "position" : [2.0, 7.0],
+          "position" : [2.0, 14.0],
           "rotation" : 0.0,
           "scale" : 1.0,
           "animation" : "idle"
         },
         {
           "sprite" : "ground",
-          "position" : [5.0, 7.0],
+          "position" : [5.0, 14.0],
           "rotation" : 0.0,
           "scale" : 1.0,
           "animation" : "idle"
         },
         {
           "sprite" : "ground",
-          "position" : [8.0, 7.0],
+          "position" : [8.0, 14.0],
           "rotation" : 0.0,
           "scale" : 1.0,
           "animation" : "idle"
         },
         {
           "sprite" : "ground",
-          "position" : [11.0, 7.0],
+          "position" : [11.0, 14.0],
           "rotation" : 0.0,
           "scale" : 1.0,
           "animation" : "idle"
         },
         {
           "sprite" : "ground",
-          "position" : [14.0, 7.0],
+          "position" : [14.0, 14.0],
           "rotation" : 0.0,
           "scale" : 1.0,
           "animation" : "idle"
         },
         {
           "sprite" : "ground",
-          "position" : [17.0, 7.0],
+          "position" : [17.0, 14.0],
           "rotation" : 0.0,
           "scale" : 1.0,
           "animation" : "idle"
@@ -88,8 +88,8 @@
       "depth" : "2.0",
       "terrain" : [
         {
-          "sprite" : "sdffsg",
-          "position" : [15.0, 8.0],
+          "sprite" : "tree",
+          "position" : [15.0, 15.0],
           "rotation" : 0.0,
           "scale" : 4.0,
           "animation" : "idle"
@@ -97,7 +97,7 @@
       ],
       "entities" : [
         {
-          "type" : "player",
+          "type" : "ffg",
           "components" : {
             "Position" : [2.0, 2.0]
           }

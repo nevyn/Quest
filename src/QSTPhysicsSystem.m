@@ -66,8 +66,10 @@
 		MutableVector2 *to = [MutableVector2 vectorWithX:pos.vectorVal.x + (vel.vectorVal.x * dt)
 													   y:pos.vectorVal.y + (vel.vectorVal.y * dt)];
 		
-		if(to.y > 12.5) {
-			to.y = 12.5;
+		float gr = 5.5f;
+		
+		if(to.y > gr) {
+			to.y = gr;
 			vel.vectorVal.y = 0.0f;
 		}
 		
