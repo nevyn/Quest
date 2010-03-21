@@ -12,15 +12,12 @@
 #import "QSTLine.h"
 #import "JSONHelper.h"
 
+#import "QSTGame.h"
 #import "QSTGraphicsSystem.h"
 #import "QSTPhysicsSystem.h"
 #import "QSTInputSystem.h"
 
-#import "QSTLayer.h"
-#import "QSTTerrain.h"
-#import "QSTCmpCollisionMap.h"
-
-#import "QSTEntity.h"
+#import "QSTEntityDB.h"
 #import "QSTResourceDB.h"
 #import "QSTPropertyDB.h"
 
@@ -30,6 +27,7 @@
 @property (nonatomic,readwrite,retain) QSTInputSystem *inputSystem;
 @property (nonatomic,readwrite,retain) QSTNetworkSystem *networkSystem;
 
+@property (nonatomic,readwrite,retain) QSTEntityDB *entityDB;
 @property (nonatomic,readwrite,retain) QSTPropertyDB *propertyDB;
 @property (nonatomic,readwrite,retain) QSTResourceDB *resourceDB;
 
@@ -39,7 +37,7 @@
 
 @implementation QSTCore
 @synthesize graphicsSystem, physicsSystem, inputSystem, networkSystem;
-@synthesize propertyDB, resourceDB;
+@synthesize entityDB, propertyDB, resourceDB;
 @synthesize gamePath;
 
 -(id)initWithGame:(NSURL*)gamePath_;
@@ -47,7 +45,8 @@
 	if(![super init]) return nil;
 	
 	self.gamePath = gamePath_;
-	
+
+	self.entityDB = [[[QSTEntityDB alloc] initOnCore:self] autorelease];
 	self.propertyDB = [[[QSTPropertyDB alloc] initOnCore:self] autorelease];
 	self.resourceDB = [[[QSTResourceDB alloc] initOnCore:self] autorelease];
 	
@@ -55,18 +54,20 @@
 	physicsSystem = [[QSTPhysicsSystem alloc] initOnCore:self];
 	inputSystem = [[QSTInputSystem alloc] init];
 	
+	game = [[QSTGame alloc] initOnCore:self];
+	
 	QSTInputMapper *mapper = [[QSTInputMapper alloc] init];
-	[mapper registerActionWithName:@"jump" action:@selector(jump) target:self];
-	[mapper registerStateActionWithName:@"left" beginAction:@selector(leftStart) endAction:@selector(leftStop) target:self];
-	[mapper registerStateActionWithName:@"right" beginAction:@selector(rightStart) endAction:@selector(rightStop) target:self];
-	[mapper mapKey:49 toAction:@"jump"];
+	[mapper registerStateActionWithName:@"left" beginAction:@selector(leftStart) endAction:@selector(leftStop) target:game];
+	[mapper registerStateActionWithName:@"right" beginAction:@selector(rightStart) endAction:@selector(rightStop) target:game];
+	[mapper registerActionWithName:@"jump" action:@selector(jump) target:game];
 	[mapper mapKey:123 toAction:@"left"];
 	[mapper mapKey:124 toAction:@"right"];
+	[mapper mapKey:49 toAction:@"jump"];
 	inputSystem.mapper = mapper;
 	[mapper release];
 	
+	[game loadArea:@"jump"];
 	
-	[self loadArea:@"test"];
 	return self;
 }
 -(void)dealloc;
@@ -76,119 +77,12 @@
 	self.inputSystem = nil;
 	self.networkSystem = nil;
 	self.gamePath = nil;
+	self.entityDB = nil;
 	self.propertyDB = nil;
 	self.resourceDB = nil;
 	[super dealloc];
 }
-// TODO:
-// Flytta ut all area-laddningskod härifrån! 
-// Kanske ha en Area-klass, eller åtminstone nån loader. AreaLoader?
 
--(void)loadArea:(NSString*)areaName {
-	NSURL *areaPath = [self.gamePath URLByAppendingPathComponents:$array(
-		@"areas", $sprintf(@"%@.area", areaName)
-	)];
-	
-	NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONURL:areaPath];
-	
-	// Later there will be some area-global data here, like
-	// music and mood etc
-				
-	NSMutableArray *r_layers = [r_root objectForKey:@"layers"];
-	for(int i=0; i<[r_layers count];i++) {
-		[self loadLayer:[r_layers objectAtIndex:i] withIndex:i];
-	}
-	
-	// Create player entity
-	// ATTN: or is there always a player entity?
-	
-}
-
--(void)loadLayer:(NSMutableDictionary*)layerData withIndex:(int)theIndex {
-	
-	printf("Load layer %d...\n", theIndex);
-	
-	/* Graphics */
-	QSTLayer *layer = [[[QSTLayer alloc] initUsingResourceDB:self.resourceDB] autorelease];
-	
-	float depth = [[layerData objectForKey:@"depth"] floatValue];
-	layer.depth = depth;
-	
-	NSMutableArray *r_terrain = [layerData objectForKey:@"terrain"];
-	QSTTerrain *terrain = [QSTTerrain terrainWithData:r_terrain resources:self.resourceDB];
-	[layer setTerrain:terrain];
-	
-	
-	/* Physics */
-	NSMutableArray *r_colmap = [layerData objectForKey:@"colmap"];
-	if(r_colmap != nil) {
-		QSTCmpCollisionMap *colmap = [[[QSTCmpCollisionMap alloc] initWithEID:0] autorelease];
-		for(NSMutableArray *vec in r_colmap) {
-			Vector2 *v1 = [Vector2 vectorWithX:[[vec objectAtIndex:0] floatValue]
-											 y:[[vec objectAtIndex:1] floatValue]];
-			Vector2 *v2 = [Vector2 vectorWithX:[[vec objectAtIndex:2] floatValue]
-											 y:[[vec objectAtIndex:3] floatValue]];
-			
-			[colmap.lines addObject:[QSTLine lineWithA:v1 b:v2]];
-		}
-		[physicsSystem setCollisionMap:colmap forLayer:theIndex];
-	}
-	
-	NSMutableArray *r_entities = [layerData objectForKey:@"entities"];
-	
-	for(NSMutableDictionary *r_entity in r_entities) {
-		QSTEntity *entity = [self createEntity:r_entity layer:theIndex];
-		
-		if(entity != nil) {
-			[layer registerEntity:entity];
-			[physicsSystem registerEntity:entity inLayer:theIndex];
-			
-			[graphicsSystem.camera follow:entity withSpeed:0.0f];
-		}
-	}
-	
-	[graphicsSystem addLayer:layer];
-}
-
--(QSTEntity*)createEntity:(NSMutableDictionary*)data layer:(int)layerIndex {
-	NSString *r_entity_type = [data objectForKey:@"type"];
-	
-	printf("Create entity of type %s...\n", [r_entity_type UTF8String]);
-	
-	// Get archetype
-	QSTEntity *ent = [QSTEntity entityWithType:r_entity_type inCore:self];
-	if(ent == nil) return nil;
-		
-	// Override with specific
-	NSMutableDictionary *r_entity_components = [data objectForKey:@"components"];
-	NSDictionary *properties = [propertyDB propertiesFromDictionary:r_entity_components];
-	for(NSString *key in properties)
-		[ent setProperty:key to:[properties objectForKey:key]];
-		
-	return ent;
-}
-
--(void)registerWithSystems:(QSTEntity*)entity layer:(int)layerIndex {
-	//[graphicsSystem registerEntity:entity inLayer:layerIndex];
-	[physicsSystem registerEntity:entity inLayer:layerIndex];
-}
-
--(void)jump {
-	printf("JUMP!\n");
-	//playerPhys.velocity.y = -4.0f;
-}
-
--(void)leftStart {
-}
-
--(void)leftStop {
-}
-
--(void)rightStart {
-}
-
--(void)rightStop {
-}
 
 -(void)tick {
 		

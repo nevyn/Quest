@@ -37,8 +37,10 @@
 
 @synthesize position;
 
--(id)init {
+-(id)initWithGraphicsSystem:(QSTGraphicsSystem*)gfx {
 	if(![super init]) return nil;
+	
+	gfxSystem = gfx;	
 	
 	position = [[MutableVector2 vector] retain];
 	destination	= [[MutableVector2 vector] retain];
@@ -52,6 +54,12 @@
 		QSTProperty *pos = [entityToFollow property:@"Position"];
 		position.x = [pos vectorVal].x;
 		position.y = [pos vectorVal].y;
+		
+		if(position.x < 5.0f) position.x = 5.0f;
+		else if(position.x >= maxx) position.x = maxx;
+		
+		if(position.y < 3.75f) position.y = 3.75f;
+		else if(position.y >= maxy) position.y = maxy;
 	}
 }
 
@@ -70,10 +78,18 @@
 
 -(void)follow:(QSTEntity*)follow withSpeed:(float)theSpeed {
 	if(entityToFollow != follow) [entityToFollow release];
-	printf("Camera: Follow entity\n");
+	printf("Camera: Follow entity: %d (%s)\n", follow.EID, [follow.type UTF8String]);
 	entityToFollow = [follow retain];
 	followMode = YES;
 	speed = theSpeed;
+	
+	QSTProperty *layProp = [follow property:@"Layer"];
+	QSTLayer *layer = [gfxSystem layer:[layProp intVal]];
+	maxx = layer.width * 10.0f - 5.0f;
+	maxy = layer.height * 7.5f - 3.75f;
+	
+	printf("Layer: %d\n", [layProp intVal]);
+	printf("layer.width: %d\n", layer.width);
 }
 
 @end
@@ -104,7 +120,7 @@
 		glPointSize(5.0f);
 		
 		layers = [[NSMutableArray alloc] init];
-		camera = [[QSTCamera alloc] init];
+		camera = [[QSTCamera alloc] initWithGraphicsSystem:self];
 	}
 	return self;
 }
@@ -133,6 +149,10 @@
 
 -(void)addLayer:(QSTLayer*)theLayer {
 	[layers addObject:theLayer];
+}
+
+-(QSTLayer*)layer:(int)layerIndex {
+	return [layers objectAtIndex:layerIndex];
 }
 
 /*

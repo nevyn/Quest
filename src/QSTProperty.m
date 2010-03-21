@@ -28,6 +28,10 @@
 	return [[[QSTProperty alloc] initWithString:s] autorelease];
 }
 
++(QSTProperty*)propertyWithBool:(BOOL)b {
+	return [[[QSTProperty alloc] initWithBool:b] autorelease];
+}
+
 -(id)initWithInt:(int)i {
 	if(self = [super init]) {
 		type = QSTPropertyInt;
@@ -62,6 +66,14 @@
 	return self;
 }
 
+-(id)initWithBool:(BOOL)b {
+	if(self = [super init]) {
+		type = QSTPropertyBool;
+		data.boolVal = b;
+	}
+	return self;
+}
+
 -(void)dealloc {
 	printf("Property: Dealloc ");
 	[self print];
@@ -85,6 +97,10 @@
 	return data.stringVal;
 }
 
+-(BOOL)boolVal {
+	return data.boolVal;
+}
+
 -(void)setIntVal:(int)val {
 	data.intVal = val;
 }
@@ -103,6 +119,10 @@
 	data.stringVal = [val retain];
 }
 
+-(void)setBoolVal:(BOOL)val {
+	data.boolVal = val;
+}
+
 -(void)print {
 	if(type == QSTPropertyVector)
 		printf(" v: %f %f", data.vectorVal.x, data.vectorVal.y);
@@ -110,8 +130,12 @@
 		printf(" f: %f", data.floatVal);
 	else if(type == QSTPropertyString)
 		printf(" s: %s", [data.stringVal UTF8String]);
-	else
+	else if(type == QSTPropertyInt)
 		printf(" i: %d", data.intVal);
+	else {
+		printf(" b: %s", data.boolVal ? "true" : "false");
+	}
+
 }
 
 

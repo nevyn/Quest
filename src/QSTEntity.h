@@ -19,13 +19,15 @@
 */
 
 @interface QSTEntity : NSObject {
-	int				EID;
+	int					EID;
+	NSString			*type;
 	NSMutableDictionary	*properties;
 }
 
-+(QSTEntity*)entityWithType:(NSString*)type inCore:(QSTCore*)core;
+@property (nonatomic,readonly) int EID;
+@property (nonatomic,readonly) NSString *type;
 
--(id)initWithProperties:(NSDictionary*)props;
+-(id)initWithType:(NSString*)type_ EID:(int)eid_ properties:(NSDictionary*)props;
 
 -(void)printProperties;
 -(QSTProperty*)property:(NSString*)name;

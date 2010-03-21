@@ -19,6 +19,8 @@
 	// moves, and how much it zooms.
 	float			depth;
 	
+	int				width, height;
+	
 	// This is how fast the layer continuously scrolls, regardless
 	// of camera movement.
 	Vector2			*autoScrollSpeed;
@@ -40,6 +42,9 @@
 -(id)initUsingResourceDB:(QSTResourceDB*)resourceDB_;
 
 @property (nonatomic) float depth;
+@property (nonatomic,retain) Vector2 *startPosition;
+@property (nonatomic) int width;
+@property (nonatomic) int height;
 
 -(void)registerEntity:(QSTEntity*)entity;
 -(void)addEntity:(QSTEntity*)entity;		// Dangerous, no checking
@@ -48,5 +53,6 @@
 -(void)renderEntities;
 -(void)renderTerrain;
 -(void)renderGrid;
+-(void)renderBorders;
 
 @end

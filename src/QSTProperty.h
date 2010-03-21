@@ -14,7 +14,8 @@ typedef enum {
 	QSTPropertyInt,
 	QSTPropertyFloat,
 	QSTPropertyVector,
-	QSTPropertyString
+	QSTPropertyString,
+	QSTPropertyBool
 } QSTPropertyType;
 
 @interface QSTProperty : NSObject {
@@ -26,6 +27,7 @@ typedef enum {
 		float			floatVal;
 		MutableVector2*	vectorVal;
 		NSString*		stringVal;
+		BOOL			boolVal;
 	} data;
 }
 
@@ -33,21 +35,25 @@ typedef enum {
 +(QSTProperty*)propertyWithVector:(MutableVector2*)v;
 +(QSTProperty*)propertyWithFloat:(float)f;
 +(QSTProperty*)propertyWithString:(NSString*)s;
++(QSTProperty*)propertyWithBool:(BOOL)b;
 
 -(id)initWithInt:(int)i;
 -(id)initWithVector:(MutableVector2*)v;
 -(id)initWithFloat:(float)f;
 -(id)initWithString:(NSString*)s;
+-(id)initWithBool:(BOOL)b;
 
 -(int)intVal;
 -(float)floatVal;
 -(MutableVector2*)vectorVal;
 -(NSString*)stringVal;
+-(BOOL)boolVal;
 
 -(void)setIntVal:(int)val;
 -(void)setFloatVal:(float)val;
 -(void)setVectorVal:(MutableVector2*)val;
 -(void)setStringVal:(NSString*)val;
+-(void)setBoolVal:(BOOL)val;
 
 -(void)print;
 

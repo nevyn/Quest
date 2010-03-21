@@ -61,13 +61,24 @@
 		QSTProperty *vel = [ent1 property:@"Velocity"];
 		QSTResSprite *sprite = [core.resourceDB getSpriteWithName:[ent1 property:@"SpriteName"].stringVal];
 		
-		//vel.vectorVal.y += 9.8f * dt;
-		vel.vectorVal.y = 1.0f;
-		vel.vectorVal.x = 1.0f;
+		vel.vectorVal.y += 9.8f * dt;
 				
 		MutableVector2 *to = [MutableVector2 vectorWithX:pos.vectorVal.x + (vel.vectorVal.x * dt)
 													   y:pos.vectorVal.y + (vel.vectorVal.y * dt)];
-						
+		
+		if(to.y > 12.5) {
+			to.y = 12.5;
+			vel.vectorVal.y = 0.0f;
+		}
+		
+		pos.vectorVal.x = to.x;
+		pos.vectorVal.y = to.y;
+				
+		
+		
+		
+		
+		/*
 		BOOL collided = NO;
 		for(QSTLine *l in collisionMap.lines) {
 			
@@ -89,7 +100,7 @@
 			
 			break;
 		}
-		
+		*/
 		/*
 		for(int j=0; j<[entities count]; j++) {
 			if(i == j) continue;
@@ -109,7 +120,7 @@
 			ph1.position.position.y = isct.y-0.01f;
 			ph1.velocity.y = 0.0f;
 		}*/
-		
+		/*
 		if(collided == NO) {
 			pos.vectorVal.x = to.x;
 			//pos.vectorVal.y = to.y;
@@ -117,6 +128,7 @@
 		
 		pos.vectorVal.x = to.x;
 		pos.vectorVal.y = to.y;
+		 */
 	}
 }
 

@@ -20,8 +20,14 @@
 }
 @end*/
 
+@class QSTGraphicsSystem;
+
 @interface QSTCamera : NSObject {
+	QSTGraphicsSystem	*gfxSystem;
+	
 	MutableVector2	*position;
+	
+	float			maxx, maxy;
 	
 	BOOL			followMode;
 	QSTEntity		*entityToFollow;
@@ -41,6 +47,8 @@
 }
 
 @property (nonatomic,readonly) Vector2 *position;
+
+-(id)initWithGraphicsSystem:(QSTGraphicsSystem*)gfx;
 
 -(void)update:(float)delta;
 
@@ -65,6 +73,7 @@
 -(void)beginFrame;
 
 -(void)addLayer:(QSTLayer*)theLayer;
+-(QSTLayer*)layer:(int)layerIndex;
 
 /*
 -(void)registerEntity:(QSTEntity*)entity inLayer:(int)layer;

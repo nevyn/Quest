@@ -8,9 +8,21 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "QSTCore.h"
+
+@class QSTEntity;
 
 @interface QSTEntityDB : NSObject {
-
+	QSTCore	*core;
+	
+	NSMutableArray	*entities;
 }
+
+-(id)initOnCore:(QSTCore*)core_;
+
+-(QSTEntity*)createEntityWithType:(NSString*)type;
+
+-(QSTEntity*)findEntityOfType:(NSString*)type;
+-(void)removeEntity:(QSTEntity*)entity;
 
 @end

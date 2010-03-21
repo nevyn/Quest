@@ -15,28 +15,12 @@
 
 @implementation QSTEntity
 
-+(QSTEntity*)entityWithType:(NSString*)type inCore:(QSTCore*)core;
-{
-	NSURL *path = $joinUrls(core.gamePath, @"entities", [type stringByAppendingPathExtension:@"ent"]);
-	
-	NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONURL:path];
-	
-	// Return an Error Entity instead, that has a visible
-	// debug sprite.
-	if(r_root == nil) {
-		printf("Warning: Unknown entity type %s\n", [type UTF8String]);
-		return nil;
-	}
-	
-	NSDictionary *props = [core.propertyDB propertiesFromDictionary:r_root];
-		
-	QSTEntity *entity = [[[QSTEntity alloc] initWithProperties:props] autorelease];
-	return entity;
-}
+@synthesize EID, type;
 
-
--(id)initWithProperties:(NSDictionary*)props {
+-(id)initWithType:(NSString*)type_ EID:(int)eid_ properties:(NSDictionary*)props {
 	if(self = [super init]) {
+		EID = eid_;
+		type = [type_ retain];
 		properties = [props retain];
 		[self printProperties];
 	}
@@ -51,7 +35,7 @@
 
 
 -(void)printProperties {
-	printf("Entity [%d] properties:\n", EID);
+	printf("Entity [%d] (%s) properties:\n", EID, [type UTF8String]);
 	for(NSString *key in properties) {
 		printf("  %16s: ", [key UTF8String]);
 		[((QSTProperty*)[properties objectForKey:key]) print];

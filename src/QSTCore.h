@@ -8,12 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class QSTGame;
 @class QSTGraphicsSystem;
 @class QSTPhysicsSystem;
 @class QSTInputSystem;
 @class QSTCmpPhysics;
-@class QSTEntity;
 @class QSTNetworkSystem;
+@class QSTEntityDB;
 @class QSTPropertyDB;
 @class QSTResourceDB;
 
@@ -23,11 +24,13 @@
 	QSTInputSystem		*inputSystem;
 	QSTNetworkSystem  *networkSystem;
 	
+	QSTEntityDB		  *entityDB;
 	QSTPropertyDB     *propertyDB;
 	QSTResourceDB     *resourceDB;
 	
 	NSURL *gamePath;
 
+	QSTGame	*game;
 }
 
 @property (nonatomic,readonly,retain) QSTGraphicsSystem *graphicsSystem;
@@ -35,16 +38,13 @@
 @property (nonatomic,readonly,retain) QSTInputSystem *inputSystem;
 @property (nonatomic,readonly,retain) QSTNetworkSystem *networkSystem;
 
+@property (nonatomic,readonly,retain) QSTEntityDB *entityDB;
 @property (nonatomic,readonly,retain) QSTPropertyDB *propertyDB;
 @property (nonatomic,readonly,retain) QSTResourceDB *resourceDB;
 
 @property (nonatomic,readonly,copy) NSURL *gamePath;
 
 -(id)initWithGame:(NSURL*)gamePath;
--(void)loadArea:(NSString*)areaName;
--(void)loadLayer:(NSMutableDictionary*)layerData withIndex:(int)theIndex;
--(QSTEntity*)createEntity:(NSMutableDictionary*)data layer:(int)layerIndex;
--(void)registerWithSystems:(QSTEntity*)entity layer:(int)layerIndex;
 
 -(void)tick;
 

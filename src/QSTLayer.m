@@ -26,7 +26,8 @@
 
 
 @implementation QSTLayer
-@synthesize resourceDB, depth, terrain, currentPosition;
+@synthesize resourceDB, depth, width, height, terrain, currentPosition;
+@synthesize startPosition;
 
 -(id)initUsingResourceDB:(QSTResourceDB*)resourceDB_;
 {
@@ -35,6 +36,7 @@
 	self.resourceDB = resourceDB_;
 	entities = [[NSMutableArray alloc] init];
 	self.currentPosition = [MutableVector2 vector];
+	startPosition = [[Vector2 vector] retain];
 
 	return self;
 }
@@ -58,15 +60,18 @@
 
 -(void)renderWithCameraPosition:(Vector2*)position {
 	glPushMatrix();
+		
+	float x = -position.x*depth + 5.0f + startPosition.x*depth;
+	float y = -position.y*depth + 3.75f + startPosition.y*depth;
 	
-	glScalef(depth, depth, 0.0f);
-	glTranslatef(-position.x + (5.0f / depth), -position.y + (3.75f / depth), 0.0f);
-	//glTranslatef(-position.x * depth + 5.0f, position.y * depth + 3.75f, 0.0f);
+	glTranslatef(x, y, 0.0f);
+	glScalef(depth, depth, 1.0f);
 	
 	[self renderEntities];
 	[self renderTerrain];
 	
-	[self renderGrid];
+	[self renderBorders];
+	//[self renderGrid];
 	
 	glPopMatrix();
 }
@@ -156,6 +161,19 @@
 			glVertex2f(20.0f, j);
 		}
 	}
+	glEnd();
+	glEnable(GL_TEXTURE_2D);
+}
+
+-(void)renderBorders {
+	glDisable(GL_TEXTURE_2D);
+	glColor3f(1.0f,0.0f,0.0f);
+	glLineWidth(depth * 2);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(0, 0);
+	glVertex2f(width*10.0f, 0);
+	glVertex2f(width*10.0f, height*7.5f);
+	glVertex2f(0, height*7.5f);
 	glEnd();
 	glEnable(GL_TEXTURE_2D);
 }
