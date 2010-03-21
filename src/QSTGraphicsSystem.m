@@ -10,8 +10,10 @@
 
 #import <OpenGL/OpenGL.h>
 
+#import "QSTCore.h"
 #import "QSTCamera.h"
 #import "QSTLayer.h"
+#import "QSTTerrain.h"
 
 #import "QSTCmpCollisionMap.h"
 
@@ -36,13 +38,22 @@
 @end*/
 
 
+@interface QSTGraphicsSystem ()
+@property (nonatomic, assign) QSTCore *core;
+@end
+
+
 
 @implementation QSTGraphicsSystem
 
 @synthesize camera;
+@synthesize core;
 
--(id)init {
-	if(self = [super init]) {		
+-(id)initOnCore:(QSTCore*)core_ {
+	if(self = [super init]) {
+		
+		self.core = core_;
+		
 		pixelToUnitRatio = 64;
 		
 		glViewport(0, 0, 640, 480);		
@@ -65,10 +76,6 @@
 		camera = [[QSTCamera alloc] init];
 	}
 	return self;
-}
-
--(void)clear {
-	[layers removeAllObjects];
 }
 
 -(void)tick:(float)delta {
@@ -94,23 +101,22 @@
 	[camera setWidth:w height:h];
 }
 
--(void)addLayer:(QSTLayer*)theLayer {
-	[layers addObject:theLayer];
+-(void)loadLayerWithData:(NSMutableDictionary*)data index:(int)index {
+	QSTLayer *layer = [[[QSTLayer alloc] initUsingResourceDB:core.resourceDB] autorelease];
+	
+	float depth = [[data objectForKey:@"depth"] floatValue];
+	layer.depth = depth;
+		
+	NSMutableArray *r_terrain = [data objectForKey:@"terrain"];
+	QSTTerrain *terrain = [QSTTerrain terrainWithData:r_terrain resources:core.resourceDB];
+	[layer setTerrain:terrain];
+	
+	[layers addObject:layer];
 }
 
--(QSTLayer*)layer:(int)layerIndex {
-	return [layers objectAtIndex:layerIndex];
-}
-
-/*
 -(void)registerEntity:(QSTEntity*)entity inLayer:(int)layer {
 	if([entity property:@"SpriteName"] == nil) return;
 	[[layers objectAtIndex:layer] addEntity:entity];
 }
-
--(void)setTerrain:(QSTTerrain *)tTerrain forLayer:(int)layer {
-	[[layers objectAtIndex:layer] setTerrain:tTerrain];
-}
-*/
 
 @end

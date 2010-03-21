@@ -50,7 +50,7 @@
 	self.propertyDB = [[[QSTPropertyDB alloc] initOnCore:self] autorelease];
 	self.resourceDB = [[[QSTResourceDB alloc] initOnCore:self] autorelease];
 	
-	graphicsSystem = [[QSTGraphicsSystem alloc] init];
+	graphicsSystem = [[QSTGraphicsSystem alloc] initOnCore:self];
 	physicsSystem = [[QSTPhysicsSystem alloc] initOnCore:self];
 	inputSystem = [[QSTInputSystem alloc] init];
 	

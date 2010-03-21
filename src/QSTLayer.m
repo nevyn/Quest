@@ -51,11 +51,6 @@
 	[super dealloc];
 }
 
--(void)registerEntity:(QSTEntity*)entity {
-	if([entity property:@"SpriteName"] == nil) return;
-	[entities addObject:entity];
-}
-
 -(void)addEntity:(QSTEntity*)entity {
 	[entities addObject:entity];
 }

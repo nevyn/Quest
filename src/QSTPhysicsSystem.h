@@ -29,16 +29,22 @@ typedef enum {
 @class QSTEntity;
 @class QSTCore;
 
-@interface QSTPhysicsSystem : NSObject {
-
-	NSMutableArray	*entities;
+@interface QSTPhysicsLayer : NSObject {
+	NSMutableArray		*entities;
 	QSTCmpCollisionMap	*collisionMap;
+}
+-(id)init;
+-(void)addEntity:(QSTEntity*)entity;
+@end
+
+@interface QSTPhysicsSystem : NSObject {
+	NSMutableArray		*layers;
 	QSTCore *core;
 }
 
 -(id)initOnCore:(QSTCore*)core_;
+-(void)loadLayerWithData:(NSMutableDictionary*)data index:(int)index;
 -(void)registerEntity:(QSTEntity*)entity inLayer:(int)layer;
--(void)setCollisionMap:(QSTCmpCollisionMap*)aColMap forLayer:(int)theLayer;
 -(void)tick:(float)dt;
 
 //-(QSTTraceResult*)traceBBox:(QSTBoundingBox*)bbox from:(Vector2*)from to:(Vector2*)to;

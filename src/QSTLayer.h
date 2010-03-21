@@ -47,8 +47,7 @@
 @property (nonatomic) int width;
 @property (nonatomic) int height;
 
--(void)registerEntity:(QSTEntity*)entity;
--(void)addEntity:(QSTEntity*)entity;		// Dangerous, no checking
+-(void)addEntity:(QSTEntity*)entity;
 @property (nonatomic, retain) QSTTerrain *terrain;
 -(void)renderWithCamera:(QSTCamera*)camera;
 -(void)renderEntities;

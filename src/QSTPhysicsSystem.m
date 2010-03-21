@@ -24,6 +24,26 @@
 @property (nonatomic, assign) QSTCore *core;
 @end
 
+@interface QSTPhysicsLayer ()
+@property (nonatomic,retain) QSTCmpCollisionMap *collisionMap;
+@end
+
+
+@implementation QSTPhysicsLayer
+@synthesize collisionMap;
+
+-(id)init {
+	if(![super init]) return nil;
+	entities = [[NSMutableArray alloc] init];
+	return self;
+}
+
+-(void)addEntity:(QSTEntity*)entity {
+	[entities addObject:entity];
+}
+
+@end
+
 
 @implementation QSTPhysicsSystem
 @synthesize core;
@@ -33,27 +53,46 @@
 	if (![super init]) return nil;
 	
 	self.core = core_;
-	entities = [[NSMutableArray alloc] init];
+	layers = [[NSMutableArray alloc] init];
 	
 	return self;
 }
+
 -(void)dealloc;
 {
 	self.core = nil;
-	[entities release]; entities = nil;
-	[collisionMap release]; collisionMap = nil;
+	[layers release]; layers = nil;
 	[super dealloc];
 }
 
+-(void)loadLayerWithData:(NSMutableDictionary*)data index:(int)index {
+	QSTPhysicsLayer *layer = [[QSTPhysicsLayer alloc] init];
+	
+	NSMutableArray *r_colmap = [data objectForKey:@"colmap"];
+	if(r_colmap != nil) {
+		QSTCmpCollisionMap *colmap = [[[QSTCmpCollisionMap alloc] initWithEID:0] autorelease];
+		for(NSMutableArray *vec in r_colmap) {
+			Vector2 *v1 = [Vector2 vectorWithX:[[vec objectAtIndex:0] floatValue]
+											 y:[[vec objectAtIndex:1] floatValue]];
+			Vector2 *v2 = [Vector2 vectorWithX:[[vec objectAtIndex:2] floatValue]
+											 y:[[vec objectAtIndex:3] floatValue]];
+			
+			[colmap.lines addObject:[QSTLine lineWithA:v1 b:v2]];
+		}
+		
+		layer.collisionMap = colmap;
+	}
+	
+	[layers addObject:layer];
+	[layer release];
+}
+
 -(void)registerEntity:(QSTEntity*)entity inLayer:(int)layer {
-	if([entity property:@"Velocity"] != nil) [entities addObject:entity];
+	if([entity property:@"Velocity"] != nil)
+		[[layers objectAtIndex:layer] addEntity:entity];
 }
 
--(void)setCollisionMap:(QSTCmpCollisionMap*)aColMap forLayer:(int)theLayer {
-	collisionMap = [aColMap retain];
-}
-
--(void)tick:(float)dt {
+-(void)tick:(float)dt {/*
 	for(int i=0; i<[entities count]; i++) {
 		QSTEntity *ent1 = [entities objectAtIndex:i];
 		
@@ -66,16 +105,15 @@
 		MutableVector2 *to = [MutableVector2 vectorWithX:pos.vectorVal.x + (vel.vectorVal.x * dt)
 													   y:pos.vectorVal.y + (vel.vectorVal.y * dt)];
 		
-		float gr = 5.5f;
 		
-		if(to.y > gr) {
-			to.y = gr;
-			vel.vectorVal.y = 0.0f;
-		}
+		
+		
+		
+		
 		
 		pos.vectorVal.x = to.x;
 		pos.vectorVal.y = to.y;
-				
+				*/
 		
 		
 		
@@ -131,7 +169,7 @@
 		pos.vectorVal.x = to.x;
 		pos.vectorVal.y = to.y;
 		 */
-	}
+	//}
 }
 
 -(Vector2*)collideBBox:(QSTBoundingBox*)bbox withLine:(QSTLine*)line from:(Vector2*)from to:(Vector2*)to {
