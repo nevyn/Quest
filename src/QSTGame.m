@@ -12,6 +12,7 @@
 #import "JSONHelper.h"
 
 #import "QSTGraphicsSystem.h"
+#import "QSTCamera.h"
 #import "QSTPhysicsSystem.h"
 
 #import "QSTLayer.h"
@@ -181,7 +182,9 @@
 	QSTProperty *vel = [playerEntity property:@"Velocity"];
 	vel.vectorVal.x = -3.0f;
 	
-	[core.graphicsSystem.camera zoomTo:2.0f withSpeed:0.2f];
+	[core.graphicsSystem.camera panToX:5.0f y:3.75f withSpeed:1.0f];
+	[core.graphicsSystem.camera zoomTo:2.3f withSpeed:0.4f];
+
 }
 
 -(void)leftStop {
@@ -193,7 +196,9 @@
 	QSTProperty *vel = [playerEntity property:@"Velocity"];
 	vel.vectorVal.x = 3.0f;
 	
-	[core.graphicsSystem.camera zoomTo:0.2f withSpeed:0.2f];
+	[core.graphicsSystem.camera zoomTo:1.0f withSpeed:0.4f];
+	[core.graphicsSystem.camera follow:playerEntity withSpeed:1.0f];
+
 }
 
 -(void)rightStop {

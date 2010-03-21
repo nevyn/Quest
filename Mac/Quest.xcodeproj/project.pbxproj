@@ -43,6 +43,7 @@
 		D889E0781152CF5E005110F6 /* QSTLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D889E0771152CF5E005110F6 /* QSTLayer.m */; };
 		D889E1091155334D005110F6 /* network in Resources */ = {isa = PBXBuildFile; fileRef = D889E1081155334D005110F6 /* network */; };
 		D889E56511558EF8005110F6 /* QSTGame.m in Sources */ = {isa = PBXBuildFile; fileRef = D889E56411558EF8005110F6 /* QSTGame.m */; };
+		D889F2A9115685BE005110F6 /* QSTCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = D889F2A8115685BE005110F6 /* QSTCamera.m */; };
 		D8BF0BFB113736050006E86E /* QSTCmpCollisionMap.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BF0BFA113736050006E86E /* QSTCmpCollisionMap.m */; };
 		D8BF0C9B1137F9880006E86E /* QSTResModel2D.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BF0C9A1137F9880006E86E /* QSTResModel2D.m */; };
 		D8BF13AD113AB4050006E86E /* phys in Resources */ = {isa = PBXBuildFile; fileRef = D8BF13AC113AB4050006E86E /* phys */; };
@@ -128,6 +129,8 @@
 		D889E1081155334D005110F6 /* network */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = network; sourceTree = "<group>"; };
 		D889E56311558EF8005110F6 /* QSTGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTGame.h; sourceTree = "<group>"; };
 		D889E56411558EF8005110F6 /* QSTGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTGame.m; sourceTree = "<group>"; };
+		D889F2A7115685BE005110F6 /* QSTCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTCamera.h; sourceTree = "<group>"; };
+		D889F2A8115685BE005110F6 /* QSTCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTCamera.m; sourceTree = "<group>"; };
 		D8BF0BF9113736050006E86E /* QSTCmpCollisionMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTCmpCollisionMap.h; sourceTree = "<group>"; };
 		D8BF0BFA113736050006E86E /* QSTCmpCollisionMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTCmpCollisionMap.m; sourceTree = "<group>"; };
 		D8BF0C991137F9880006E86E /* QSTResModel2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTResModel2D.h; sourceTree = "<group>"; };
@@ -345,6 +348,8 @@
 				D8DA002D114EDBEC0064B657 /* QSTTerrain.m */,
 				05D98CDC11551F1B002DC175 /* NSURL+QuestPath.h */,
 				05D98CDD11551F1B002DC175 /* NSURL+QuestPath.m */,
+				D889F2A7115685BE005110F6 /* QSTCamera.h */,
+				D889F2A8115685BE005110F6 /* QSTCamera.m */,
 			);
 			name = src;
 			path = ../src;
@@ -461,6 +466,7 @@
 				05D98CDE11551F1B002DC175 /* NSURL+QuestPath.m in Sources */,
 				05D98E0511553BE4002DC175 /* QSTNetworkSystem.m in Sources */,
 				D889E56511558EF8005110F6 /* QSTGame.m in Sources */,
+				D889F2A9115685BE005110F6 /* QSTCamera.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

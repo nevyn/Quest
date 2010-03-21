@@ -11,6 +11,7 @@
 #import "QSTResourceDB.h"
 #import "QSTResSprite.h"
 #import "QSTGraphicsSystem.h"
+#import "QSTCamera.h"
 
 #import "QSTTerrain.h"
 

@@ -10,11 +10,13 @@
 
 #import <OpenGL/OpenGL.h>
 
-#import "QSTSceneLayered2D.h"
+#import "QSTCamera.h"
+#import "QSTLayer.h"
+
 #import "QSTCmpCollisionMap.h"
+
 #import "QSTEntity.h"
 #import "QSTProperty.h"
-#import "QSTLayer.h"
 
 #import "Vector2.h"
 
@@ -33,114 +35,6 @@
 
 @end*/
 
-@implementation QSTCamera
-
-@synthesize position, zoomFactor;
-
--(id)initWithGraphicsSystem:(QSTGraphicsSystem*)gfx {
-	if(![super init]) return nil;
-	
-	gfxSystem = gfx;	
-	
-	position = [[MutableVector2 vector] retain];
-	destination	= [[MutableVector2 vector] retain];
-	zoomFactor = 1.0f;
-	
-	[self setWidth:1 height:1];
-	
-	return self;
-}
-
--(void)setWidth:(int)w height:(int)h {
-	maxx = w * 10.0f;
-	maxy = h * 7.5f;
-}
-
--(void)update:(float)delta {
-	if(followMode) {
-		QSTProperty *pos = [entityToFollow property:@"Position"];
-		position.x = [pos vectorVal].x;
-		position.y = [pos vectorVal].y;
-	}
-	
-	if(zooming) {				
-		if(zoomFactor < goalZoomFactor)
-			zoomFactor += zoomSpeed * delta;
-		else {
-			zoomFactor -= zoomSpeed * delta;
-		}		
-	}
-	
-	MutableVector2 *min = [MutableVector2 vector];
-	MutableVector2 *max = [MutableVector2 vector];
-	
-	float size_x = 10.0f / zoomFactor;
-	float size_y = 7.5f / zoomFactor;
-	
-	if(size_x > maxx) {
-		zoomFactor = 10.0f / maxx;
-		size_x = maxx;
-		size_y = 7.5f / zoomFactor;
-	}
-	if(size_y > maxy) {
-		zoomFactor = 7.5f / maxy;
-		size_y = maxy;
-		size_x = 10.0f / zoomFactor;
-	}
-	
-	min.x = max.x = position.x;
-	min.y = max.y = position.y;
-	
-	min.x -= (size_x / 2.0f);
-	min.y -= (size_y / 2.0f);
-	max.x += (size_x / 2.0f);
-	max.y += (size_y / 2.0f);
-	
-	if(min.x < 0.0f) {
-		min.x = 0.0f;
-		max.x = size_x;
-	} else if (max.x > maxx) {
-		max.x = maxx;
-		min.x = maxx - size_x;
-	}
-	if(min.y < 0.0f) {
-		min.y = 0.0f;
-		max.y = size_y;
-	} else if(max.y > maxy) {
-		max.y = maxy;
-		min.y = maxy - size_y;
-	}
-	
-	position.x = (min.x + max.x) / 2.0f;
-	position.y = (min.y + max.y) / 2.0f;
-	
-	
-	
-	//printf("Camera: %f %f => %f %f\n", min.x, min.y, max.x, max.y);
-}
-
--(void)zoomTo:(float)theZoom withSpeed:(float)theSpeed {
-	goalZoomFactor = theZoom;
-	zoomSpeed = theSpeed;
-	zooming = YES;
-}
-
--(void)panToX:(float)x y:(float)y withSpeed:(float)theSpeed {
-	followMode = NO;
-	destination.x = x;
-	destination.y = y;
-	speed = theSpeed;
-}
-
--(void)follow:(QSTEntity*)follow withSpeed:(float)theSpeed {
-	if(entityToFollow != follow) [entityToFollow release];
-	printf("Camera: Follow entity: %d (%s)\n", follow.EID, [follow.type UTF8String]);
-	entityToFollow = [follow retain];
-	followMode = YES;
-	speed = theSpeed;
-}
-
-@end
 
 
 @implementation QSTGraphicsSystem
@@ -168,7 +62,7 @@
 		glPointSize(5.0f);
 		
 		layers = [[NSMutableArray alloc] init];
-		camera = [[QSTCamera alloc] initWithGraphicsSystem:self];
+		camera = [[QSTCamera alloc] init];
 	}
 	return self;
 }
