@@ -47,9 +47,10 @@
 }
 
 @property (nonatomic,readonly) Vector2 *position;
+@property (nonatomic,readonly) float zoomFactor;
 
 -(id)initWithGraphicsSystem:(QSTGraphicsSystem*)gfx;
-
+-(void)setWidth:(int)w height:(int)h;
 -(void)update:(float)delta;
 
 -(void)zoomTo:(float)theZoom withSpeed:(float)theSpeed;
@@ -71,6 +72,8 @@
 -(id)init;
 -(void)tick:(float)delta;
 -(void)beginFrame;
+
+-(void)newSceneWithWidth:(int)w height:(int)h;
 
 -(void)addLayer:(QSTLayer*)theLayer;
 -(QSTLayer*)layer:(int)layerIndex;

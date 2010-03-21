@@ -10,6 +10,7 @@
 
 #import "QSTResourceDB.h"
 #import "QSTResSprite.h"
+#import "QSTGraphicsSystem.h"
 
 #import "QSTTerrain.h"
 
@@ -58,19 +59,29 @@
 	[entities addObject:entity];
 }
 
--(void)renderWithCameraPosition:(Vector2*)position {
+-(void)renderWithCamera:(QSTCamera*)camera {
 	glPushMatrix();
+	
+	Vector2 *position = camera.position;
+	float zoom = camera.zoomFactor;
+	
+	float dz;
+	//if(depth < 1.0f)
+	dz = depth * (pow(zoom,depth));
+	//else
+	//	dz = zoom * (pow(depth,1.0f/zoom));
+
 		
-	float x = -position.x*depth + 5.0f + startPosition.x*depth;
-	float y = -position.y*depth + 3.75f + startPosition.y*depth;
+	float x = -position.x*dz + 5.0f + startPosition.x*dz;
+	float y = -position.y*dz + 3.75f + startPosition.y*dz;
 	
 	glTranslatef(x, y, 0.0f);
-	glScalef(depth, depth, 1.0f);
-	
+	glScalef(dz, dz, 1.0f);
+		
 	[self renderEntities];
 	[self renderTerrain];
 	
-	[self renderBorders];
+	//[self renderBorders];
 	//[self renderGrid];
 	
 	glPopMatrix();

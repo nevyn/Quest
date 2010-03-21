@@ -13,6 +13,7 @@
 @class QSTEntity;
 @class QSTTerrain;
 @class QSTResourceDB;
+@class QSTCamera;
 
 @interface QSTLayer : NSObject {
 	// Depth affects how much the layers scrolls when the camera
@@ -49,7 +50,7 @@
 -(void)registerEntity:(QSTEntity*)entity;
 -(void)addEntity:(QSTEntity*)entity;		// Dangerous, no checking
 @property (nonatomic, retain) QSTTerrain *terrain;
--(void)renderWithCameraPosition:(Vector2*)position;
+-(void)renderWithCamera:(QSTCamera*)camera;
 -(void)renderEntities;
 -(void)renderTerrain;
 -(void)renderGrid;

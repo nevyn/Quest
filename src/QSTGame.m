@@ -65,15 +65,20 @@
 																		 )];
 	
 	printf("Load Area: %s\n", [[areaPath path] UTF8String]);
-		
+			
 	NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONURL:areaPath];
 	
 	// Later there will be some area-global data here, like
-	// music and mood etc
+	// music and mood etc. But where should it be stored?
+	
+	NSArray *r_size = [r_root objectForKey:@"size"];
+	int width = [[r_size objectAtIndex:0] intValue];
+	int height = [[r_size objectAtIndex:1] intValue];
+	
+	[core.graphicsSystem newSceneWithWidth:width height:height];
 		
 	NSMutableArray *r_layers = [r_root objectForKey:@"layers"];
 	for(int i=0; i<[r_layers count];i++) {
-		printf("Hus\n");
 		[self loadLayer:[r_layers objectAtIndex:i] withIndex:i];
 	}
 	
@@ -175,6 +180,8 @@
 -(void)leftStart {
 	QSTProperty *vel = [playerEntity property:@"Velocity"];
 	vel.vectorVal.x = -3.0f;
+	
+	[core.graphicsSystem.camera zoomTo:2.0f withSpeed:0.2f];
 }
 
 -(void)leftStop {
@@ -185,6 +192,8 @@
 -(void)rightStart {
 	QSTProperty *vel = [playerEntity property:@"Velocity"];
 	vel.vectorVal.x = 3.0f;
+	
+	[core.graphicsSystem.camera zoomTo:0.2f withSpeed:0.2f];
 }
 
 -(void)rightStop {
