@@ -29,7 +29,8 @@
 
 
 -(void)dealloc {
-	printf("FUUUUUUUU....!!!");
+	[properties release];
+	[type release];
 	[super dealloc];
 }
 

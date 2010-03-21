@@ -16,6 +16,7 @@
 #import "QSTGraphicsSystem.h"
 #import "QSTPhysicsSystem.h"
 #import "QSTInputSystem.h"
+#import "QSTNetworkSystem.h"
 
 #import "QSTEntityDB.h"
 #import "QSTResourceDB.h"
@@ -38,33 +39,40 @@
 @implementation QSTCore
 @synthesize graphicsSystem, physicsSystem, inputSystem, networkSystem;
 @synthesize entityDB, propertyDB, resourceDB;
-@synthesize gamePath;
+@synthesize gamePath, mode;
 
--(id)initWithGame:(NSURL*)gamePath_;
+-(id)initWithGame:(NSURL*)gamePath_ inMode:(QSTMode)mode_;
 {
 	if(![super init]) return nil;
 	
 	self.gamePath = gamePath_;
+	mode = mode_;
 
 	self.entityDB = [[[QSTEntityDB alloc] initOnCore:self] autorelease];
 	self.propertyDB = [[[QSTPropertyDB alloc] initOnCore:self] autorelease];
 	self.resourceDB = [[[QSTResourceDB alloc] initOnCore:self] autorelease];
 	
 	graphicsSystem = [[QSTGraphicsSystem alloc] init];
-	physicsSystem = [[QSTPhysicsSystem alloc] initOnCore:self];
+	if(!(mode & QSTSlave))
+		physicsSystem = [[QSTPhysicsSystem alloc] initOnCore:self];
 	inputSystem = [[QSTInputSystem alloc] init];
+	
+	if(mode != QSTStandalone)
+		networkSystem = [[QSTNetworkSystem alloc] initOnCore:self];
 	
 	game = [[QSTGame alloc] initOnCore:self];
 	
-	QSTInputMapper *mapper = [[QSTInputMapper alloc] init];
-	[mapper registerStateActionWithName:@"left" beginAction:@selector(leftStart) endAction:@selector(leftStop) target:game];
-	[mapper registerStateActionWithName:@"right" beginAction:@selector(rightStart) endAction:@selector(rightStop) target:game];
-	[mapper registerActionWithName:@"jump" action:@selector(jump) target:game];
+	QSTInputMapper *mapper = [[[QSTInputMapper alloc] init] autorelease];
+	if(!(mode & QSTSlave)) {
+	 	[mapper registerStateActionWithName:@"left" beginAction:@selector(leftStart) endAction:@selector(leftStop) target:game];
+		[mapper registerStateActionWithName:@"right" beginAction:@selector(rightStart) endAction:@selector(rightStop) target:game];
+		[mapper registerActionWithName:@"jump" action:@selector(jump) target:game];
+	}
 	[mapper mapKey:123 toAction:@"left"];
 	[mapper mapKey:124 toAction:@"right"];
 	[mapper mapKey:49 toAction:@"jump"];
+	
 	inputSystem.mapper = mapper;
-	[mapper release];
 	
 	[game loadArea:@"jump"];
 	

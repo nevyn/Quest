@@ -10,6 +10,7 @@
 
 #import "QSTCore.h"
 #import "QSTView.h"
+#import "QSTNetworkSystem.h"
 
 static NSString *QSTStartInModeKey = @"startmode";
 typedef enum { // These map to the indices in the boot dialog
@@ -36,7 +37,8 @@ static NSString *QSTFirstBootKey = @"QSTFirstBoot";
 }
 -(void)dealloc;
 {
-	[core release];
+	[masterCore release];
+	[slaveCore release];
 	[super dealloc];
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -121,8 +123,10 @@ static NSString *QSTFirstBootKey = @"QSTFirstBoot";
 #ifdef _DEBUG
 	// Completely useless in production; but in development, make sure we are able to clean up
 	// memory properly
-	assert([core retainCount] == 1);
-	[core release];
+	assert([masterCore retainCount] <= 1);
+	[masterCore release];
+	assert([slaveCore retainCount] <= 1);
+	[slaveCore release];
 #endif
 }
 
@@ -134,9 +138,22 @@ static NSString *QSTFirstBootKey = @"QSTFirstBoot";
 
 	NSData *encodedGamePath = [[NSUserDefaults standardUserDefaults] objectForKey:QSTStartWithGameKey];
 	NSURL *gamePath = [NSUnarchiver unarchiveObjectWithData:encodedGamePath];
-	core = [[QSTCore alloc] initWithGame:gamePath];
+
+	QSTStartMode mode = [[NSUserDefaults standardUserDefaults] integerForKey:QSTStartInModeKey];
+	if(mode == QSTStartSingleplayer) {
+		masterCore = [[QSTCore alloc] initWithGame:gamePath inMode:QSTStandalone];
+		[view setCore:masterCore];
+	} else if(mode == QSTStartHostingStandalone) {
+		masterCore = [[QSTCore alloc] initWithGame:gamePath inMode:QSTMaster];
+		slaveCore = [[QSTCore alloc] initWithGame:gamePath inMode:QSTSlave];
+		//slaveCore.networkSystem.host = @"localhost";
+		[view setCore:slaveCore];
+	} else if(mode == QSTStartJoiningStandalone) {
+		slaveCore = [[QSTCore alloc] initWithGame:gamePath inMode:QSTSlave];
+		//slaveCore.networkSystem.host = [[NSUserDefaults standardUserDefaults] objectForKey:QSTStartJoiningHostKey];
+		[view setCore:slaveCore];
+	}
 	
-	[view setCore:core];
 	[view start];
 }
 @end

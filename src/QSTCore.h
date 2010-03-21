@@ -18,6 +18,12 @@
 @class QSTPropertyDB;
 @class QSTResourceDB;
 
+typedef enum {
+	QSTStandalone = 0,
+	QSTMaster = 1<<1,
+	QSTSlave  = 1<<2,
+} QSTMode;
+
 @interface QSTCore : NSObject {
 	QSTGraphicsSystem	*graphicsSystem;
 	QSTPhysicsSystem	*physicsSystem;
@@ -31,6 +37,7 @@
 	NSURL *gamePath;
 
 	QSTGame	*game;
+	QSTMode mode;
 }
 
 @property (nonatomic,readonly,retain) QSTGraphicsSystem *graphicsSystem;
@@ -43,8 +50,9 @@
 @property (nonatomic,readonly,retain) QSTResourceDB *resourceDB;
 
 @property (nonatomic,readonly,copy) NSURL *gamePath;
+@property (nonatomic,readonly) QSTMode mode;
 
--(id)initWithGame:(NSURL*)gamePath;
+-(id)initWithGame:(NSURL*)gamePath inMode:(QSTMode)mode_;
 
 -(void)tick;
 
