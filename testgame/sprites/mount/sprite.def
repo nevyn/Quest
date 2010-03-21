@@ -1,0 +1,15 @@
+{
+	"data" : {
+		"size" : [256, 256],
+		"center" : [128, 128],
+		"colbox" : [256, 256]
+	},
+	"animations" : {
+		"idle" : {
+			"fps" : 15.0,
+			"loopstart" : 0,
+			"frames" : 1,
+			"texture" : "mountain"
+		}
+	}
+}
