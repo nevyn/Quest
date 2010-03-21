@@ -2,23 +2,41 @@
   "size" : [3, 1],
   "layers" : [
     {
-      "depth" : 0.4,
-      "position" : [0.0, 8.0],
+      "depth" : 0.1,
       "terrain" : [
         {
-          "sprite" : "tree",
-          "position" : [10.0, 6.0],
+          "sprite" : "mount",
+          "position" : [8.0, -9.0],
           "rotation" : 0.0,
           "scale" : 12.0,
           "animation" : "idle"
+        },
+        {
+          "sprite" : "mount",
+          "position" : [70.0, -3.0],
+          "rotation" : 0.0,
+          "scale" : 14.0,
+          "animation" : "idle"
         }
-      ],
+     ],
       "entities" : [
         {
           "type" : "fgi",
           "components" : {
             "Position" : [2.0, 2.0]
           }
+        }
+      ]
+    },
+    {
+      "depth" : 0.6,
+      "terrain" : [
+        {
+          "sprite" : "tree",
+          "position" : [8.0, 7.0],
+          "rotation" : 0.0,
+          "scale" : 3.0,
+          "animation" : "idle"
         }
       ]
     },
@@ -88,7 +106,7 @@
       "depth" : "2.0",
       "terrain" : [
         {
-          "sprite" : "sdffsg",
+          "sprite" : "tree",
           "position" : [15.0, 8.0],
           "rotation" : 0.0,
           "scale" : 4.0,
@@ -97,7 +115,7 @@
       ],
       "entities" : [
         {
-          "type" : "player",
+          "type" : "hiuh",
           "components" : {
             "Position" : [2.0, 2.0]
           }
