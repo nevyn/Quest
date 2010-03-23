@@ -12,8 +12,8 @@
 @class QSTGraphicsSystem;
 @class QSTPhysicsSystem;
 @class QSTInputSystem;
-@class QSTCmpPhysics;
 @class QSTNetworkSystem;
+@class QSTLogicsSystem;
 @class QSTEntityDB;
 @class QSTPropertyDB;
 @class QSTResourceDB;
@@ -28,7 +28,8 @@ typedef enum {
 	QSTGraphicsSystem	*graphicsSystem;
 	QSTPhysicsSystem	*physicsSystem;
 	QSTInputSystem		*inputSystem;
-	QSTNetworkSystem  *networkSystem;
+	QSTNetworkSystem	*networkSystem;
+	QSTLogicsSystem		*logicsSystem;
 	
 	QSTEntityDB		  *entityDB;
 	QSTPropertyDB     *propertyDB;
@@ -44,6 +45,7 @@ typedef enum {
 @property (nonatomic,readonly,retain) QSTPhysicsSystem *physicsSystem;
 @property (nonatomic,readonly,retain) QSTInputSystem *inputSystem;
 @property (nonatomic,readonly,retain) QSTNetworkSystem *networkSystem;
+@property (nonatomic,readonly,retain) QSTLogicsSystem *logicsSystem;
 
 @property (nonatomic,readonly,retain) QSTEntityDB *entityDB;
 @property (nonatomic,readonly,retain) QSTPropertyDB *propertyDB;

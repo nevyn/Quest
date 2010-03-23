@@ -27,6 +27,7 @@
 @property (nonatomic,readonly) int EID;
 @property (nonatomic,readonly) NSString *type;
 
+-(id)initWithEID:(int)eid_;
 -(id)initWithType:(NSString*)type_ EID:(int)eid_ properties:(NSDictionary*)props;
 
 -(void)printProperties;

@@ -11,6 +11,7 @@
 #import "JSONHelper.h"
 
 #import "QSTPropertyDB.h"
+#import "QSTProperty.h"
 #import "QSTEntity.h"
 
 @interface QSTEntityDB ()
@@ -55,6 +56,12 @@
 	return entity;
 }
 
+-(QSTEntity*)createEmptyEntity {
+	QSTEntity *entity = [[[QSTEntity alloc] initWithEID:[entities count]] autorelease];
+	[entities addObject:entity];
+	return entity;
+}
+
 -(QSTEntity*)findEntityOfType:(NSString*)type {
 	for(QSTEntity *entity in entities) {
 		if([entity.type isEqualToString:type])
@@ -62,6 +69,18 @@
 	}
 	return nil;
 }
+
+/*
+-(NSArray*)findEntitiesWithProperty:(NSString*)propertyName equals:(id)val {
+	NSMutableArray *result = [NSMutableArray array];
+	for(QSTEntity *anEntity in entities) {
+		QSTProperty *prop = [anEntity property:propertyName];
+		if(prop==nil) continue;
+		if(prop.
+	}
+	return result;
+}
+ */
 
 -(void)removeEntity:(QSTEntity*)entity {
 	[entities removeObject:entity];

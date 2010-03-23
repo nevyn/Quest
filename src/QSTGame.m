@@ -14,6 +14,7 @@
 #import "QSTGraphicsSystem.h"
 #import "QSTCamera.h"
 #import "QSTPhysicsSystem.h"
+#import "QSTLogicsSystem.h"
 
 #import "QSTLayer.h"
 #import "QSTTerrain.h"
@@ -94,7 +95,6 @@
 	
 	// Not needed anymore
 	[core.entityDB removeEntity:playerStart];
-	
 }
 
 -(void)loadLayer:(NSMutableDictionary*)layerData withIndex:(int)theIndex {
@@ -111,15 +111,20 @@
 		
 		[core.physicsSystem registerEntity:entity inLayer:theIndex];
 		[core.graphicsSystem registerEntity:entity inLayer:theIndex];
+		[core.logicsSystem registerEntity:entity];
 	}
 }
 
 -(QSTEntity*)createEntity:(NSMutableDictionary*)data layer:(int)layerIndex {
 	NSString *r_entity_type = [data objectForKey:@"type"];
 		
-	// Get archetype
-	QSTEntity *ent = [core.entityDB createEntityWithType:r_entity_type];
-	if(ent == nil) return nil;
+	QSTEntity *ent;
+	if(r_entity_type != nil) {
+		// Get archetype
+		ent = [core.entityDB createEntityWithType:r_entity_type];
+		if(ent == nil) return nil;
+	} else
+		ent = [core.entityDB createEmptyEntity];
 	
 	// Override with specific
 	NSMutableDictionary *r_entity_components = [data objectForKey:@"components"];

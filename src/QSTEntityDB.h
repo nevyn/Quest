@@ -21,6 +21,7 @@
 -(id)initOnCore:(QSTCore*)core_;
 
 -(QSTEntity*)createEntityWithType:(NSString*)type;
+-(QSTEntity*)createEmptyEntity;
 
 -(QSTEntity*)findEntityOfType:(NSString*)type;
 -(void)removeEntity:(QSTEntity*)entity;

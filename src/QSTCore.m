@@ -17,6 +17,7 @@
 #import "QSTPhysicsSystem.h"
 #import "QSTInputSystem.h"
 #import "QSTNetworkSystem.h"
+#import "QSTLogicsSystem.h"
 
 #import "QSTEntityDB.h"
 #import "QSTResourceDB.h"
@@ -27,6 +28,7 @@
 @property (nonatomic,readwrite,retain) QSTPhysicsSystem *physicsSystem;
 @property (nonatomic,readwrite,retain) QSTInputSystem *inputSystem;
 @property (nonatomic,readwrite,retain) QSTNetworkSystem *networkSystem;
+@property (nonatomic,readwrite,retain) QSTLogicsSystem *logicsSystem;
 
 @property (nonatomic,readwrite,retain) QSTEntityDB *entityDB;
 @property (nonatomic,readwrite,retain) QSTPropertyDB *propertyDB;
@@ -37,7 +39,7 @@
 
 
 @implementation QSTCore
-@synthesize graphicsSystem, physicsSystem, inputSystem, networkSystem;
+@synthesize graphicsSystem, physicsSystem, inputSystem, networkSystem, logicsSystem;
 @synthesize entityDB, propertyDB, resourceDB;
 @synthesize gamePath, mode;
 
@@ -53,10 +55,11 @@
 	self.resourceDB = [[[QSTResourceDB alloc] initOnCore:self] autorelease];
 	
 	graphicsSystem = [[QSTGraphicsSystem alloc] initOnCore:self];
-	if(!(mode & QSTSlave))
-		physicsSystem = [[QSTPhysicsSystem alloc] initOnCore:self];
 	inputSystem = [[QSTInputSystem alloc] init];
-	
+	if(!(mode & QSTSlave)) {
+		physicsSystem = [[QSTPhysicsSystem alloc] initOnCore:self];
+		logicsSystem = [[QSTLogicsSystem alloc] initOnCore:self];
+	}
 	if(mode != QSTStandalone)
 		networkSystem = [[QSTNetworkSystem alloc] initOnCore:self];
 	
@@ -84,6 +87,7 @@
 	self.physicsSystem = nil;
 	self.inputSystem = nil;
 	self.networkSystem = nil;
+	self.logicsSystem = nil;
 	self.gamePath = nil;
 	self.entityDB = nil;
 	self.propertyDB = nil;

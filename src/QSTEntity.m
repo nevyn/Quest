@@ -17,6 +17,14 @@
 
 @synthesize EID, type;
 
+-(id)initWithEID:(int)eid_ {
+	if(![super init]) return nil;
+	EID = eid_;
+	type = @"__custom";
+	properties = [[NSMutableDictionary alloc] init];
+	return self;
+}
+
 -(id)initWithType:(NSString*)type_ EID:(int)eid_ properties:(NSDictionary*)props {
 	if(self = [super init]) {
 		EID = eid_;
