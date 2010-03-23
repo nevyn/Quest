@@ -23,6 +23,8 @@
 #import "QSTResourceDB.h"
 #import "QSTPropertyDB.h"
 
+#import "QSTLog.h"
+
 @interface QSTCore ()
 @property (nonatomic,readwrite,retain) QSTGraphicsSystem *graphicsSystem;
 @property (nonatomic,readwrite,retain) QSTPhysicsSystem *physicsSystem;
@@ -37,6 +39,7 @@
 @property (nonatomic,readwrite, copy) NSURL *gamePath;
 @end
 
+static QSTLogger *syslog = nil;
 
 @implementation QSTCore
 @synthesize graphicsSystem, physicsSystem, inputSystem, networkSystem, logicsSystem;
@@ -47,8 +50,13 @@
 {
 	if(![super init]) return nil;
 	
+	syslog = [[QSTLog log] loggerWithName:@"Engine"];
+	[syslog info:@"-------- Initializing Core --------"];
+		
 	self.gamePath = gamePath_;
 	mode = mode_;
+	
+	[syslog info:@"Running game: %@", self.gamePath];
 
 	self.entityDB = [[[QSTEntityDB alloc] initOnCore:self] autorelease];
 	self.propertyDB = [[[QSTPropertyDB alloc] initOnCore:self] autorelease];

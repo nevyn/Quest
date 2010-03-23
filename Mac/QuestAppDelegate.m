@@ -132,7 +132,6 @@ static NSString *QSTFirstBootKey = @"QSTFirstBoot";
 
 -(IBAction)start:(id)sender;
 {
-	printf("Create core.\n");
 	[modeSelection close];
 	[gameWindow makeKeyAndOrderFront:nil];
 
