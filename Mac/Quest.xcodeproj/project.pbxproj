@@ -13,6 +13,8 @@
 		05D98CCF11551E3B002DC175 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D98CCB11551E3B002DC175 /* Test.m */; };
 		05D98CDE11551F1B002DC175 /* NSURL+QuestPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D98CDD11551F1B002DC175 /* NSURL+QuestPath.m */; };
 		05D98E0511553BE4002DC175 /* QSTNetworkSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D98E0411553BE4002DC175 /* QSTNetworkSystem.m */; };
+		05D9905E11563162002DC175 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D9905D11563162002DC175 /* AsyncSocket.m */; };
+		05F2045B1156BC2D008E990F /* QSTNetSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F2045A1156BC2D008E990F /* QSTNetSocket.m */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* QuestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* QuestAppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -70,6 +72,10 @@
 		05D98CDD11551F1B002DC175 /* NSURL+QuestPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+QuestPath.m"; sourceTree = "<group>"; };
 		05D98E0311553BE4002DC175 /* QSTNetworkSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTNetworkSystem.h; sourceTree = "<group>"; };
 		05D98E0411553BE4002DC175 /* QSTNetworkSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTNetworkSystem.m; sourceTree = "<group>"; };
+		05D9905C11563162002DC175 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		05D9905D11563162002DC175 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		05F204591156BC2D008E990F /* QSTNetSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTNetSocket.h; sourceTree = "<group>"; };
+		05F2045A1156BC2D008E990F /* QSTNetSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTNetSocket.m; sourceTree = "<group>"; };
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -268,6 +274,8 @@
 			children = (
 				D81E913311331DD8006994C7 /* JSON */,
 				05D98CC311551E3B002DC175 /* MYUtilities */,
+				05D9905C11563162002DC175 /* AsyncSocket.h */,
+				05D9905D11563162002DC175 /* AsyncSocket.m */,
 				D81E8DD31132DCD8006994C7 /* Vector2.h */,
 				D81E8DD41132DCD8006994C7 /* Vector2.m */,
 				D81E8C9F1131EB84006994C7 /* lodepng.c */,
@@ -350,6 +358,8 @@
 				05D98CDD11551F1B002DC175 /* NSURL+QuestPath.m */,
 				D889F2A7115685BE005110F6 /* QSTCamera.h */,
 				D889F2A8115685BE005110F6 /* QSTCamera.m */,
+				05F204591156BC2D008E990F /* QSTNetSocket.h */,
+				05F2045A1156BC2D008E990F /* QSTNetSocket.m */,
 			);
 			name = src;
 			path = ../src;
@@ -467,6 +477,8 @@
 				05D98E0511553BE4002DC175 /* QSTNetworkSystem.m in Sources */,
 				D889E56511558EF8005110F6 /* QSTGame.m in Sources */,
 				D889F2A9115685BE005110F6 /* QSTCamera.m in Sources */,
+				05D9905E11563162002DC175 /* AsyncSocket.m in Sources */,
+				05F2045B1156BC2D008E990F /* QSTNetSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

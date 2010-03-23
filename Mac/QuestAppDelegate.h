@@ -12,7 +12,8 @@
 @class QSTView;
 
 @interface QuestAppDelegate : NSObject <NSApplicationDelegate> {
-	QSTCore		*core;
+	QSTCore	*masterCore;
+	QSTCore *slaveCore;
 	
 	IBOutlet QSTView		*view;
 	IBOutlet NSWindow *gameWindow;

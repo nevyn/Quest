@@ -55,12 +55,18 @@
 	position.x += dx * speed * delta;
 	position.y += dy * speed * delta;
 	
-	if(zooming) {				
-		if(zoomFactor < goalZoomFactor)
-			zoomFactor += zoomSpeed * delta;
-		else {
-			zoomFactor -= zoomSpeed * delta;
-		}		
+	if(zooming) {
+		
+		float zd = goalZoomFactor - zoomFactor;
+		if(fabs(zd) < 0.2f) zd = 0.2f * (fabs(zd) / zd);
+		
+		printf("zd: %f     tot: %f\n", zd, zd*zoomSpeed*delta);
+		
+		if(fabs(goalZoomFactor - zoomFactor) < 0.02f) {
+			zoomFactor = goalZoomFactor;
+			zooming = NO;
+		} else
+			zoomFactor += zd * zoomSpeed * delta;
 	}
 	
 	MutableVector2 *min = [MutableVector2 vector];

@@ -25,11 +25,13 @@
 @end
 
 @interface QSTPhysicsLayer ()
+@property (nonatomic,readonly) NSMutableArray *entities;
 @property (nonatomic,retain) QSTCmpCollisionMap *collisionMap;
 @end
 
 
 @implementation QSTPhysicsLayer
+@synthesize entities;
 @synthesize collisionMap;
 
 -(id)init {
@@ -92,28 +94,31 @@
 		[[layers objectAtIndex:layer] addEntity:entity];
 }
 
--(void)tick:(float)dt {/*
-	for(int i=0; i<[entities count]; i++) {
-		QSTEntity *ent1 = [entities objectAtIndex:i];
-		
-		QSTProperty *pos = [ent1 property:@"Position"];
-		QSTProperty *vel = [ent1 property:@"Velocity"];
-		QSTResSprite *sprite = [core.resourceDB getSpriteWithName:[ent1 property:@"SpriteName"].stringVal];
-		
-		vel.vectorVal.y += 9.8f * dt;
-				
-		MutableVector2 *to = [MutableVector2 vectorWithX:pos.vectorVal.x + (vel.vectorVal.x * dt)
-													   y:pos.vectorVal.y + (vel.vectorVal.y * dt)];
-		
-		
-		
-		
-		
-		
-		
-		pos.vectorVal.x = to.x;
-		pos.vectorVal.y = to.y;
-				*/
+-(void)tick:(float)dt {
+	for(QSTPhysicsLayer *layer in layers) {
+		NSMutableArray *entities = layer.entities;
+		for(int i=0; i<[entities count]; i++) {
+			QSTEntity *ent1 = [entities objectAtIndex:i];
+			
+			QSTProperty *pos = [ent1 property:@"Position"];
+			QSTProperty *vel = [ent1 property:@"Velocity"];
+			QSTResSprite *sprite = [core.resourceDB getSpriteWithName:[ent1 property:@"SpriteName"].stringVal];
+			
+			vel.vectorVal.y += 9.8f * dt;
+					
+			MutableVector2 *to = [MutableVector2 vectorWithX:pos.vectorVal.x + (vel.vectorVal.x * dt)
+														   y:pos.vectorVal.y + (vel.vectorVal.y * dt)];
+			
+			
+			
+	
+			pos.vectorVal.x = to.x;
+			pos.vectorVal.y = to.y;
+			
+			if(pos.vectorVal.y > 5.5f) pos.vectorVal.y = 5.5f;
+		}
+	}
+				/**/
 		
 		
 		

@@ -135,9 +135,12 @@
 
 -(void)leftStart {
 	QSTProperty *vel = [playerEntity property:@"Velocity"];
+	//QSTProperty *pos = [playerEntity property:@"Position"];
 	vel.vectorVal.x = -3.0f;
 	
-	[core.graphicsSystem.camera panToX:5.0f y:3.75f withSpeed:1.0f];
+	//pos.vectorVal.x -= 1.0f;
+	
+	[core.graphicsSystem.camera panToX:25.0f y:3.75f withSpeed:1.0f];
 	[core.graphicsSystem.camera zoomTo:2.3f withSpeed:0.4f];
 
 }
@@ -149,7 +152,10 @@
 
 -(void)rightStart {
 	QSTProperty *vel = [playerEntity property:@"Velocity"];
+	//QSTProperty *pos = [playerEntity property:@"Position"];
 	vel.vectorVal.x = 3.0f;
+	
+	//pos.vectorVal.x += 1.0f;
 	
 	[core.graphicsSystem.camera zoomTo:1.0f withSpeed:0.4f];
 	[core.graphicsSystem.camera follow:playerEntity withSpeed:1.0f];
