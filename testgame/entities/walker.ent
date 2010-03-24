@@ -1,0 +1,9 @@
+{
+  "Position" : [0.0, 0.0],
+  "Physics" : { },
+  "Sprite" : {
+    "SpriteName" : "lasse",
+    "SpriteCurrentAnimation" : "idle"
+  },
+  "Logic" : "Walker"
+}
