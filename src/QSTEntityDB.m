@@ -14,6 +14,8 @@
 #import "QSTProperty.h"
 #import "QSTEntity.h"
 
+#import "QSTLog.h"
+
 @interface QSTEntityDB ()
 @property (assign) QSTCore *core;
 @end
@@ -45,18 +47,24 @@
 	// Return an Error Entity instead, that has a visible
 	// debug sprite.
 	if(r_root == nil) {
-		printf("Warning: Unknown entity type %s\n", [type UTF8String]);
+		Warning(@"Engine", @"createEntityWithType - Ignoring unknown entity type '%@'.", type);
 		return nil;
 	}
+	
+	Debug(@"Engine", @"Create entity with type '%@'.", type);
 	
 	NSDictionary *props = [core.propertyDB propertiesFromDictionary:r_root];
 
 	QSTEntity *entity = [[[QSTEntity alloc] initWithType:type EID:[entities count] properties:props] autorelease];
 	[entities addObject:entity];
+	[entity printPropertiesToLogger:@"Engine"];
 	return entity;
 }
 
 -(QSTEntity*)createEmptyEntity {
+	
+	Debug(@"Engine", @"Create empty entity.");
+	
 	QSTEntity *entity = [[[QSTEntity alloc] initWithEID:[entities count]] autorelease];
 	[entities addObject:entity];
 	return entity;

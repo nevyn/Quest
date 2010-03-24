@@ -8,6 +8,8 @@
 
 #import "QSTInputSystem.h"
 
+#import "QSTLog.h"
+
 @implementation QSTInputMapping {
 	
 }
@@ -63,8 +65,7 @@
 		}
 	}
 	
-	// Action not found.
-	printf("Warning: Tried to bind key to non-existing action [%s]\n", [actionName UTF8String]);
+	Warning(@"Engine", @"Tried to bind key (%d) to non-existing action '%@'", key, actionName);
 }
 
 -(void)doInput:(int)key pressed:(BOOL)pressed {

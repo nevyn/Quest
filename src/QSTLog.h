@@ -17,6 +17,12 @@ typedef enum {
 	QSTLogLevelUseMaster
 } QSTLogLevel;
 
+#define Debug(loggers, str, ...) [[QSTLog log] logWithLoggers:loggers level:QSTLogLevelDebug message:str, ##__VA_ARGS__]
+#define Info(loggers, str, ...)	[[QSTLog log] logWithLoggers:loggers level:QSTLogLevelInfo message:str, ##__VA_ARGS__]
+#define Warning(loggers, str, ...) [[QSTLog log] logWithLoggers:loggers level:QSTLogLevelWarning message:str, ##__VA_ARGS__]
+#define Error(loggers, str, ...) [[QSTLog log] logWithLoggers:loggers level:QSTLogLevelError message:str, ##__VA_ARGS__]
+#define Fatal(loggers, str, ...) [[QSTLog log] logWithLoggers:loggers level:QSTLogLevelFatal message:str, ##__VA_ARGS__]
+
 @class QSTLogger;
 
 // Singleton class for logging
@@ -28,6 +34,8 @@ typedef enum {
 
 +(QSTLog*)log;
 -(id)init;
+
+-(void)logWithLoggers:(NSString*)loggerNames level:(QSTLogLevel)level message:(NSString*)msg, ...;
 
 -(QSTLogger*)loggerWithName:(NSString*)aName;
 
@@ -43,11 +51,15 @@ typedef enum {
 }
 @property (nonatomic) QSTLogLevel logLevel;
 
--(void)debug:(NSString*)str, ...;
--(void)info:(NSString*)str, ...;
--(void)warning:(NSString*)str, ...;
--(void)error:(NSString*)str, ...;
--(void)fatal:(NSString*)str, ...;
+-(id)initWithName:(NSString*)name_ log:(QSTLog*)log_;
+
+-(void)log:(NSString*)str withLevel:(QSTLogLevel)level;
+
+-(void)debug:(NSString*)str;
+-(void)info:(NSString*)str;
+-(void)warning:(NSString*)str;
+-(void)error:(NSString*)str;
+-(void)fatal:(NSString*)str;
 @end
 /*
 @interface QSTConsoleLogger : QSTLogger {

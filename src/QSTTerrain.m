@@ -16,6 +16,8 @@
 #import "QSTBoundingBox.h"
 #import "Vector2.h"
 
+#import "QSTLog.h"
+
 @interface QSTTerrainTile ()
 @property (nonatomic, retain) QSTResSprite *sprite;
 @property (nonatomic, retain) NSString *currentAnimation;
@@ -37,9 +39,7 @@
 	rotation = theRot;
 	
 	sprite = sprite_;
-		
-	printf("Tile: %f %f, %f degrees, %f scale, %s, %s\n", position.x, position.y, rotation, scale, [[sprite description] UTF8String], [animName UTF8String]);
-	
+
 	return self;
 }
 -(void)dealloc;
@@ -100,10 +100,12 @@
 
 @implementation QSTTerrain
 @synthesize tiles;
+
 +(QSTTerrain*)terrainWithData:(NSMutableArray*)terrainData resources:(QSTResourceDB*)resourceDB;
  {
 	return [[[QSTTerrain alloc] initWithTerrainData:terrainData resources:resourceDB] autorelease];
 }
+
 
 -(id)initWithTerrainData:(NSMutableArray*)terrainData resources:(QSTResourceDB*)resourceDB;
 {
@@ -117,22 +119,25 @@
 		QSTResSprite *sprite = [resourceDB getSpriteWithName:[tileData objectForKey:@"sprite"]];
 		NSString *animName = [tileData objectForKey:@"animation"];
 		
-		QSTTerrainTile *tile = [[[QSTTerrainTile alloc] initWithPosition:position 
-																													 rotation:rotation 
-																															scale:scale 
-																														 sprite:sprite 
-																													animation:animName] autorelease];
+		QSTTerrainTile *tile = [[[QSTTerrainTile alloc] initWithPosition:position
+																rotation:rotation
+																   scale:scale
+																  sprite:sprite
+															   animation:animName] autorelease];
 		
 		[tiles addObject:tile];
 	}
-	
+		
 	return self;
 }
+
+
 -(void)dealloc;
 {
 	self.tiles = nil;
 	[super dealloc];
 }
+
 
 -(void)render {
 	for(QSTTerrainTile *tile in tiles) {

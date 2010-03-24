@@ -50,13 +50,12 @@ static QSTLogger *syslog = nil;
 {
 	if(![super init]) return nil;
 	
-	syslog = [[QSTLog log] loggerWithName:@"Engine"];
-	[syslog info:@"-------- Initializing Core --------"];
+	Info(@"Engine", @"-------- Initializing Core --------");
 		
 	self.gamePath = gamePath_;
 	mode = mode_;
 	
-	[syslog info:@"Running game: %@", self.gamePath];
+	Info(@"Engine", @"Running game: %@", self.gamePath);
 
 	self.entityDB = [[[QSTEntityDB alloc] initOnCore:self] autorelease];
 	self.propertyDB = [[[QSTPropertyDB alloc] initOnCore:self] autorelease];

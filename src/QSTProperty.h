@@ -31,6 +31,8 @@ typedef enum {
 	} data;
 }
 
+@property (nonatomic,readonly) QSTPropertyType type;
+
 +(QSTProperty*)propertyWithInt:(int)i;
 +(QSTProperty*)propertyWithVector:(MutableVector2*)v;
 +(QSTProperty*)propertyWithFloat:(float)f;
@@ -55,6 +57,6 @@ typedef enum {
 -(void)setStringVal:(NSString*)val;
 -(void)setBoolVal:(BOOL)val;
 
--(void)print;
+-(NSString*)valueAsString;
 
 @end

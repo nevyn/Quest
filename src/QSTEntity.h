@@ -30,7 +30,7 @@
 -(id)initWithEID:(int)eid_;
 -(id)initWithType:(NSString*)type_ EID:(int)eid_ properties:(NSDictionary*)props;
 
--(void)printProperties;
+-(void)printPropertiesToLogger:(NSString*)loggerName;
 -(QSTProperty*)property:(NSString*)name;
 -(void)setProperty:(NSString*)name to:(QSTProperty*)aProperty;
 //-(void)sendEvent:(QSTEvent*)theEvent;

@@ -13,6 +13,8 @@
 #import "QSTPropertyDB.h"
 #import "QSTCore.h"
 
+#import "QSTLog.h"
+
 @implementation QSTEntity
 
 @synthesize EID, type;
@@ -25,12 +27,12 @@
 	return self;
 }
 
+
 -(id)initWithType:(NSString*)type_ EID:(int)eid_ properties:(NSDictionary*)props {
 	if(self = [super init]) {
 		EID = eid_;
 		type = [type_ retain];
 		properties = [props retain];
-		[self printProperties];
 	}
 	return self;
 }
@@ -43,12 +45,10 @@
 }
 
 
--(void)printProperties {
-	printf("Entity [%d] (%s) properties:\n", EID, [type UTF8String]);
+-(void)printPropertiesToLogger:(NSString*)loggerName {
+	Debug(loggerName, @"Entity [%d] (%@) properties:", EID, type);
 	for(NSString *key in properties) {
-		printf("  %16s: ", [key UTF8String]);
-		[((QSTProperty*)[properties objectForKey:key]) print];
-		printf("\n");
+		Debug(loggerName, @"  %@: %@", key, [(QSTProperty*)[properties objectForKey:key] valueAsString]);
 	}
 }
 
@@ -59,12 +59,12 @@
 
 
 -(void)setProperty:(NSString*)name to:(QSTProperty*)aProperty {
-	//QSTProperty *p = [properties objectForKey:name];
-	//if(p != nil && p->type != aProperty->type) {
-		// Warning: Replacing property with property of different type
-	//}
+	QSTProperty *p = [properties objectForKey:name];
+	if(p != nil && p.type != aProperty.type)
+		Warning(@"Engine", @"Entity: Replacing property '%@' with property of different type.", name);
 	[properties setObject:aProperty forKey:name];
 }
+
 
 //-(void)sendEvent:(QSTEvent*)theEvent {
 //}

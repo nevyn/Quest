@@ -38,7 +38,9 @@
 @property (nonatomic, readonly) QSTBoundingBox *bbox;
 @property (nonatomic, readonly) QSTBoundingBox *canvas;
 
--(id)initWithPath:(NSURL*)path resources:(QSTResourceDB*)resourceDB;
++(QSTResSprite*)spriteWithPath:(NSURL*)spritePath resources:(QSTResourceDB*)resourceDB;
+
+-(id)initWithData:(NSMutableDictionary*)spriteData path:(NSURL*)path resources:(QSTResourceDB*)resourceDB;
 -(int)maxFramesForAnimation:(NSString*)animName;
 -(QSTBoundingBox*)useWithAnimation:(NSString*)animName frame:(int)frame;
 

@@ -29,6 +29,8 @@
 #import "QSTLine.h"
 #import "Vector2.h"
 
+#import "QSTLog.h"
+
 
 @interface QSTGame ()
 @property (nonatomic,assign) QSTCore *core;
@@ -48,9 +50,7 @@
 	
 	powerUps = [[NSMutableArray alloc] init];
 	playerEntity = [[core.entityDB createEntityWithType:@"lasse"] retain];
-	
-	printf("Game created.\n");
-		
+			
 	return self;
 }
 
@@ -66,7 +66,7 @@
 																		 @"areas", $sprintf(@"%@.area", areaName)
 																		 )];
 	
-	printf("Load Area: %s\n", [[areaPath path] UTF8String]);
+	Info(@"Engine", @"Loading area: '%@'.", areaName);
 			
 	NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONURL:areaPath];
 
@@ -77,6 +77,7 @@
 	[core.graphicsSystem newSceneWithWidth:width height:height];
 
 	NSMutableArray *r_layers = [r_root objectForKey:@"layers"];
+	Debug(@"Engine", @"%d layers.", [r_layers count]);
 	for(int i=0; i<[r_layers count];i++) {
 		[self loadLayer:[r_layers objectAtIndex:i] withIndex:i];
 	}
@@ -99,8 +100,6 @@
 
 -(void)loadLayer:(NSMutableDictionary*)layerData withIndex:(int)theIndex {
 	
-	printf("Load layer %d...\n", theIndex);
-	
 	[core.graphicsSystem loadLayerWithData:layerData index:theIndex];
 	[core.physicsSystem loadLayerWithData:layerData index:theIndex];
 	
@@ -113,6 +112,8 @@
 		[core.graphicsSystem registerEntity:entity inLayer:theIndex];
 		[core.logicsSystem registerEntity:entity];
 	}
+	
+	Debug(@"Engine", @"Layer [%d]: %d entities.", theIndex, [r_entities count]);
 }
 
 -(QSTEntity*)createEntity:(NSMutableDictionary*)data layer:(int)layerIndex {
@@ -182,7 +183,6 @@
 }
 
 -(void)shoot {
-	printf("Shoot!\n");
 }
 
 @end

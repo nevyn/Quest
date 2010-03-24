@@ -8,7 +8,6 @@
 
 #import "QSTLog.h"
 
-
 @implementation QSTLog
 @synthesize logLevel;
 
@@ -23,14 +22,27 @@
 	if(![super init]) return nil;
 	loggers = [[NSMutableDictionary alloc] init];
 	logLevel = QSTLogLevelDebug;
-		
+	
 	QSTLogger *engineLog = [[QSTLogger alloc] initWithName:@"Engine" log:self];
 	[loggers setObject:engineLog forKey:@"Engine"];
 	[engineLog release];
-	
-	[engineLog debug:@"-------- Initialized Log System --------"];
-	
+		
 	return self;
+}
+
+-(void)logWithLoggers:(NSString*)loggerNames level:(QSTLogLevel)level message:(NSString*)msg, ... {
+	va_list args;
+	va_start(args, msg);
+	NSString *str = [[NSString alloc] initWithFormat:msg arguments:args];
+	va_end(args);
+	
+	NSArray *names = [loggerNames componentsSeparatedByString:@","];
+	for(NSString* name in names) {
+		QSTLogger *logger = [loggers objectForKey:name];
+		if(logger) [logger log:str withLevel:level];
+	}
+	
+	[str release];
 }
 
 -(QSTLogger*)loggerWithName:(NSString*)aName {
@@ -44,10 +56,7 @@
 
 @end
 
-#define DO_OUTPUT(lvl) if([self level]>lvl)return; va_list args;va_start(args, str);[self log:[[NSString alloc] initWithFormat:str arguments:args]];va_end(args)
-
 @interface QSTLogger()
--(void)log:(NSString*)str;
 @end
 
 @implementation QSTLogger
@@ -67,37 +76,34 @@
 	return logLevel;
 }
 
--(void)debug:(NSString*)str, ... {
-	DO_OUTPUT(QSTLogLevelDebug);
+-(void)log:(NSString*)str withLevel:(QSTLogLevel)level {
+	if([self level] > level) return;
+	if(level == QSTLogLevelDebug) [self debug:str];
+	else if(level == QSTLogLevelInfo) [self info:str];
+	else if(level == QSTLogLevelWarning) [self warning:str];
+	else if(level == QSTLogLevelError) [self error:str];
+	else [self fatal:str];
+}
+
+-(void)debug:(NSString*)str {
+	
+	printf("%s:   %s\n", [name UTF8String], [str UTF8String]);
 }
 	   
--(void)info:(NSString*)str, ... {
-	DO_OUTPUT(QSTLogLevelInfo);
-}
-
--(void)warning:(NSString*)str, ... {
-	DO_OUTPUT(QSTLogLevelWarning);
-}
-
--(void)error:(NSString*)str, ... {
-	DO_OUTPUT(QSTLogLevelError);
-}
-
--(void)fatal:(NSString*)str, ... {
-	DO_OUTPUT(QSTLogLevelError);
-}
-
--(void)log:(NSString*)str {
+-(void)info:(NSString*)str {
 	printf("%s: %s\n", [name UTF8String], [str UTF8String]);
 }
 
-@end
-
-			/*
-@implementation QSTConsoleLogger 
-
--(void)log:(NSString*)str, ... {
-	printf("%s\n", [str UTF8String]);
+-(void)warning:(NSString*)str {
+	printf("%s: Warning: %s\n", [name UTF8String], [str UTF8String]);
 }
 
-@end*/
+-(void)error:(NSString*)str {
+	printf("%s: ERROR: %s\n", [name UTF8String], [str UTF8String]);
+}
+
+-(void)fatal:(NSString*)str {
+	printf("%s: FATAL: %s\n", [name UTF8String], [str UTF8String]);
+}
+
+@end

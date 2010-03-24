@@ -12,7 +12,8 @@
 #import "QSTResTexture.h"
 #import "QSTResSprite.h"
 #import "QSTCore.h"
-//#import "QSTResEntityTemplate.h"
+
+#import "QSTLog.h"
 
 @interface QSTResourceDB ()
 @property (assign) QSTCore *core;
@@ -28,10 +29,11 @@
 {
 	if(![super init]) return nil;
 	
+	Info(@"Engine", @"-------- Initializing Resource DB --------");
+	
 	self.core = core_;
 	textures = [[NSMutableDictionary alloc] init];
 	sprites = [[NSMutableDictionary alloc] init];
-	//entityTemplates = [[NSMutableDictionary alloc] init];
 	
 	return self;
 }
@@ -43,13 +45,17 @@
 }
 
 -(QSTResTexture*)getTextureWithPath:(NSURL*)path {
-	printf("ResourceDB: getTextureWithPath [%s]\n", [[path path] UTF8String]);
-	
 	QSTResTexture *texture = [textures objectForKey:path];
-	if(texture != nil) { printf("Already loaded.\n"); return texture; }
+	if(texture != nil) { return texture; }
 	
 	NSURL *fullPath = [path URLByAppendingPathExtension:@"png"];
 	NSBitmapImageRep *img = [NSBitmapImageRep imageRepWithContentsOfURL:fullPath];
+	
+	if(!img) {
+		Error(@"Engine", @"ResourceDB: Texture not found: '%@'", [fullPath relativeString]);
+		// TODO: Return a generated error texture
+		return nil;
+	}
 		
 	unsigned char *data = [img bitmapData];
 	int	width = [img pixelsWide];
@@ -62,14 +68,16 @@
 	return texture;
 }
 
--(QSTResSprite*)getSpriteWithName:(NSString*)name {
-	//printf("ResourceDB: getSpriteWithName [%s]\n", [name UTF8String]);
-	
+-(QSTResSprite*)getSpriteWithName:(NSString*)name {	
 	QSTResSprite *sprite = [sprites objectForKey:name];
-	if(sprite != nil) { /*printf("Already loaded.\n");*/ return sprite; }
+	if(sprite != nil) { return sprite; }
 	
 	NSURL *spritePath = $joinUrls(core.gamePath, @"sprites", name);
-	sprite = [[(QSTResSprite*)[QSTResSprite alloc] initWithPath:spritePath resources:self] autorelease];
+  	sprite = [QSTResSprite spriteWithPath:spritePath resources:self];
+	if(!sprite) {
+		Error(@"Engine", @"ResourceDB: Sprite not found: '%s'", [[spritePath relativeString] UTF8String]);
+		return nil;
+	}
 	[sprites setObject:sprite forKey:name];
 	
 	return sprite;

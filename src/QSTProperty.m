@@ -11,6 +11,7 @@
 #import "Vector2.h"
 
 @implementation QSTProperty
+@synthesize type;
 
 +(QSTProperty*)propertyWithInt:(int)i {
 	return [[[QSTProperty alloc] initWithInt:i] autorelease];
@@ -75,9 +76,9 @@
 }
 
 -(void)dealloc {
-	printf("Property: Dealloc ");
-	[self print];
-	printf("\n");
+	//[name release];
+	if(type == QSTPropertyVector) [data.vectorVal release];
+	else if(type == QSTPropertyString) [data.stringVal release];
 	[super dealloc];
 }
 
@@ -123,19 +124,17 @@
 	data.boolVal = val;
 }
 
--(void)print {
+-(NSString*)valueAsString {
 	if(type == QSTPropertyVector)
-		printf(" v: %f %f", data.vectorVal.x, data.vectorVal.y);
+		return [NSString stringWithFormat:@"(%.3f, %.3f)", data.vectorVal.x, data.vectorVal.y];
 	else if(type == QSTPropertyFloat)
-		printf(" f: %f", data.floatVal);
+		return [NSString stringWithFormat:@"%.3f", data.floatVal];
 	else if(type == QSTPropertyString)
-		printf(" s: %s", [data.stringVal UTF8String]);
+		return [NSString stringWithFormat:@"\"%@\"", data.stringVal];
 	else if(type == QSTPropertyInt)
-		printf(" i: %d", data.intVal);
-	else {
-		printf(" b: %s", data.boolVal ? "true" : "false");
-	}
-
+		return [NSString stringWithFormat:@"%d", data.intVal];
+	else
+		return data.boolVal ? @"true" : @"false";
 }
 
 

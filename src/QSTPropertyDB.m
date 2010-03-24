@@ -13,6 +13,8 @@
 #import "JSONHelper.h"
 #import "QSTCore.h"
 
+#import "QSTLog.h"
+
 @interface QSTPropertyDB ()
 @property (assign) QSTCore *core;
 @property (retain) NSMutableDictionary *componentTemplates;
@@ -24,10 +26,10 @@
 -(id)initOnCore:(QSTCore*)core_;
 {
 	if(![super init]) return nil;
-	printf("PropertyDB: Initializing!\n");
+
+	Info(@"Engine", @"-------- Initializing Property DB --------");
 	
 	self.core = core_;
-	
 	self.componentTemplates = [NSMutableDictionary new];
 	
 	NSFileManager *fm = [NSFileManager defaultManager];
@@ -35,9 +37,7 @@
 	
 	for(NSString *filename in [fm contentsOfDirectoryAtPath:[componentsRoot path] error:NULL]) {
 		NSURL *fullpath = $joinUrls(componentsRoot, filename);
-		
-		printf("Reading %s...\n", [[fullpath path] UTF8String]);
-				
+						
 		NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONURL:fullpath];
 		
 		NSString *r_name = [r_root objectForKey:@"name"];
@@ -79,13 +79,10 @@
 
 -(NSDictionary*)propertiesFromDictionary:(NSDictionary*)data {
 	NSMutableDictionary *resultProps = [NSMutableDictionary dictionary];
-	for(NSString *key in data) {
-		printf(" Check %s...", [key UTF8String]);
-		
+	for(NSString *key in data) {		
 		// If it's a component
 		NSDictionary *compProperties = [componentTemplates objectForKey:key];
 		if(compProperties != nil) {
-			printf("Component\n");
 			NSDictionary *overrides = [data objectForKey:key];
 			for(NSString *compKey in compProperties) {
 				if([overrides objectForKey:compKey] != nil)
@@ -98,7 +95,6 @@
 			
 		// Otherwise it's a normal property
 		} else {
-			printf("Property\n");
 			[resultProps setObject:[QSTPropertyDB propertyWithName:key data:[data objectForKey:key]]
 							forKey:key];
 		}
