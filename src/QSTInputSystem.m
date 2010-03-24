@@ -21,7 +21,7 @@
 
 -(id)init {
 	[super init];
-	
+		
 	mappings = [[NSMutableArray array] retain];
 	
 	return self;
@@ -91,6 +91,12 @@
 @implementation QSTInputSystem
 
 @synthesize mapper;
+
+-(id)init {
+	if(![super init]) return nil;
+	Info(@"Engine", @"-------- Initializing Input System --------");
+	return self;
+}
 
 -(void)pressedKey:(int)key repeated:(BOOL)repeated {
 	[mapper doInput:key pressed:YES];

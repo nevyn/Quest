@@ -4,5 +4,6 @@
 	"Sprite" : {
 		"SpriteName" : "lasse",
 		"SpriteCurrentAnimation" : "idle"
-	}
+	},
+	"Hej" : 2.1
 }

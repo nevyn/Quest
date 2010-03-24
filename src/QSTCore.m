@@ -106,6 +106,7 @@ static QSTLogger *syslog = nil;
 		
 	float delta = 1.0f / 60.0f;
 
+	[logicsSystem tick:delta];
 	[physicsSystem tick:delta];
 	[graphicsSystem tick:delta];
 }

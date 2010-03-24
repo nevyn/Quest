@@ -13,10 +13,15 @@
 
 @interface QSTLogicsSystem : NSObject {
 	QSTCore		*core;
+	
+	NSMutableArray *entities;
+	NSMutableArray *logics;
 }
 
 -(id)initOnCore:(QSTCore*)core_;
 
 -(void)registerEntity:(QSTEntity*)entity;
+
+-(void)tick:(float)delta;
 
 @end

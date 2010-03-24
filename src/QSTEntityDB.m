@@ -42,6 +42,8 @@
 {
 	NSURL *path = $joinUrls(core.gamePath, @"entities", [type stringByAppendingPathExtension:@"ent"]);
 	
+	Debug(@"Engine", @"Load entity from %@", [path relativePath]);
+	
 	NSMutableDictionary *r_root = [JSONHelper dictionaryFromJSONURL:path];
 	
 	// Return an Error Entity instead, that has a visible

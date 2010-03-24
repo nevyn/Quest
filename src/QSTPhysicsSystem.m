@@ -20,6 +20,8 @@
 #import "Vector2.h"
 #import "QSTCore.h"
 
+#import "QSTLog.h"
+
 @interface QSTPhysicsSystem ()
 @property (nonatomic, assign) QSTCore *core;
 @end
@@ -36,6 +38,7 @@
 
 -(id)init {
 	if(![super init]) return nil;
+		
 	entities = [[NSMutableArray alloc] init];
 	return self;
 }
@@ -53,6 +56,8 @@
 -(id)initOnCore:(QSTCore*)core_;
 {
 	if (![super init]) return nil;
+	
+	Info(@"Engine", @"-------- Initializing Physics System --------");
 	
 	self.core = core_;
 	layers = [[NSMutableArray alloc] init];

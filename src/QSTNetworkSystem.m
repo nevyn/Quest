@@ -7,6 +7,8 @@
 #import "QSTNetworkSystem.h"
 #import "QSTNetSocket.h"
 
+#import "QSTLog.h"
+
 static const int QSTServerPort = 15983;
 
 @interface QSTNetworkSystem ()
@@ -38,6 +40,8 @@ static const int QSTServerPort = 15983;
 -(id)initOnCore:(QSTCore*)core_;
 {
 	if(![super initOnCore:core_]) return nil;
+	
+	Info(@"Engine", @"-------- Initializing Client Network System --------");
 	
 	[self addObserver:self
 				 forKeyPath:@"host"
@@ -114,6 +118,8 @@ static const int QSTServerPort = 15983;
 -(id)initOnCore:(QSTCore*)core_;
 {
 	if(![super initOnCore:core_]) return nil;
+	
+	Info(@"Engine", @"-------- Initializing Server Network System --------");
 	
 	clients = [NSMutableArray new];
 	

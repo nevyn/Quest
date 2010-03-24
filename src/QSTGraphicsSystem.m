@@ -22,6 +22,8 @@
 
 #import "Vector2.h"
 
+#import "QSTLog.h"
+
 
 /*typedef struct {
 } QSTBatchSettings;
@@ -51,6 +53,8 @@
 
 -(id)initOnCore:(QSTCore*)core_ {
 	if(self = [super init]) {
+		
+		Info(@"Engine", @"-------- Initializing Graphics System --------");
 		
 		self.core = core_;
 		

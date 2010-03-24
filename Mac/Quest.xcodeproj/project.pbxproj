@@ -41,6 +41,7 @@
 		D85E720911303DCD0005CAB5 /* shortplan in Resources */ = {isa = PBXBuildFile; fileRef = D85E720811303DCD0005CAB5 /* shortplan */; };
 		D85E74AD1131C01B0005CAB5 /* QSTResourceDB.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E74AC1131C01B0005CAB5 /* QSTResourceDB.m */; };
 		D85E74B11131E9C60005CAB5 /* QSTResSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E74B01131E9C60005CAB5 /* QSTResSprite.m */; };
+		D8758FF1115AAFA20080E61E /* QSTLogicWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = D8758FF0115AAFA20080E61E /* QSTLogicWalker.m */; };
 		D889DF3011525EB9005110F6 /* arch in Resources */ = {isa = PBXBuildFile; fileRef = D889DF2F11525EB9005110F6 /* arch */; };
 		D889E0781152CF5E005110F6 /* QSTLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D889E0771152CF5E005110F6 /* QSTLayer.m */; };
 		D889E1091155334D005110F6 /* network in Resources */ = {isa = PBXBuildFile; fileRef = D889E1081155334D005110F6 /* network */; };
@@ -131,6 +132,9 @@
 		D85E74AC1131C01B0005CAB5 /* QSTResourceDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTResourceDB.m; sourceTree = "<group>"; };
 		D85E74AF1131E9C60005CAB5 /* QSTResSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTResSprite.h; sourceTree = "<group>"; };
 		D85E74B01131E9C60005CAB5 /* QSTResSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTResSprite.m; sourceTree = "<group>"; };
+		D8758FEF115AAFA20080E61E /* QSTLogicWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTLogicWalker.h; sourceTree = "<group>"; };
+		D8758FF0115AAFA20080E61E /* QSTLogicWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTLogicWalker.m; sourceTree = "<group>"; };
+		D875907E115AB6190080E61E /* QSTLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTLogic.h; sourceTree = "<group>"; };
 		D889DF2F11525EB9005110F6 /* arch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arch; sourceTree = "<group>"; };
 		D889E0761152CF5E005110F6 /* QSTLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTLayer.h; sourceTree = "<group>"; };
 		D889E0771152CF5E005110F6 /* QSTLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTLayer.m; sourceTree = "<group>"; };
@@ -150,8 +154,6 @@
 		D8BF13AC113AB4050006E86E /* phys */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = phys; sourceTree = "<group>"; };
 		D8BF13B2113AEEBC0006E86E /* QSTInputSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTInputSystem.h; sourceTree = "<group>"; };
 		D8BF13B3113AEEBC0006E86E /* QSTInputSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTInputSystem.m; sourceTree = "<group>"; };
-		D8BF1528113B0A4A0006E86E /* QSTResEntityTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTResEntityTemplate.h; sourceTree = "<group>"; };
-		D8BF1529113B0A4A0006E86E /* QSTResEntityTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTResEntityTemplate.m; sourceTree = "<group>"; };
 		D8DA002C114EDBEC0064B657 /* QSTTerrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTTerrain.h; sourceTree = "<group>"; };
 		D8DA002D114EDBEC0064B657 /* QSTTerrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSTTerrain.m; sourceTree = "<group>"; };
 		D8DAFA7F114BF0780064B657 /* QSTEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSTEntity.h; sourceTree = "<group>"; };
@@ -313,9 +315,10 @@
 		D85E714C113013E40005CAB5 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D8758FEE115AAF8D0080E61E /* Game */,
+				D81E8C9E1131EB84006994C7 /* ext */,
 				D889E56311558EF8005110F6 /* QSTGame.h */,
 				D889E56411558EF8005110F6 /* QSTGame.m */,
-				D81E8C9E1131EB84006994C7 /* ext */,
 				D85E71E9113037B60005CAB5 /* QSTCore.h */,
 				D85E71EA113037B60005CAB5 /* QSTCore.m */,
 				D85E7177113025120005CAB5 /* QSTGraphicsSystem.h */,
@@ -328,6 +331,7 @@
 				05D98E0411553BE4002DC175 /* QSTNetworkSystem.m */,
 				D889F55A1158ED80005110F6 /* QSTLogicsSystem.h */,
 				D889F55B1158ED80005110F6 /* QSTLogicsSystem.m */,
+				D875907E115AB6190080E61E /* QSTLogic.h */,
 				D889E0761152CF5E005110F6 /* QSTLayer.h */,
 				D889E0771152CF5E005110F6 /* QSTLayer.m */,
 				D8BF0BF9113736050006E86E /* QSTCmpCollisionMap.h */,
@@ -348,8 +352,6 @@
 				D81E952C11335507006994C7 /* QSTLine.m */,
 				D8BF0C991137F9880006E86E /* QSTResModel2D.h */,
 				D8BF0C9A1137F9880006E86E /* QSTResModel2D.m */,
-				D8BF1528113B0A4A0006E86E /* QSTResEntityTemplate.h */,
-				D8BF1529113B0A4A0006E86E /* QSTResEntityTemplate.m */,
 				D8DAFB1C114E593C0064B657 /* QSTEntityDB.h */,
 				D8DAFB1D114E593C0064B657 /* QSTEntityDB.m */,
 				D8DAFA82114BF3730064B657 /* QSTPropertyDB.h */,
@@ -387,6 +389,15 @@
 			name = docs;
 			path = ../docs;
 			sourceTree = SOURCE_ROOT;
+		};
+		D8758FEE115AAF8D0080E61E /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				D8758FEF115AAFA20080E61E /* QSTLogicWalker.h */,
+				D8758FF0115AAFA20080E61E /* QSTLogicWalker.m */,
+			);
+			name = Game;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -491,6 +502,7 @@
 				05F2045B1156BC2D008E990F /* QSTNetSocket.m in Sources */,
 				D889F55C1158ED80005110F6 /* QSTLogicsSystem.m in Sources */,
 				D889F5E711592D5F005110F6 /* QSTLog.m in Sources */,
+				D8758FF1115AAFA20080E61E /* QSTLogicWalker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

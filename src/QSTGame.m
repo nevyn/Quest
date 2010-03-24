@@ -105,6 +105,8 @@
 	
 	NSMutableArray *r_entities = [layerData objectForKey:@"entities"];
 	
+	Debug(@"Engine", @"Layer [%d]: %d entities.", theIndex, [r_entities count]);
+	
 	for(NSMutableDictionary *r_entity in r_entities) {
 		QSTEntity *entity = [self createEntity:r_entity layer:theIndex];
 		
@@ -112,8 +114,6 @@
 		[core.graphicsSystem registerEntity:entity inLayer:theIndex];
 		[core.logicsSystem registerEntity:entity];
 	}
-	
-	Debug(@"Engine", @"Layer [%d]: %d entities.", theIndex, [r_entities count]);
 }
 
 -(QSTEntity*)createEntity:(NSMutableDictionary*)data layer:(int)layerIndex {
