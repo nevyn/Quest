@@ -15,13 +15,14 @@
 
 @implementation QSTLogicWalker
 
--(id)initWithEntity:(QSTEntity*)entity {
-	if(![super init]) return nil;
-	owner = entity;
-	return self;
-}
-
 -(void)tick:(float)delta {
+	
+	// Check what's in front.
+	// If obstacle or hole, change direction
+	
+	// ColResult onground = getGround:bbox;
+	// if(onground) vel.x *= -1.0f;
+	
 	QSTProperty *vel = [owner property:@"Velocity"];
 	[vel vectorVal].x = 1.0f;
 }

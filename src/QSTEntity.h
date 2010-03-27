@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 @class QSTProperty;
-@class QSTCore;
 
 /*
 	Entity
@@ -33,6 +32,10 @@
 -(void)printPropertiesToLogger:(NSString*)loggerName;
 -(QSTProperty*)property:(NSString*)name;
 -(void)setProperty:(NSString*)name to:(QSTProperty*)aProperty;
+//-(void)setProperties:(NSDictionary*)props;
+
+-(void)remove;
+
 //-(void)sendEvent:(QSTEvent*)theEvent;
 
 @end

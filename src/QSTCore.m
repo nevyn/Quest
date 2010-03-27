@@ -36,6 +36,8 @@
 @property (nonatomic,readwrite,retain) QSTPropertyDB *propertyDB;
 @property (nonatomic,readwrite,retain) QSTResourceDB *resourceDB;
 
+@property (nonatomic,readwrite,retain) QSTGame *game;
+
 @property (nonatomic,readwrite, copy) NSURL *gamePath;
 @end
 
@@ -45,6 +47,7 @@ static QSTLogger *syslog = nil;
 @synthesize graphicsSystem, physicsSystem, inputSystem, networkSystem, logicsSystem;
 @synthesize entityDB, propertyDB, resourceDB;
 @synthesize gamePath, mode;
+@synthesize game;
 
 -(id)initWithGame:(NSURL*)gamePath_ inMode:(QSTMode)mode_;
 {
@@ -55,7 +58,7 @@ static QSTLogger *syslog = nil;
 	self.gamePath = gamePath_;
 	mode = mode_;
 	
-	Info(@"Engine", @"Running game: %@", self.gamePath);
+	Info(@"Engine", @"Running game: %@", [self.gamePath relativePath]);
 
 	self.entityDB = [[[QSTEntityDB alloc] initOnCore:self] autorelease];
 	self.propertyDB = [[[QSTPropertyDB alloc] initOnCore:self] autorelease];
@@ -70,7 +73,7 @@ static QSTLogger *syslog = nil;
 	if(mode != QSTStandalone)
 		networkSystem = [[QSTNetworkSystem alloc] initOnCore:self];
 	
-	game = [[QSTGame alloc] initOnCore:self];
+	self.game = [[QSTGame alloc] initOnCore:self];
 	
 	QSTInputMapper *mapper = [[[QSTInputMapper alloc] init] autorelease];
 	if(!(mode & QSTSlave)) {
@@ -99,6 +102,7 @@ static QSTLogger *syslog = nil;
 	self.entityDB = nil;
 	self.propertyDB = nil;
 	self.resourceDB = nil;
+	self.game = nil;
 	[super dealloc];
 }
 

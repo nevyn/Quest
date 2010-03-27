@@ -8,6 +8,7 @@
 
 #import "QSTLogicsSystem.h"
 
+#import "QSTCore.h"
 #import "QSTEntity.h"
 #import "QSTProperty.h"
 
@@ -37,7 +38,8 @@
 	if(!logicname) return;
 	
 	NSString *classname = [@"QSTLogic" stringByAppendingString:[logicname stringVal]];
-	id logic = [[NSClassFromString(classname) alloc] initWithEntity:entity];
+	Debug(@"Engine", @"Create logic class '%@' (from '%@').", classname, [logicname stringVal]);
+	id logic = [[NSClassFromString(classname) alloc] initWithGame:core.game owner:entity];
 	[logics addObject:logic];
 	[logic release];
 }

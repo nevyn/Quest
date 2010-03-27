@@ -6,17 +6,10 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-
 #import "QSTLogic.h"
 
-@class QSTEntity;
-
-@interface QSTLogicWalker : NSObject <QSTLogic> {
-	QSTEntity	*owner;
+@interface QSTLogicWalker : QSTLogic {
 }
-
--(id)initWithEntity:(QSTEntity*)entity;
 
 -(void)tick:(float)delta;
 

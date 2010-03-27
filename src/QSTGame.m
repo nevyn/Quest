@@ -42,6 +42,7 @@
 @implementation QSTGame
 
 @synthesize core;
+@synthesize playerEntity;
 
 -(id)initOnCore:(QSTCore*)core_ {
 	if(![super init]) return nil;
@@ -100,6 +101,7 @@
 
 -(void)loadLayer:(NSMutableDictionary*)layerData withIndex:(int)theIndex {
 	
+	// Let the systems load what they want.
 	[core.graphicsSystem loadLayerWithData:layerData index:theIndex];
 	[core.physicsSystem loadLayerWithData:layerData index:theIndex];
 	
@@ -138,6 +140,11 @@
 	
 	return ent;
 }
+
+
+-(void)givePowerUp:(NSString*)puName {
+}
+
 
 -(void)leftStart {
 	QSTProperty *vel = [playerEntity property:@"Velocity"];

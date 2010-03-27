@@ -66,6 +66,10 @@
 }
 
 
+-(void)remove {
+	
+}
+
 //-(void)sendEvent:(QSTEvent*)theEvent {
 //}
 

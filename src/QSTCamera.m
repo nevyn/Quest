@@ -60,7 +60,7 @@
 		float zd = goalZoomFactor - zoomFactor;
 		if(fabs(zd) < 0.2f) zd = 0.2f * (fabs(zd) / zd);
 		
-		printf("zd: %f     tot: %f\n", zd, zd*zoomSpeed*delta);
+		//printf("zd: %f     tot: %f\n", zd, zd*zoomSpeed*delta);
 		
 		if(fabs(goalZoomFactor - zoomFactor) < 0.02f) {
 			zoomFactor = goalZoomFactor;

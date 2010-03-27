@@ -51,6 +51,8 @@ typedef enum {
 @property (nonatomic,readonly,retain) QSTPropertyDB *propertyDB;
 @property (nonatomic,readonly,retain) QSTResourceDB *resourceDB;
 
+@property (nonatomic,readonly) QSTGame *game;
+
 @property (nonatomic,readonly,copy) NSURL *gamePath;
 @property (nonatomic,readonly) QSTMode mode;
 

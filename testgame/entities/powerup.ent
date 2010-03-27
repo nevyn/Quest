@@ -1,0 +1,8 @@
+{
+  "Position" : [0.0, 0.0],
+  "Sprite" : {
+    "SpriteName" : "128x128",
+    "SpriteCurrentAnimation" : "idle"
+  },
+  "PowerUp" : ""
+}
